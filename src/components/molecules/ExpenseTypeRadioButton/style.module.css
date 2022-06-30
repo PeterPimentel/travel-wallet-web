@@ -1,0 +1,48 @@
+.expenseTypeRadioButton {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.inputContainer {
+    position: relative;
+}
+
+.input {
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+
+.optionButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+}
+
+.inputContainer .input:checked~.activity {
+    border-color: var(--activity-color);
+}
+
+.inputContainer .input:checked~.food {
+    border-color: var(--food-color);
+}
+
+.inputContainer .input:checked~.hotel {
+    border-color: var(--hotel-color);
+}
+
+.inputContainer .input:checked~.shopping {
+    border-color: var(--shopping-color);
+}
+
+.inputContainer .input:checked~.transport {
+    border-color: var(--transport-color);
+}

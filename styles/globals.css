@@ -1,16 +1,39 @@
-html,
+@import '~antd/dist/antd.css';
+
 body {
-  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+:root {
+  --food-color: #E15554;
+  --transport-color: #1098F7;
+  --flights-color: #93BEDF;
+  --hotel-color: #E8C547;
+  --shopping-color: #14CC60;
+  --others-color: #E2B6CF;
+  --activity-color: #B9A394;
 
-* {
-  box-sizing: border-box;
+  --light-gray: #e2e2e2;
+  --dark-gray: #777777;
+
+
+  --primary-color: #5377F0;
+  --light-primary-color: #eef1fd;
+
+  --secondary-color: #e66464;
+  --bg-color: #f3f6fb;
+
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-8: 16px;
+  --space-12: 24px;
 }

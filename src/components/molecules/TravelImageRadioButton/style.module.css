@@ -1,0 +1,38 @@
+.radioButtonContainer {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.inputContainer {
+    position: relative;
+}
+
+.input {
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+
+.optionButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border: 4px solid var(--light-gray);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.optionButton>img {
+    height: 100%;
+    width: auto;
+}
+
+.inputContainer .input:checked~.optionButton {
+    border-color: var(--primary-color);
+}

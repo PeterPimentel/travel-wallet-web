@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 16px 0;
+}
+
+.expenseList {
+    border-radius: 16px;
+    padding: 8px;
+    margin: 0 24px;
+    background-color: white;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+.expenses {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.expenses>div {
+    border-bottom: 1px dashed var(--light-gray);
+}
+
+.expenses>div:last-child {
+    border-bottom: none;
+}

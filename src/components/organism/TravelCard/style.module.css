@@ -1,0 +1,22 @@
+.card {
+    padding: var(--space-8);
+    background-color: var(--primary-color);
+
+    border-radius: 16px;
+    width: 100%;
+    max-width: 512px;
+    min-height: 128px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.header>h4 {
+    color: white;
+}

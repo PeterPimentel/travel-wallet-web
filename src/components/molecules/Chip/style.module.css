@@ -1,0 +1,25 @@
+.chip {
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 16px;
+}
+
+.default {
+    background-color: var(--dark-gray);
+}
+
+.success {
+    background-color: #52c41a;
+}
+
+.warning {
+    background-color: #faad14;
+}
+
+.danger {
+    background-color: #ff4d4f;
+}
+
+.chip>span {
+    color: white;
+}

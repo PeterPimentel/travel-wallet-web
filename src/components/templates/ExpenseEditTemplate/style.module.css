@@ -1,0 +1,9 @@
+.content {
+    padding: var(--space-8);
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

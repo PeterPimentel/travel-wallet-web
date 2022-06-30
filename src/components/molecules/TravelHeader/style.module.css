@@ -1,0 +1,47 @@
+.header {
+    height: 160px;
+    padding: 16px;
+    background-color: var(--primary-color);
+}
+
+.expenses {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navigationContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navigation {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 0;
+    gap: 2px;
+}
+
+.actions {
+    position: absolute;
+    right: 0;
+}
+
+header.header>h3 {
+    color: white;
+    text-align: center;
+}
+
+.expenses [class*="ant-statistic"] {
+    color: white !important;
+}
+
+.skeleton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

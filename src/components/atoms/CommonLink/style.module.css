@@ -1,0 +1,15 @@
+.white {
+    color: white;
+}
+
+.white:hover {
+    color: var(--light-gray);
+}
+
+.black {
+    color: black;
+}
+
+.black:hover {
+    color: var(--dark-gray);
+}
