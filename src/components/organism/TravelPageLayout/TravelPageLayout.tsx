@@ -13,9 +13,9 @@ interface TravelPageLayoutProps {
 }
 
 export const TravelPageLayout = ({ children }: TravelPageLayoutProps) => {
-    const route = useRouter();
+    const router = useRouter();
 
-    const { data, isLoading } = useTravel(Number(route.query.id));
+    const { data, isLoading } = useTravel(Number(router.query.id), "");
 
     const expenses = data ? data.expenses : []
     const travel = data ? data : { name: "" }
@@ -29,7 +29,7 @@ export const TravelPageLayout = ({ children }: TravelPageLayoutProps) => {
         <div className={styles.pageContent}>
             {children}
         </div>
-        <TravelFooter id={route.query.id as string} />
+        <TravelFooter id={router.query.id as string} />
     </div>
 }
 

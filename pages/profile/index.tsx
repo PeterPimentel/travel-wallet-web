@@ -1,6 +1,7 @@
 import { FC, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 import { AuthContext } from "../../src/hooks/useAuthContext";
 import { ROUTES } from "../../src/constants";
@@ -14,11 +15,13 @@ import styles from "./style.module.css"
 
 const ProfilePage: FC = () => {
     const { t } = useTranslation();
+    const router = useRouter();
 
     const authContext = useContext(AuthContext);
 
     const handleLogout = () => {
         authContext.logOut()
+        router.push("/")
     }
 
     return (

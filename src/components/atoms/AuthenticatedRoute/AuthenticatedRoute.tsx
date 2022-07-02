@@ -1,5 +1,7 @@
+import { useRouter } from "next/router";
 import { useContext } from "react";
 
+import { ROUTES } from "../../../constants";
 import { AuthContext } from "../../../hooks/useAuthContext";
 
 interface AuthenticatedRouteProps {
@@ -7,10 +9,11 @@ interface AuthenticatedRouteProps {
 }
 
 export const AuthenticatedRoute = ({ page }: AuthenticatedRouteProps) => {
+    const router = useRouter();
     const authContext = useContext(AuthContext);
 
     if (!authContext.isAuthenticated()) {
-        return <div>Need Auth</div>;
+        router.push(`/${ROUTES.signin}`);
     }
 
     return page;

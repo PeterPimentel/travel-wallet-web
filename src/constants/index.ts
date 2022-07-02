@@ -10,7 +10,7 @@ export const ROUTES = {
   newExpense: "expense/new",
   overview: "overview",
   profile: "profile",
-  signin: "login",
+  signin: "signin",
   signup: "signup",
   travel: "travel",
 };

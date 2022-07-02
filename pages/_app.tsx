@@ -3,7 +3,7 @@ import { appWithTranslation } from 'next-i18next';
 import { AppProps } from 'next/app';
 import { ReactElement } from 'react';
 
-import { AuthProvider } from "../src/hooks/useAuthContext";
+import { AuthProvider } from "../src/context/AuthContext";
 
 import '../styles/globals.css'
 

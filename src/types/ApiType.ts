@@ -20,3 +20,8 @@ export type APIError = {
     status: number;
     message: string;
 }
+
+export type AuthApiResponse = {
+  user: User,
+  token: string
+} 
