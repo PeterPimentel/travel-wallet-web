@@ -32,3 +32,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+https://stackoverflow.com/questions/65451349/next-js-combined-with-an-external-rest-api-authentication-and-atuhorization
+
+https://medium.com/vmlyrpoland-tech/nextjs-with-full-stack-authorization-based-on-jwt-and-external-api-e9977f9fdd5e
+
+https://vizzuality.github.io/devismos/docs/researches/next-auth/
+
+https://cloudcoders.xyz/blog/nextauth-credentials-provider-with-external-api-and-login-page/

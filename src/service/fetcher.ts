@@ -1,21 +1,21 @@
-const BASE_API_URL = "http://localhost:3777/api";
+const BASE_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 type Config = {
-  method: HttpMethod,
-  token: string,
-  body?: any
-}
+  method: HttpMethod;
+  token: string;
+  body?: any;
+};
 
-export async function fetcher<T> (url: string, config: Config): Promise<T> {
+export async function fetcher<T>(url: string, config: Config): Promise<T> {
   const response = await fetch(`${BASE_API_URL}${url}`, {
     method: config.method,
     headers: {
       "Content-Type": "application/json",
-      authorization: config.token ? `Bearer ${config.token}` : ""
+      authorization: config.token ? `Bearer ${config.token}` : "",
     },
-    referrerPolicy: 'no-referrer-when-downgrade',
+    referrerPolicy: "no-referrer-when-downgrade",
     body: config.body ? JSON.stringify(config.body) : undefined,
   });
 
@@ -24,9 +24,30 @@ export async function fetcher<T> (url: string, config: Config): Promise<T> {
   } else {
     const error = await response.json();
     if (error.message) {
-      throw error
+      throw error;
     } else {
-      throw new Error("Service Unavailable")
+      throw new Error("Service Unavailable");
+    }
+  }
+}
+
+export async function bffFetcher<T>(url: string, config: Config): Promise<T> {
+  const response = await fetch(`/api/${url}`, {
+    method: config.method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: config.body ? JSON.stringify(config.body) : undefined,
+  });
+
+  if (response.ok) {
+    return response.json();
+  } else {
+    const error = await response.json();
+    if (error.message) {
+      throw error;
+    } else {
+      throw new Error("Service Unavailable");
     }
   }
 }

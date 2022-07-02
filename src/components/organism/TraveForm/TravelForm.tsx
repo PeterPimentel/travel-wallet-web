@@ -56,6 +56,7 @@ export const TravelForm: FC<TravelFormProps> = ({
         if (isValidTravelSubmit(name, imageCover)) {
             onSubmit({
                 name: name.trim(),
+                cover: imageCover,
             })
         }
     }, [name, imageCover, onSubmit])

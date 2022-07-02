@@ -1,30 +1,38 @@
-import { useContext } from "react"
-import useSWR from "swr"
+import { useContext } from "react";
+import useSWR from "swr";
+import { ROUTES } from "../constants";
 
-import { getTravel, getTravels } from "../service/travel"
-import { HookApiResponse } from "../types/ApiType"
-import { Travel } from "../types/TravelType"
-import { AuthContext } from "./useAuthContext"
+import { getTravel, getTravels } from "../service/travel";
+import { HookApiResponse } from "../types/ApiType";
+import { Travel } from "../types/TravelType";
 
-export const useTravels = (): HookApiResponse<Travel[]> => {
-  const authContext = useContext(AuthContext);
-
-  const { data, error } = useSWR(['/travel', authContext.authState.token], getTravels)
+export const useTravels = (token: string): HookApiResponse<Travel[]> => {
+  const { data, error } = useSWR(
+    !!token ? "/travel" : null,
+    getTravels(token),
+    { dedupingInterval: 5000 }
+  );
 
   return {
     data: data as Travel[],
     isLoading: !error && !data,
-    error: error
-  }
-}
+    error: error,
+  };
+};
 
-export const useTravel = (id: number): HookApiResponse<Travel> => {
-  const authContext = useContext(AuthContext);
-  const { data, error } = useSWR([`/travel/${id}`, authContext.authState.token], getTravel)
+export const useTravel = (
+  id: number,
+  token?: string
+): HookApiResponse<Travel> => {
+  const { data, error } = useSWR(
+    !!token ? `/travel/${id}` : null,
+    getTravel(token),
+    { dedupingInterval: 5000 }
+  );
 
   return {
     data: data as Travel,
     isLoading: !error && !data,
-    error: error
-  }
-}
+    error: error,
+  };
+};

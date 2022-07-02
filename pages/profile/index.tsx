@@ -3,13 +3,13 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
-import { AuthContext } from "../../src/hooks/useAuthContext";
 import { ROUTES } from "../../src/constants";
 
 import { Button } from "../../src/components/atoms/Button/Button";
 import { H3 } from "../../src/components/atoms/Typography/Typography";
 import { BasicHeader } from "../../src/components/molecules/BasicHeader/BasicHeader";
 import { DangerZone } from "../../src/components/molecules/DangerZone/DangerZone";
+import useAuth from "../../src/hooks/useAuth";
 
 import styles from "./style.module.css"
 
@@ -17,10 +17,12 @@ const ProfilePage: FC = () => {
     const { t } = useTranslation();
     const router = useRouter();
 
-    const authContext = useContext(AuthContext);
+    const { auth } = useAuth({
+        redirectTo: `/${ROUTES.signin}`,
+    })
 
     const handleLogout = () => {
-        authContext.logOut()
+        // authContext.logOut()
         router.push("/")
     }
 

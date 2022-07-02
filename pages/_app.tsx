@@ -3,8 +3,6 @@ import { appWithTranslation } from 'next-i18next';
 import { AppProps } from 'next/app';
 import { ReactElement } from 'react';
 
-import { AuthProvider } from "../src/context/AuthContext";
-
 import '../styles/globals.css'
 
 export type NextPageWithLayout = NextPage & {
@@ -20,9 +18,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page)
 
   return getLayout(
-    <AuthProvider>
-      <Component {...pageProps} />
-    </AuthProvider>
+    <Component {...pageProps} />
   )
 };
 

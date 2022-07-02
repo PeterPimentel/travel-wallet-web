@@ -1,10 +1,8 @@
 import { FaUserCircle } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { useContext } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { useTravels } from "../../src/hooks/useTravel";
-import { AuthContext } from "../../src/hooks/useAuthContext";
 import { ROUTES } from "../../src/constants";
 
 import { CommonLink } from "../../src/components/atoms/CommonLink/CommonLink";
@@ -15,11 +13,15 @@ import { AddTravelButton } from "../../src/components/molecules/AddTravelButton/
 import { TravelCard } from "../../src/components/organism/TravelCard/TravelCard";
 
 import styles from "./style.module.css"
+import useAuth from "../../src/hooks/useAuth";
 
 const TravelsPage = () => {
     const { t } = useTranslation();
-    const authContext = useContext(AuthContext);
-    const { data, isLoading } = useTravels()
+    const { auth } = useAuth({
+        redirectTo: `/${ROUTES.signin}`,
+    })
+
+    const { data, isLoading } = useTravels(auth?.token)
 
     return <div className={styles.page}>
         <header className={styles.header}>
@@ -33,7 +35,7 @@ const TravelsPage = () => {
         <div className={styles.pageContent}>
             <div>
                 <H5>{t("welcome_message")}</H5>
-                <Text>{authContext.authState.username}</Text>
+                <Text>{auth?.user.username}</Text>
             </div>
             <CommonLink to={`/${ROUTES.travel}/new`}>
                 <AddTravelButton />
