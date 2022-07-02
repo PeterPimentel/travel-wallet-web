@@ -1,12 +1,12 @@
 import { ROUTES } from "../constants";
-import { session } from "../service/auth";
+import { getSession } from "../service/auth";
 import { getToken } from "../service/token";
 
 export function withSession(getServerSideCb) {
   return async (context) => {
     try {
       const token = getToken(context);
-      const data = await session(token);
+      const data = await getSession(token);
 
       const ctx = {
         ...context,

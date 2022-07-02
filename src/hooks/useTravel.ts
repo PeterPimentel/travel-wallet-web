@@ -1,14 +1,16 @@
-import { useContext } from "react";
 import useSWR from "swr";
-import { ROUTES } from "../constants";
 
+import { ROUTES } from "../constants";
+import { getToken } from "../service/token";
 import { getTravel, getTravels } from "../service/travel";
 import { HookApiResponse } from "../types/ApiType";
 import { Travel } from "../types/TravelType";
 
-export const useTravels = (token: string): HookApiResponse<Travel[]> => {
+export const useTravels = (): HookApiResponse<Travel[]> => {
+  const token = getToken();
+
   const { data, error } = useSWR(
-    !!token ? "/travel" : null,
+    !!token ? `/${ROUTES.travel}` : null,
     getTravels(token),
     { dedupingInterval: 5000 }
   );
@@ -25,7 +27,7 @@ export const useTravel = (
   token?: string
 ): HookApiResponse<Travel> => {
   const { data, error } = useSWR(
-    !!token ? `/travel/${id}` : null,
+    !!token ? `/${ROUTES.travel}/${id}` : null,
     getTravel(token),
     { dedupingInterval: 5000 }
   );

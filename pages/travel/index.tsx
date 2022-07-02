@@ -4,6 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { useTravels } from "../../src/hooks/useTravel";
 import { ROUTES } from "../../src/constants";
+import { withSessionHOC } from "../../src/lib/withSessionHOC";
 
 import { CommonLink } from "../../src/components/atoms/CommonLink/CommonLink";
 import { Loading } from "../../src/components/atoms/Loading/Loading";
@@ -13,15 +14,11 @@ import { AddTravelButton } from "../../src/components/molecules/AddTravelButton/
 import { TravelCard } from "../../src/components/organism/TravelCard/TravelCard";
 
 import styles from "./style.module.css"
-import useAuth from "../../src/hooks/useAuth";
 
-const TravelsPage = () => {
+const TravelsPage = ({ session }) => {
     const { t } = useTranslation();
-    const { auth } = useAuth({
-        redirectTo: `/${ROUTES.signin}`,
-    })
 
-    const { data, isLoading } = useTravels(auth?.token)
+    const { data, isLoading } = useTravels()
 
     return <div className={styles.page}>
         <header className={styles.header}>
@@ -35,7 +32,7 @@ const TravelsPage = () => {
         <div className={styles.pageContent}>
             <div>
                 <H5>{t("welcome_message")}</H5>
-                <Text>{auth?.user.username}</Text>
+                <Text>{session?.username}</Text>
             </div>
             <CommonLink to={`/${ROUTES.travel}/new`}>
                 <AddTravelButton />
@@ -62,4 +59,4 @@ export async function getStaticProps({ locale }) {
     };
 }
 
-export default TravelsPage;
+export default withSessionHOC(TravelsPage);

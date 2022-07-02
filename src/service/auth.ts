@@ -33,7 +33,7 @@ export const recoverSession = async () => {
   });
 };
 
-export const session = async (token: string) => {
+export const getSession = async (token: string) => {
   return await fetcher<AuthApiResponse>("/auth/session", {
     method: "GET",
     token,
