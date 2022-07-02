@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 
 import { useTravel } from "../../../../src/hooks/useTravel";
 import { getDailyExpenses } from "../../../../src/util/chartUtil";
-import useAuth from "../../../../src/hooks/useAuth";
-import { ROUTES } from "../../../../src/constants";
 
 import { BarChart } from "../../../../src/components/atoms/BarChart/BarChart";
 import { CategoryPieChart } from "../../../../src/components/molecules/CategoryPieChart/CategoryPieChart";
@@ -14,11 +12,8 @@ import styles from "./style.module.css"
 
 const OverviewPage = () => {
     const router = useRouter();
-    const { auth } = useAuth({
-        redirectTo: `/${ROUTES.signin}`,
-    })
 
-    const { data } = useTravel(Number(router.query.id), auth?.token);
+    const { data } = useTravel(Number(router.query.id));
 
     const expenses = data ? data.expenses : []
     const barData = getDailyExpenses(expenses)

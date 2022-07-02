@@ -5,24 +5,25 @@ import { useTranslation } from "react-i18next";
 import { TravelRequest } from "../../src/types/ApiType";
 import { ROUTES } from "../../src/constants";
 import { createTravel } from "../../src/service/travel";
-import useAuth from "../../src/hooks/useAuth";
+import { withSessionHOC } from "../../src/lib/withSessionHOC";
 
 import { TravelEditTemplate } from "../../src/components/templates/TravelEditTemplate/TravelEditTemplate";
 import { notification } from "../../src/components/atoms/Notification/Notification";
+import { getToken } from "../../src/service/token";
 
 const AddTravelPage: FC = () => {
     const { t } = useTranslation();
-    const { auth } = useAuth({
-        redirectTo: `/${ROUTES.signin}`,
-    })
+
+    const token = getToken();
+    console.log("TOKEN", token)
 
     const handleSubmit = useCallback((travel: TravelRequest) => {
-        createTravel(auth?.token, { name: travel.name, cover: travel.cover }).then((res) => {
+        createTravel(token, { name: travel.name, cover: travel.cover }).then((res) => {
             notification(t("created_travel_success"), "success")
         }).catch((err) => {
             notification(err.message, "error")
         })
-    }, [auth?.token, t])
+    }, [t, token])
 
     return (
         <TravelEditTemplate
@@ -42,4 +43,4 @@ export async function getStaticProps({ locale }) {
     };
 }
 
-export default AddTravelPage
+export default withSessionHOC(AddTravelPage)

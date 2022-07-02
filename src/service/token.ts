@@ -16,6 +16,6 @@ export const getToken = (ctx = null) => {
   return cookies[COOKIE_NAME];
 };
 
-export const remove = (ctx = null) => {
+export const removeToken = (ctx = null) => {
   nookies.destroy(ctx, COOKIE_NAME);
 };

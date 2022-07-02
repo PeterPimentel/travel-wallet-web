@@ -2,38 +2,33 @@ import { useCallback, useState } from "react";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { APP_NAME, ROUTES } from "../../src/constants";
-import { login } from "../../src/service/auth"
+import { signin } from "../../src/service/auth"
 import { AuthRequest } from "../../src/types/ApiType";
+import { saveToken } from "../../src/service/token";
 
 import { H3 } from "../../src/components/atoms/Typography/Typography";
 import { AppLogo } from "../../src/components/atoms/AppLogo/AppLogo";
 import { SignInForm } from "../../src/components/organism/SignInForm/SignInForm";
 
 import styles from "./style.module.css"
-import useAuth from "../../src/hooks/useAuth";
-import { saveToken } from "../../src/service/token";
+import { useRouter } from "next/router";
 
 const SiginPage = () => {
     const [buttonLoading, setButtonLoading] = useState(false)
     const [apiError, setApiError] = useState("")
-    const { mutateAuth } = useAuth({
-        redirectTo: `/${ROUTES.travel}`,
-        redirectIfFound: true,
-    })
+    const router = useRouter();
 
     const handleSubmit = useCallback(async ({ email, password }: AuthRequest) => {
         setButtonLoading(true);
-        login(email, password).then((res) => {
+        signin(email, password).then((res) => {
             saveToken(res.token)
-            if (res) {
-                mutateAuth(res)
-            }
+            router.push(`/${ROUTES.travel}`)
         }).catch((error) => {
             setApiError(error.message)
         }).finally(() => {
             setButtonLoading(false)
         })
-    }, [mutateAuth])
+    }, [router])
 
     return <div className={styles.page}>
         <div className={styles.logoContainer}>

@@ -6,15 +6,15 @@ import useSession from "../hooks/useSession";
 export function withSessionHOC(Component) {
     return function Wrapper(props) {
         const router = useRouter();
-        const { session, error, loading } = useSession()
+        const { data, error, isLoading } = useSession()
 
-        if (!loading && error) {
+        if (!isLoading && error) {
             router.push(`/${ROUTES.signin}`)
         }
 
         const modifiedProps = {
             ...props,
-            session
+            data
         }
 
         return <Component {...modifiedProps} />

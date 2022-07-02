@@ -30,24 +30,3 @@ export async function fetcher<T>(url: string, config: Config): Promise<T> {
     }
   }
 }
-
-export async function bffFetcher<T>(url: string, config: Config): Promise<T> {
-  const response = await fetch(`/api/${url}`, {
-    method: config.method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: config.body ? JSON.stringify(config.body) : undefined,
-  });
-
-  if (response.ok) {
-    return response.json();
-  } else {
-    const error = await response.json();
-    if (error.message) {
-      throw error;
-    } else {
-      throw new Error("Service Unavailable");
-    }
-  }
-}

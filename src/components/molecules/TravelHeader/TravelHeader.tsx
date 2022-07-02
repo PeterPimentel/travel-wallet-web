@@ -2,7 +2,7 @@ import { Statistic } from "antd"
 import { FC, useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { FaArrowLeft, FaEdit } from "react-icons/fa";
-// import { useParams } from "react-router-dom";
+import { useRouter } from "next/router";
 
 import { Expense } from "../../../types/ExpenseType";
 import { getDailyExpensesAverage, getTotalExpenses } from "../../../util";
@@ -21,7 +21,7 @@ interface TravelHeaderProps {
 
 export const TravelHeader: FC<TravelHeaderProps> = ({ name, expenses }) => {
     const { t } = useTranslation();
-    // let { id } = useParams();
+    const router = useRouter();
 
     const dailyAverage = useMemo(() => getDailyExpensesAverage(expenses), [expenses]);
     const total = useMemo(() => getTotalExpenses(expenses), [expenses]);
@@ -35,8 +35,7 @@ export const TravelHeader: FC<TravelHeaderProps> = ({ name, expenses }) => {
                 </div>
                 <AppLogo variant="white" />
                 <div className={styles.actions}>
-                    <CommonLink to={`/travel/edit/${10}`}>
-                        {/* <CommonLink to={`/travel/edit/${id}`}> */}
+                    <CommonLink to={`/travel/edit/${router.query.id}`}>
                         <FaEdit color="white" style={{ width: '20px', height: '20px' }} />
                     </CommonLink>
                 </div>

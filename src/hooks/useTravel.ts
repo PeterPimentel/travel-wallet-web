@@ -22,10 +22,9 @@ export const useTravels = (): HookApiResponse<Travel[]> => {
   };
 };
 
-export const useTravel = (
-  id: number,
-  token?: string
-): HookApiResponse<Travel> => {
+export const useTravel = (id: number): HookApiResponse<Travel> => {
+  const token = getToken();
+
   const { data, error } = useSWR(
     !!token ? `/${ROUTES.travel}/${id}` : null,
     getTravel(token),

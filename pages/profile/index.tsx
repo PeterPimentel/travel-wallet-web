@@ -1,15 +1,16 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
 import { ROUTES } from "../../src/constants";
+import { withSessionHOC } from "../../src/lib/withSessionHOC";
+import { removeToken } from "../../src/service/token";
 
 import { Button } from "../../src/components/atoms/Button/Button";
 import { H3 } from "../../src/components/atoms/Typography/Typography";
 import { BasicHeader } from "../../src/components/molecules/BasicHeader/BasicHeader";
 import { DangerZone } from "../../src/components/molecules/DangerZone/DangerZone";
-import useAuth from "../../src/hooks/useAuth";
 
 import styles from "./style.module.css"
 
@@ -17,12 +18,8 @@ const ProfilePage: FC = () => {
     const { t } = useTranslation();
     const router = useRouter();
 
-    const { auth } = useAuth({
-        redirectTo: `/${ROUTES.signin}`,
-    })
-
     const handleLogout = () => {
-        // authContext.logOut()
+        removeToken()
         router.push("/")
     }
 
@@ -51,4 +48,4 @@ export async function getStaticProps({ locale }) {
     };
 }
 
-export default ProfilePage;
+export default withSessionHOC(ProfilePage);

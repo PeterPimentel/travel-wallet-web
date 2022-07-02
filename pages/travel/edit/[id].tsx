@@ -4,8 +4,6 @@ import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 
 import { ROUTES } from "../../../src/constants";
-import useAuth from "../../../src/hooks/useAuth";
-import { createTravel } from "../../../src/service/travel";
 import { TravelRequest } from "../../../src/types/ApiType";
 
 import { TravelEditTemplate } from "../../../src/components/templates/TravelEditTemplate/TravelEditTemplate";
@@ -13,32 +11,29 @@ import { notification } from "../../../src/components/atoms/Notification/Notific
 import { DangerZone } from "../../../src/components/molecules/DangerZone/DangerZone";
 import { useTravel } from "../../../src/hooks/useTravel";
 import { PageLoader } from "../../../src/components/molecules/PageLoader/PageLoader";
+import TravelPageLayout from "../../../src/components/organism/TravelPageLayout/TravelPageLayout";
+import { withSession } from "../../../src/lib/withSession";
+import { InferGetServerSidePropsType } from "next";
+import { NextPageWithLayout } from "../../_app";
 
-const AddTravelPage: FC = () => {
+const EditTravelPage: NextPageWithLayout = ({ }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const { t } = useTranslation();
-    const { auth } = useAuth({
-        redirectTo: `/${ROUTES.signin}`,
-    })
-    const route = useRouter();
+    const router = useRouter();
 
-    const { data, isLoading } = useTravel(Number(route.query.travelId), auth?.token);
+    const { data, isLoading } = useTravel(Number(router.query.id));
 
 
     const handleSubmit = useCallback((travel: TravelRequest) => {
-        createTravel(auth?.token, { name: travel.name, cover: travel.cover }).then((res) => {
-            notification(t("created_travel_success"), "success")
-        }).catch((err) => {
-            notification(err.message, "error")
-        })
-    }, [auth?.token, t])
-
-    if (isLoading) {
-        return <PageLoader isLoading={isLoading} />
-    }
+        // createTravel(auth?.token, { name: travel.name, cover: travel.cover }).then((res) => {
+        //     notification(t("created_travel_success"), "success")
+        // }).catch((err) => {
+        //     notification(err.message, "error")
+        // })
+    }, [])
 
     return (
         <TravelEditTemplate
-            headerLink={`/${ROUTES.travel}/${route.query.travelId}`}
+            headerLink={`/${ROUTES.travel}/${router.query.id}`}
             headerLinkText={t("cancel")}
             pageTitle={t("edit_travel")}
             travel={{
@@ -51,12 +46,25 @@ const AddTravelPage: FC = () => {
     )
 }
 
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ['common'])),
-        },
-    };
+EditTravelPage.getLayout = function getLayout(page) {
+    return (
+        <TravelPageLayout>
+            {page}
+        </TravelPageLayout>
+    )
 }
 
-export default AddTravelPage
+export const getServerSideProps = (withSession(async function ({
+    locale,
+    req,
+}) {
+
+    return {
+        props: {
+            session: req.session,
+            ...(await serverSideTranslations(locale, ['common'])),
+        },
+    }
+}))
+
+export default EditTravelPage;

@@ -10,4 +10,5 @@
     height: 100vh;
     padding-bottom: calc(160px + 64px + 16px);
     overflow-y: auto;
+    background-color: var(--bg-color);
 }

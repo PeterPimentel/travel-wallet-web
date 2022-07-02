@@ -6,18 +6,17 @@ export function withSession(getServerSideCb) {
   return async (context) => {
     try {
       const token = getToken(context);
-      const data = await getSession(token);
+      const data = await getSession(token)("");
 
       const ctx = {
         ...context,
         req: {
           ...context.req,
-          mySession: data,
+          session: data,
         },
       };
       return getServerSideCb(ctx);
     } catch (error) {
-      console.log("ERRROR", error);
       return {
         redirect: {
           permanent: false,

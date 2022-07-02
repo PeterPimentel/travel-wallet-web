@@ -1,4 +1,4 @@
-import { bffFetcher, fetcher } from "./fetcher";
+import { fetcher } from "./fetcher";
 import { User } from "../types/CommonType";
 import { AuthApiResponse } from "../types/ApiType";
 
@@ -18,24 +18,15 @@ export const signup = async (user: Partial<User>) => {
   });
 };
 
-export const login = async (email: string, password: string) => {
-  return await bffFetcher<AuthApiResponse>("signin", {
-    method: "POST",
-    token: "",
-    body: { email, password },
-  });
-};
-
-export const recoverSession = async () => {
-  return await bffFetcher<AuthApiResponse>("user", {
-    method: "GET",
-    token: "",
-  });
-};
-
-export const getSession = async (token: string) => {
+export const getSession = (token: string) => async (_: string) => {
   return await fetcher<AuthApiResponse>("/auth/session", {
     method: "GET",
     token,
   });
 };
+// export const getSession = async (token: string) => {
+//   return await fetcher<AuthApiResponse>("/auth/session", {
+//     method: "GET",
+//     token,
+//   });
+// };

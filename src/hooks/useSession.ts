@@ -1,29 +1,26 @@
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 import { getSession } from "../service/auth";
 import { getToken } from "../service/token";
+import { AuthApiResponse, HookApiResponse } from "../types/ApiType";
+import { AppSession } from "../types/CommonType";
 
-const useSession = () => {
-  const [session, setSession] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+const useSession = (): HookApiResponse<AppSession> => {
+  const token = getToken();
+  const { data, error } = useSWR<AuthApiResponse>(
+    "/auth/session",
+    getSession(token),
+    {
+      dedupingInterval: 15000,
+    }
+  );
 
-  useEffect(() => {
-    setLoading(true);
-    const token = getToken();
-    getSession(token)
-      .then((res) => {
-        setSession(res.user);
-      })
-      .catch((err) => {
-        setError(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-
-  return { session, error, loading };
+  return {
+    data: data?.user,
+    error,
+    isLoading: !error && !data,
+  };
 };
 
 export default useSession;

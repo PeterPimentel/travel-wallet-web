@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import { ROUTES } from '../../../constants';
-import useAuth from '../../../hooks/useAuth';
 
 import { useTravel } from '../../../hooks/useTravel';
 
@@ -16,11 +15,7 @@ interface TravelPageLayoutProps {
 
 export const TravelPageLayout = ({ children }: TravelPageLayoutProps) => {
     const router = useRouter();
-    const { auth } = useAuth({
-        redirectTo: `/${ROUTES.signin}`,
-    })
-
-    const { data, isLoading } = useTravel(Number(router.query.id), auth?.token);
+    const { data, isLoading } = useTravel(Number(router.query.id));
 
     const expenses = data ? data.expenses : []
     const travel = data ? data : { name: "" }
