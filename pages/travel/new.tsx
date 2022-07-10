@@ -1,5 +1,5 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { FC, useCallback } from "react";
+import { FC, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { TravelRequest } from "../../src/types/ApiType";
@@ -12,14 +12,15 @@ import { notification } from "../../src/components/atoms/Notification/Notificati
 import { getToken } from "../../src/service/token";
 
 const AddTravelPage: FC = () => {
-    const { t } = useTranslation();
+    const [headerLinkLlabel, setHeaderLinkLlabel] = useState<string>("cancel")
 
+    const { t } = useTranslation();
     const token = getToken();
-    console.log("TOKEN", token)
 
     const handleSubmit = useCallback((travel: TravelRequest) => {
         createTravel(token, { name: travel.name, cover: travel.cover }).then((res) => {
             notification(t("created_travel_success"), "success")
+            setHeaderLinkLlabel("back")
         }).catch((err) => {
             notification(err.message, "error")
         })
@@ -28,7 +29,7 @@ const AddTravelPage: FC = () => {
     return (
         <TravelEditTemplate
             headerLink={`/${ROUTES.travel}`}
-            headerLinkText={t("back")}
+            headerLinkText={t(headerLinkLlabel)}
             pageTitle={t("add_travel")}
             onSubmit={handleSubmit}
         />

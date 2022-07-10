@@ -2,7 +2,7 @@ import { format, isValid, parse } from "date-fns";
 
 import { DATE_FORMAT } from "../constants";
 
-export const formatDate = (date: Date, pattern:string = DATE_FORMAT) => {
+export const formatDate = (date: Date, pattern:string = DATE_FORMAT): string => {
     return format(date, pattern)
 }
 
@@ -14,6 +14,6 @@ export const parseDate = (value: string, pattern:string = DATE_FORMAT): Date => 
     }
 }
 
-export const isValidDate = (date: any) => {
+export const isValidDate = (date: any): boolean => {
     return isValid(date)
 }

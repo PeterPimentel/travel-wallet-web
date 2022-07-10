@@ -2,6 +2,7 @@ import { FC } from "react";
 
 import { Expense } from "../../../types/ExpenseType";
 import { formatMoney, getTotalExpenses, groupExpenses } from "../../../util"
+import { formatDate } from "../../../util/dateHelper";
 
 import { CommonLink } from "../../atoms/CommonLink/CommonLink";
 import { Text } from "../../atoms/Typography/Typography"
@@ -20,15 +21,15 @@ export const ExpenseList: FC<ExpenseListProps> = ({ expenses }) => {
     return (
         <div className={styles.container}>
             {
-                Object.keys(groupedExpenses).map((key) => (
-                    <div key={key} className={styles.expenseList}>
+                Object.keys(groupedExpenses).map((expenseDate) => (
+                    <div key={expenseDate} className={styles.expenseList}>
                         <div className={styles.header}>
-                            <Text type="secondary">{key}</Text>
-                            <Text>{formatMoney(getTotalExpenses(groupedExpenses[key]))}</Text>
+                            <Text type="secondary">{formatDate(new Date(expenseDate))}</Text>
+                            <Text>{formatMoney(getTotalExpenses(groupedExpenses[expenseDate]))}</Text>
                         </div>
                         <div className={styles.expenses}>
                             {
-                                groupedExpenses[key].map(expense => (
+                                groupedExpenses[expenseDate].map(expense => (
                                     <div key={expense.id}>
                                         <CommonLink to={`expense/${expense.id}`}>
                                             <ExpenseComponent

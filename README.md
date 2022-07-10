@@ -40,3 +40,5 @@ https://medium.com/vmlyrpoland-tech/nextjs-with-full-stack-authorization-based-o
 https://vizzuality.github.io/devismos/docs/researches/next-auth/
 
 https://cloudcoders.xyz/blog/nextauth-credentials-provider-with-external-api-and-login-page/
+
+https://trabeepocket.com/

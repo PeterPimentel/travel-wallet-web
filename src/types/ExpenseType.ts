@@ -3,7 +3,7 @@ export interface Expense {
     description?: string;
     id: number;
     title: string;
-    travelId: string;
+    travelId: number;
     type: ExpenseType;
     value: number;
     payment: PaymentType;

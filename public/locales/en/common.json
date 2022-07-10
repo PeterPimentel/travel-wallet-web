@@ -5,7 +5,9 @@
     "back": "Back",
     "cancel": "Cancel",
     "category": "Category",
+    "created_travel_success": "Travel created!",
     "daily_average_expenses": "DAILY AVERAGE",
+    "delete_travel": "Delete Travel",
     "edit_expense": "Editar expense",
     "edit_travel": "Edit travel",
     "email_in_use": "This email is already in use",
@@ -21,14 +23,15 @@
     "input_login_placeholder": "Email",
     "input_password_placeholder": "Password",
     "input_travel_name_placeholder": "Travel Title",
-    "welcome_message": "Welcome!",
     "overview": "Overview",
     "profile": "Profile",
     "sign_in": "Sign In",
     "today": "Today",
     "total_expenses": "TOTAL",
-    "travel_cover": "Travel cover",
     "travel_cover_not_set": "Please, select a travel cover",
+    "travel_cover": "Travel cover",
     "travels_link": "Travels",
-    "username_in_use": "This username is already taken"
+    "updated_travel_success": "Travel updated!",
+    "username_in_use": "This username is already taken",
+    "welcome_message": "Welcome!"
 }

@@ -5,7 +5,9 @@
     "back": "Voltar",
     "cancel": "Cancelar",
     "category": "Categoria",
+    "created_travel_success": "Viagem criada",
     "daily_average_expenses": "MÉDIA DIARIA",
+    "delete_travel": "Apagar viagem",
     "edit_expense": "Editar despesa",
     "edit_travel": "Editar viagem",
     "email_in_use": "Este email já está em uso",
@@ -21,14 +23,15 @@
     "input_login_placeholder": "Email",
     "input_password_placeholder": "Senha",
     "input_travel_name_placeholder": "Nome da viagem",
-    "welcome_message": "Bem vindo!",
     "overview": "Geral",
     "profile": "Perfil",
     "sign_in": "Acessar",
     "today": "Hoje",
     "total_expenses": "TOTAL",
-    "travel_cover": "Capa da imagem",
     "travel_cover_not_set": "Por favor, selecione uma capa para a vigem",
+    "travel_cover": "Capa da imagem",
     "travels_link": "Viagens",
-    "username_in_use": "Este username já está em uso"
+    "updated_travel_success": "Viagem atualizada!",
+    "username_in_use": "Este username já está em uso",
+    "welcome_message": "Bem vindo!"
 }

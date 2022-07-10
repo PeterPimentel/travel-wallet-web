@@ -22,3 +22,22 @@ export const createTravel = async (token: string, travel: Partial<Travel>) => {
     body: travel,
   });
 };
+
+export const updateTravel = async (
+  token: string,
+  id: number,
+  travel: Partial<Travel>
+) => {
+  return await fetcher<Travel>(`/travel/${id}`, {
+    method: "PUT",
+    token,
+    body: travel,
+  });
+};
+
+export const deleteTravel = async (token: string, id: number) => {
+  return await fetcher<Travel>(`/travel/${id}`, {
+    method: "DELETE",
+    token,
+  });
+};

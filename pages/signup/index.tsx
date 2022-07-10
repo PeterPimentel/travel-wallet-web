@@ -16,8 +16,7 @@ export const SignUpPage = () => {
 
     const handleSubmit = useCallback(async (data: AuthRequest) => {
         setButtonLoading(true);
-        signup(data).then((user) => {
-            console.log(user)
+        signup(data).then(() => {
         }).catch((error) => {
             setApiError(error.message)
         }).finally(() => {

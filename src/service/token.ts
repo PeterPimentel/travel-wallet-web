@@ -4,7 +4,6 @@ const COOKIE_NAME = process.env.NEXT_PUBLIC_AUTH_COOKIE;
 const EIGHT_HOURS = 60 * 60 * 8;
 
 export const saveToken = (acessToken: string, ctx = null) => {
-  console.log("COOKIE_NAME", COOKIE_NAME);
   nookies.set(ctx, COOKIE_NAME, acessToken, {
     maxAge: EIGHT_HOURS,
     path: "/",

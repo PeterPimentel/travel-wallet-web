@@ -25,7 +25,6 @@ interface ExpenseFormProps {
     initialExpenseType?: ExpenseType;
     initialPaymentType?: PaymentType;
     initialTitle?: string;
-    travelId?: string;
     onSubmit: (expense: ExpenseRequest) => void
 }
 
