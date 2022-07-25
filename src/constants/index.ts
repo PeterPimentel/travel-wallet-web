@@ -4,6 +4,8 @@ export const EXPENSE_TYPE = {
   hotel: "HOTEL",
   shopping: "SHOPPING",
   transport: "TRANSPORT",
+  flight: "FLIGHT",
+  other: "OTHER",
 };
 
 export const ROUTES = {

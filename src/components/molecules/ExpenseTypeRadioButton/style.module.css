@@ -46,3 +46,11 @@
 .inputContainer .input:checked~.transport {
     border-color: var(--transport-color);
 }
+
+.inputContainer .input:checked~.flight {
+    border-color: var(--flight-color);
+}
+
+.inputContainer .input:checked~.other {
+    border-color: var(--other-color);
+}

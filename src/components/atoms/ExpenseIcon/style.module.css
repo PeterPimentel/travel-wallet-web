@@ -28,6 +28,10 @@
     background-color: var(--activity-color);
 }
 
-.others {
-    background-color: var(--others-color);
+.flight {
+    background-color: var(--flight-color);
+}
+
+.other {
+    background-color: var(--other-color);
 }

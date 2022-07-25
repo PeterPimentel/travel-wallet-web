@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { FaHotel, FaShoppingCart, FaBus, FaClipboardList, FaHamburger, FaRunning } from "react-icons/fa";
+import { FaHotel, FaShoppingCart, FaBus, FaShapes, FaHamburger, FaRunning, FaPlaneDeparture } from "react-icons/fa";
 
 import { EXPENSE_TYPE } from "../../../constants";
 import { ExpenseType } from "../../../types/ExpenseType";
@@ -29,8 +29,11 @@ export const ExpenseIcon: FC<ExpenseIconProps> = ({ type }) => {
         case EXPENSE_TYPE.activity:
             return <div className={`${styles.icon} ${styles.activity}`}>< FaRunning style={{ color: "white" }} /></div>
 
+        case EXPENSE_TYPE.flight:
+            return <div className={`${styles.icon} ${styles.flight}`}>< FaPlaneDeparture style={{ color: "white" }} /></div>
+
         default:
-            return <div className={`${styles.icon} ${styles.others}`}>< FaClipboardList style={{ color: "white" }} /></div>
+            return <div className={`${styles.icon} ${styles.other}`}>< FaShapes style={{ color: "white" }} /></div>
     }
 }
 

@@ -49,9 +49,14 @@ export const getTotalExpensesByCategory = (
 export const getDailyExpenses = (expenses: Expense[]): BarData[] => {
   const total = getTotalExpensesPeerDay(expenses);
 
-  return Object.keys(total).reduce((acc: BarData[], key: string) => {
-    acc.push({ x: formatDate(new Date(key)), y: total[key] });
+  const dailyExpenses = Object.keys(total).reduce(
+    (acc: BarData[], key: string) => {
+      acc.push({ x: formatDate(new Date(key)), y: total[key] });
 
-    return acc;
-  }, []);
+      return acc;
+    },
+    []
+  );
+
+  return dailyExpenses.reverse();
 };

@@ -39,6 +39,16 @@ const expensesType = [
         type: EXPENSE_TYPE.transport,
         id: "transport",
         label: "expense_type_transport",
+    },
+    {
+        type: EXPENSE_TYPE.flight,
+        id: "flight",
+        label: "expense_type_flight",
+    },
+    {
+        type: EXPENSE_TYPE.other,
+        id: "other",
+        label: "expense_type_other",
     }
 ]
 
