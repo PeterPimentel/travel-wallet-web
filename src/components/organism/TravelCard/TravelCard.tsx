@@ -23,7 +23,7 @@ export const TravelCard: FC<TravelCardProps> = ({ title, cover, expenses }) => {
         <div className={styles.card} style={{ backgroundImage: `url(${CDN_IMAGE_BASE_URL}${cover})` }}>
             <div className={styles.header}>
                 <H4>{title}</H4>
-                <Chip type="default">{total}</Chip>
+                <Chip type="transparent">{total}</Chip>
             </div>
         </div>
     )

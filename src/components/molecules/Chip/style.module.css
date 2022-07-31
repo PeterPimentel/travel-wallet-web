@@ -4,6 +4,10 @@
     border-radius: 16px;
 }
 
+.transparent {
+    border: 1px solid white;
+}
+
 .default {
     background-color: var(--dark-gray);
 }

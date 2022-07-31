@@ -42,3 +42,14 @@ https://vizzuality.github.io/devismos/docs/researches/next-auth/
 https://cloudcoders.xyz/blog/nextauth-credentials-provider-with-external-api-and-login-page/
 
 https://trabeepocket.com/
+
+https://ui8.net/rifat-sarkar/products/travelm-app-ui-kit
+
+https://www.melhoresdestinos.com.br/gastos-de-viagem-aplicativos.html
+
+https://ui8.net/10am-studio/products/sarang-wallet---e-wallet-mobile-app
+
+https://ui8.net/avo/products/deleted-61614f70266138003c0da83a
+
+https://ui8.net/bogdan-pitiriciu/products/globe-travel-app
+https://www.honeybadger.io/blog/currency-money-calculations-in-javascript/

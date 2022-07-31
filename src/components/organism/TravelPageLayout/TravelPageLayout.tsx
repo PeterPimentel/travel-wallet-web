@@ -18,14 +18,14 @@ export const TravelPageLayout = ({ children }: TravelPageLayoutProps) => {
     const { data, isLoading } = useTravel(Number(router.query.id));
 
     const expenses = data ? data.expenses : []
-    const travel = data ? data : { name: "" }
+    const travel = data ? data : { name: "", budget: 0 }
 
     if (isLoading) {
         return <PageLoader isLoading={isLoading} />
     }
 
     return <div className={styles.page}>
-        <TravelHeader name={travel.name} expenses={expenses} />
+        <TravelHeader name={travel.name} expenses={expenses} budget={travel.budget} />
         <div className={styles.pageContent}>
             {children}
         </div>

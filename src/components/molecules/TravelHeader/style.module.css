@@ -1,13 +1,11 @@
 .header {
-    height: 160px;
+    height: 170px;
     padding: 16px;
     background-color: var(--primary-color);
 }
 
 .expenses {
-    position: relative;
     display: flex;
-    align-items: center;
     justify-content: space-around;
 }
 
@@ -31,9 +29,16 @@
     right: 0;
 }
 
-header.header>h3 {
+header.header>h5 {
     color: white;
     text-align: center;
+    margin: 0;
+}
+
+.balance > span{
+    font-size: 10px;
+    color: white;
+    margin-left: 2px;
 }
 
 .expenses [class*="ant-statistic"] {

@@ -23,6 +23,10 @@ body {
   --light-gray: #e2e2e2;
   --dark-gray: #777777;
 
+  --feedback-danger-color: #ff4d4f;
+  --feedback-success-color: #52c41a;
+  --feedback-warning-color: #faad14;
+  --feedback-info-color: #1098F7;
 
   --primary-color: #5377F0;
   --light-primary-color: #eef1fd;

@@ -7,7 +7,7 @@ import styles from "./style.module.css";
 
 interface ChipProps {
     children: string | number;
-    type?: "default" | "success" | "warning" | "danger"
+    type?: "default" | "success" | "warning" | "danger" | "transparent"
 }
 
 export const Chip: FC<ChipProps> = ({ children, type = "default" }) => {
