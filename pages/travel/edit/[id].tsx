@@ -1,5 +1,5 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import Router, { useRouter } from "next/router";
 import { InferGetServerSidePropsType } from "next";
@@ -18,21 +18,19 @@ import { DangerZone } from "../../../src/components/molecules/DangerZone/DangerZ
 import { PageLoader } from "../../../src/components/molecules/PageLoader/PageLoader";
 
 const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    const [headerLinkLlabel, setHeaderLinkLlabel] = useState<string>("cancel")
-
     const { t } = useTranslation();
     const router = useRouter();
     const token = getToken();
     const { data, isLoading } = useTravel(Number(router.query.id));
 
     const handleSubmit = useCallback((travel: TravelRequest) => {
-        updateTravel(token, data?.id, { name: travel.name, cover: travel.cover }).then(() => {
+        updateTravel(token, data?.id, { name: travel.name, cover: travel.cover, budget: travel.budget }).then(() => {
             notification(t("updated_travel_success"), "success")
-            setHeaderLinkLlabel("back")
+            router.push(`/${ROUTES.travel}/${router.query.id}`)
         }).catch((err) => {
             notification(err.message, "error")
         })
-    }, [data?.id, t, token])
+    }, [data?.id, router, t, token])
 
     const handleRemove = useCallback(() => {
         deleteTravel(token, data?.id).then(() => {
@@ -50,11 +48,12 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
     return (
         <TravelEditTemplate
             headerLink={`/${ROUTES.travel}/${router.query.id}`}
-            headerLinkText={t(headerLinkLlabel)}
+            headerLinkText={t("cancel")}
             pageTitle={t("edit_travel")}
             travel={{
                 name: data?.name,
-                cover: data?.cover
+                cover: data?.cover,
+                budget: data.budget
             }}
             footer={<DangerZone buttonText={t("delete_travel")} onClick={handleRemove} />}
             onSubmit={handleSubmit}

@@ -8,12 +8,14 @@ import { Button } from "../../atoms/Button/Button";
 import { Input } from "../../atoms/Input/Input";
 import { H5, Text } from "../../atoms/Typography/Typography";
 import { TravelImageRadioButton } from "../../molecules/TravelImageRadioButton/TravelImageRadioButton";
+import { CurrencyInput } from "../../molecules/CurrencyInput/CurrencyInput";
 
 import styles from "./style.module.css"
 
 interface TravelFormProps {
     initialName?: string;
     initialCover?: string;
+    initialBudget?: number;
     onSubmit: (expense: TravelRequest) => void
 }
 
@@ -25,9 +27,11 @@ interface TravelFormError {
 export const TravelForm: FC<TravelFormProps> = ({
     initialName,
     initialCover,
+    initialBudget,
     onSubmit
 }) => {
     const [name, setName] = useState(initialName || "")
+    const [budget, setBudget] = useState(initialBudget || 0)
     const [imageCover, setImageCover] = useState(initialCover || "")
     const [error, setError] = useState<TravelFormError>({ name: false, cover: false })
     const { t } = useTranslation();
@@ -57,9 +61,10 @@ export const TravelForm: FC<TravelFormProps> = ({
             onSubmit({
                 name: name.trim(),
                 cover: imageCover,
+                budget: budget
             })
         }
-    }, [name, imageCover, onSubmit])
+    }, [name, imageCover, onSubmit, budget])
 
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -70,6 +75,12 @@ export const TravelForm: FC<TravelFormProps> = ({
                     error={error.name}
                     placeholder={t("input_travel_name_placeholder")}
                     onChange={handleNameChange}
+                />
+            </div>
+            <div className={styles.inputContainer}>
+                <CurrencyInput
+                    value={budget}
+                    onchange={(value) => setBudget(value)}
                 />
             </div>
             <div className={styles.inputContainer}>

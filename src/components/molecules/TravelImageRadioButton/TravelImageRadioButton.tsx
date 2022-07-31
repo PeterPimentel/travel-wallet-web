@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { FC } from "react";
 
 import { CDN_IMAGE_BASE_URL } from "../../../constants";
@@ -33,7 +34,7 @@ export const TravelImageRadioButton: FC<TravelImageRadioButtonProps> = ({ value,
                             className={styles.input}
                         />
                         <div className={styles.optionButton}>
-                            <img src={`${CDN_IMAGE_BASE_URL}${image.name}`} alt="travel-cover" />
+                            <img src={`${CDN_IMAGE_BASE_URL}${image.name}`} alt={image.description} />
                         </div>
                     </label>
                 ))

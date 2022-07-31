@@ -19,6 +19,6 @@ export const ROUTES = {
 
 export const DATE_FORMAT = "dd-MM-yyyy";
 
-export const CDN_IMAGE_BASE_URL = "https://cdn.pixabay.com/photo/";
+export const CDN_IMAGE_BASE_URL = "https://harthorg.sirv.com/travel-wallet/";
 
 export const APP_NAME = "Travel Wallet";

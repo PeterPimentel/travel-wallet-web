@@ -1,11 +1,16 @@
 import useSWR from "swr";
 
-import { getCoverImages } from "../service/coverImage";
+import { getCovers } from "../service/coverImage";
+import { getToken } from "../service/token";
 import { HookApiResponse } from "../types/ApiType";
 import { CoverImage } from "../types/CommonType";
 
-const useCoverImages = (): HookApiResponse<CoverImage[]> => {
-  const { data, error } = useSWR("/coverImages", getCoverImages);
+export const useCoverImages = (): HookApiResponse<CoverImage[]> => {
+  const token = getToken();
+
+  const { data, error } = useSWR(!!token ? "/cover" : null, getCovers(token), {
+    dedupingInterval: 30000,
+  });
 
   return {
     data: data as CoverImage[],

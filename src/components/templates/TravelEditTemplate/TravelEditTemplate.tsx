@@ -30,6 +30,7 @@ export const TravelEditTemplate: FC<TravelEditTemplateProps> = ({ headerLink, he
                 <TravelForm
                     initialName={travel?.name}
                     initialCover={travel?.cover}
+                    initialBudget={travel?.budget}
                     onSubmit={onSubmit}
                 />
                 {footer}

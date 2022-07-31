@@ -5,6 +5,8 @@ export type RadioButtonOnChangeEvent = RadioChangeEvent;
 export interface CoverImage {
   id: number;
   name: string;
+  description: string;
+  removed: boolean;
 }
 export interface User {
   username: string;
