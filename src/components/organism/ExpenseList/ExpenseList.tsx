@@ -31,7 +31,7 @@ export const ExpenseList: FC<ExpenseListProps> = ({ expenses }) => {
                             {
                                 groupedExpenses[expenseDate].map(expense => (
                                     <div key={expense.id}>
-                                        <CommonLink to={`expense/${expense.id}`}>
+                                        <CommonLink to={`${expense.travelId}/expense/${expense.id}`}>
                                             <ExpenseComponent
                                                 title={expense.title}
                                                 type={expense.type}

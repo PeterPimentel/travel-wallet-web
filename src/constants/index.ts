@@ -1,11 +1,21 @@
 export const EXPENSE_TYPE = {
   activity: "ACTIVITY",
+  flight: "FLIGHT",
   food: "FOOD",
   hotel: "HOTEL",
+  other: "OTHER",
   shopping: "SHOPPING",
   transport: "TRANSPORT",
-  flight: "FLIGHT",
-  other: "OTHER",
+};
+
+export const EXPENSE_COLORS = {
+  activity: "#B9A394",
+  flight: "#3f51b5",
+  food: "#E15554",
+  hotel: "#E8C547",
+  other: "#E2B6CF",
+  shopping: "#14CC60",
+  transport: "#1098F7",
 };
 
 export const ROUTES = {

@@ -24,9 +24,3 @@ export const getSession = (token: string) => async (_: string) => {
     token,
   });
 };
-// export const getSession = async (token: string) => {
-//   return await fetcher<AuthApiResponse>("/auth/session", {
-//     method: "GET",
-//     token,
-//   });
-// };

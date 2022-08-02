@@ -11,6 +11,10 @@
     "created_travel_success": "Travel created!",
     "daily_average_expenses": "DAILY AVERAGE",
     "danger_zone": "Danger zone",
+    "delete_expense_success": "Expense deleted with success",
+    "delete_expense": "Delete Expense",
+    "delete_profile": "Delete Account",
+    "delete_travel_success": "Travel deleted with success",
     "delete_travel": "Delete Travel",
     "edit_expense": "Editar expense",
     "edit_travel": "Edit travel",
@@ -36,6 +40,7 @@
     "travel_cover_not_set": "Please, select a travel cover",
     "travel_cover": "Travel cover",
     "travels_link": "Travels",
+    "update_expense_success": "Expense updated!",
     "updated_travel_success": "Travel updated!",
     "username_in_use": "This username is already taken",
     "welcome_message": "Welcome!"

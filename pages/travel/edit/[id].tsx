@@ -1,7 +1,7 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { InferGetServerSidePropsType } from "next";
 
 import { ROUTES } from "../../../src/constants";
@@ -34,12 +34,12 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
 
     const handleRemove = useCallback(() => {
         deleteTravel(token, data?.id).then(() => {
-            notification(t("deleted_travel_success"), "success")
-            Router.push(`/${ROUTES.travel}`)
+            notification(t("delete_travel_success"), "success")
+            router.push(`/${ROUTES.travel}`)
         }).catch((err) => {
             notification(err.message, "error")
         })
-    }, [data?.id, t, token])
+    }, [data?.id, router, t, token])
 
     if (isLoading) {
         return <PageLoader isLoading={isLoading} />

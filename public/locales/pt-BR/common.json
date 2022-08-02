@@ -11,6 +11,10 @@
     "created_travel_success": "Viagem criada",
     "daily_average_expenses": "MÉDIA DIARIA",
     "danger_zone": "Zona perigosa",
+    "delete_expense_success": "Despesa deletada com sucesso",
+    "delete_expense": "Apagar despesa",
+    "delete_profile": "Apagar conta",
+    "delete_travel_success": "Viagem apagada com sucesso",
     "delete_travel": "Apagar viagem",
     "edit_expense": "Editar despesa",
     "edit_travel": "Editar viagem",
@@ -36,6 +40,7 @@
     "travel_cover_not_set": "Por favor, selecione uma capa para a vigem",
     "travel_cover": "Capa da imagem",
     "travels_link": "Viagens",
+    "update_expense_success": "Despesa atualizada!",
     "updated_travel_success": "Viagem atualizada!",
     "username_in_use": "Este username já está em uso",
     "welcome_message": "Bem vindo!"

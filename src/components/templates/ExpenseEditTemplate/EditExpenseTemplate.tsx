@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 import { ExpenseRequest } from "../../../types/ApiType";
 
@@ -10,10 +10,11 @@ import styles from "./style.module.css"
 interface EditExpenseTemplateProps {
     headerText: string;
     expense?: ExpenseRequest;
+    footer?: ReactNode;
     onSubmit: (expense: ExpenseRequest) => void
 }
 
-export const EditExpenseTemplate: FC<EditExpenseTemplateProps> = ({ headerText, expense, onSubmit }) => {
+export const EditExpenseTemplate: FC<EditExpenseTemplateProps> = ({ headerText, expense, footer, onSubmit }) => {
 
     return (
         <div className={styles.content}>
@@ -29,6 +30,7 @@ export const EditExpenseTemplate: FC<EditExpenseTemplateProps> = ({ headerText, 
                 initialPaymentType={expense?.payment}
                 onSubmit={onSubmit}
             />
+            {footer}
         </div>
     )
 }

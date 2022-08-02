@@ -10,9 +10,9 @@ import { ExpenseList } from "../../../src/components/organism/ExpenseList/Expens
 import TravelPageLayout from '../../../src/components/organism/TravelPageLayout/TravelPageLayout';
 
 const TravelPage: NextPageWithLayout = ({ }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    const route = useRouter();
+    const router = useRouter();
 
-    const { data } = useTravel(Number(route.query.id));
+    const { data } = useTravel(Number(router.query.id));
 
     const expenses = data ? data.expenses : []
 

@@ -19,7 +19,7 @@ export const DatePicker: FC<DatePickerProps> = ({ onChange, value }) => {
         }
     };
 
-    const dateValue = value ? parseDate(value, DATE_FORMAT) : undefined
+    const dateValue = value ? parseDate(value) : undefined
 
     return (
         <BaseDatePicker

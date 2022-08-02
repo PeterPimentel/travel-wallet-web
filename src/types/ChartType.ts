@@ -1,5 +1,5 @@
 export interface PieData {
-    x: number;
+    x: string;
     y: number;
     label: string;
 }
