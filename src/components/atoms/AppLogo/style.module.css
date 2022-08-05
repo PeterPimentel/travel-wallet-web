@@ -9,6 +9,11 @@
 }
 
 .large {
+    width: 48px;
+    height: auto;
+}
+
+.extraLarge {
     width: 72px;
     height: auto;
 }

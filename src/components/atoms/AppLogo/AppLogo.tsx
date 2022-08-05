@@ -1,9 +1,7 @@
-import { FC } from "react";
-
 import styles from "./style.module.css";
 
 interface AppLogoProps {
-    size?: "small" | "regular" | "large";
+    size?: "s" | "regular" | "large" | "extraLarge";
     variant?: "regular" | "white";
 }
 

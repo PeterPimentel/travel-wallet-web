@@ -53,3 +53,7 @@ https://ui8.net/avo/products/deleted-61614f70266138003c0da83a
 
 https://ui8.net/bogdan-pitiriciu/products/globe-travel-app
 https://www.honeybadger.io/blog/currency-money-calculations-in-javascript/
+
+https://www.techomoro.com/change-navbar-style-with-the-scroll-in-a-next-js-website/
+
+https://javascript.plainenglish.io/react-18-useeffect-double-call-for-apis-emergency-fix-724b7ee6a646

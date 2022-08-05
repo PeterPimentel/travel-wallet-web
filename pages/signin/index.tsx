@@ -32,7 +32,7 @@ const SiginPage = () => {
 
     return <div className={styles.page}>
         <div className={styles.logoContainer}>
-            <AppLogo size="large" />
+            <AppLogo size="extraLarge" />
             <H3>{APP_NAME}</H3>
         </div>
         <SignInForm

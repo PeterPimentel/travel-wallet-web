@@ -10,7 +10,7 @@ import { SignInForm } from "../../src/components/organism/SignInForm/SignInForm"
 
 import styles from "./style.module.css"
 
-export const SignUpPage = () => {
+const SignupPage = () => {
     const [buttonLoading, setButtonLoading] = useState(false)
     const [apiError, setApiError] = useState("")
 
@@ -26,7 +26,7 @@ export const SignUpPage = () => {
 
     return <div className={styles.page}>
         <div className={styles.logoContainer}>
-            <AppLogo size="large" />
+            <AppLogo size="extraLarge" />
             <H3>{APP_NAME}</H3>
         </div>
         <SignInForm
@@ -38,3 +38,4 @@ export const SignUpPage = () => {
     </div>
 }
 
+export default SignupPage

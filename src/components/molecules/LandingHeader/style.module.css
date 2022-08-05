@@ -1,0 +1,24 @@
+.navigation {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-8) var(--space-12);
+    background-color: var(--bg-color);
+}
+
+.scrolled {
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.menuItem {
+    padding: 0 var(--space-6);
+}

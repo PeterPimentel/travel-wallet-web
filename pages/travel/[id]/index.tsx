@@ -8,13 +8,15 @@ import { withSession } from "../../../src/lib/withSession"
 import { NextPageWithLayout } from '../../_app';
 import { ExpenseList } from "../../../src/components/organism/ExpenseList/ExpenseList";
 import TravelPageLayout from '../../../src/components/organism/TravelPageLayout/TravelPageLayout';
+import useTravels from '../../../src/hooks/useTravels';
 
 const TravelPage: NextPageWithLayout = ({ }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const router = useRouter();
 
-    const { data } = useTravel(Number(router.query.id));
-
-    const expenses = data ? data.expenses : []
+    // const { data } = useTravel(Number(router.query.id));
+    const { data } = useTravels()
+    const travel = data ? data.find(t => t.id === Number(router.query.id)) : null;
+    const expenses = travel ? travel.expenses : []
 
     return <ExpenseList expenses={expenses} />
 }

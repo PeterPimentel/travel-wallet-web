@@ -2,10 +2,10 @@ import { FaUserCircle } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import { useTravels } from "../../src/hooks/useTravel";
 import { ROUTES } from "../../src/constants";
 import { withSessionHOC } from "../../src/lib/withSessionHOC";
 
+import useTravels from "../../src/hooks/useTravels";
 import { CommonLink } from "../../src/components/atoms/CommonLink/CommonLink";
 import { Loading } from "../../src/components/atoms/Loading/Loading";
 import { H5, Text } from "../../src/components/atoms/Typography/Typography";
@@ -17,7 +17,6 @@ import styles from "./style.module.css"
 
 const TravelsPage = ({ session }) => {
     const { t } = useTranslation();
-
     const { data, isLoading } = useTravels()
 
     return <div className={styles.page}>
