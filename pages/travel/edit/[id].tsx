@@ -7,21 +7,25 @@ import { InferGetServerSidePropsType } from "next";
 import { ROUTES } from "../../../src/constants";
 import { TravelRequest } from "../../../src/types/ApiType";
 import { withSession } from "../../../src/lib/withSession";
-import { useTravel } from "../../../src/hooks/useTravel";
 import { NextPageWithLayout } from "../../_app";
 import { getToken } from "../../../src/service/token";
 import { updateTravel, deleteTravel } from "../../../src/service/travel";
+import useTravels from "../../../src/hooks/useTravels";
+import { getSelectedTravel } from "../../../src/util";
 
 import { TravelEditTemplate } from "../../../src/components/templates/TravelEditTemplate/TravelEditTemplate";
 import { notification } from "../../../src/components/atoms/Notification/Notification";
 import { DangerZone } from "../../../src/components/molecules/DangerZone/DangerZone";
 import { PageLoader } from "../../../src/components/molecules/PageLoader/PageLoader";
+import { NotFoundTemplate } from "../../../src/components/templates/NotFoundTemplate/NotFoundTemplate";
 
 const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const { t } = useTranslation();
     const router = useRouter();
     const token = getToken();
-    const { data, isLoading } = useTravel(Number(router.query.id));
+
+    const { data: travels, isLoading } = useTravels()
+    const { travel: data, hasTravel } = getSelectedTravel(travels, Number(router.query.id))
 
     const handleSubmit = useCallback((travel: TravelRequest) => {
         updateTravel(token, data?.id, { name: travel.name, cover: travel.cover, budget: travel.budget }).then(() => {
@@ -43,6 +47,10 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
 
     if (isLoading) {
         return <PageLoader isLoading={isLoading} />
+    }
+
+    if (!hasTravel) {
+        return <NotFoundTemplate />
     }
 
     return (

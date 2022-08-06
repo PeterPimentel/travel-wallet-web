@@ -6,7 +6,10 @@ import { useTranslation } from 'next-i18next';
 import { ExpenseRequest } from '../../../../src/types/ApiType';
 import { getToken } from '../../../../src/service/token';
 import { withSession } from '../../../../src/lib/withSession';
-import { createExpense } from '../../../../src/service/expense';
+// import { createExpense } from '../../../../src/service/expense';
+import { ROUTES } from '../../../../src/constants';
+import { useStoreActions } from 'easy-peasy';
+import { StoreActions } from '../../../../src/types/StoreType';
 
 import { EditExpenseTemplate } from '../../../../src/components/templates/ExpenseEditTemplate/EditExpenseTemplate';
 import TravelPageLayout from '../../../../src/components/organism/TravelPageLayout/TravelPageLayout';
@@ -15,19 +18,25 @@ import { notification } from '../../../../src/components/atoms/Notification/Noti
 export const AddTravelPage = () => {
     const router = useRouter();
     const { t } = useTranslation();
+    const createExpense = useStoreActions<StoreActions>(
+        (actions) => actions.createExpenseRequest
+    );
+
     const token = getToken();
+    const travelId = router.query.id;
 
     const handleSubmit = useCallback((expense: ExpenseRequest) => {
-        const expenseRequest: ExpenseRequest = {
+        createExpense({
             ...expense,
-            travelId: Number(router.query.id),
-        }
-        createExpense(token, expenseRequest).then(() => {
-            notification(t("create_expense_success"), "success")
+            travelId: Number(travelId),
+        }).then((data) => {
+            console.log("Data", data)
+            notification(t("expense_create_success"), "success")
+            router.push(`/${ROUTES.travel}/${travelId}`)
         }).catch((err) => {
             notification(err.message, "error")
         })
-    }, [router.query.id, t, token])
+    }, [travelId, createExpense, t, router])
 
     return <EditExpenseTemplate headerText={t("add_expense")} onSubmit={handleSubmit} />
 }

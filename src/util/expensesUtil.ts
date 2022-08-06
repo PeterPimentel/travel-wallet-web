@@ -1,4 +1,5 @@
 import { DailyCost, Expense, ExpensesGroup } from "../types/ExpenseType";
+import { Travel } from "../types/TravelType";
 
 export const groupExpenses = (expenses: Expense[]): ExpensesGroup => {
   return expenses.reduce((acc: ExpensesGroup, curr: Expense) => {
@@ -46,4 +47,51 @@ export const getTotalExpenses = (expenses: Expense[]): number => {
   }, 0);
 
   return total;
+};
+
+type FallbackData = {
+  name: string;
+  budget: number;
+  expenses: Expense[];
+};
+
+export const getSelectedTravel = (
+  travels: Travel[],
+  id: number,
+  expenseId: number = 0
+): {
+  travel: Travel;
+  expenses: Expense[];
+  hasTravel: boolean;
+  hasExpense: boolean;
+} => {
+  let travel: Travel;
+  let expenses: Expense[];
+  let hasTravel: boolean = true;
+  let hasExpense: boolean = false;
+
+  if (travels) {
+    travel = travels.find((t) => t.id === id);
+  } else {
+    hasTravel = false;
+    travel = { name: "", budget: 0, expenses: [] } as any;
+  }
+
+  if (travel) {
+    expenses = travel.expenses;
+  } else {
+    hasTravel = false;
+    expenses = [];
+  }
+
+  if (expenseId) {
+    hasExpense = expenses.some((e) => e.id === expenseId);
+  }
+
+  return {
+    travel,
+    expenses,
+    hasTravel,
+    hasExpense,
+  };
 };

@@ -2,29 +2,32 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { FC, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
+import { useStoreActions } from "easy-peasy";
 
 import { TravelRequest } from "../../src/types/ApiType";
 import { ROUTES } from "../../src/constants";
-import { createTravel } from "../../src/service/travel";
 import { withSessionHOC } from "../../src/lib/withSessionHOC";
+import { StoreActions } from "../../src/types/StoreType";
 
 import { TravelEditTemplate } from "../../src/components/templates/TravelEditTemplate/TravelEditTemplate";
 import { notification } from "../../src/components/atoms/Notification/Notification";
-import { getToken } from "../../src/service/token";
 
 const AddTravelPage: FC = () => {
     const { t } = useTranslation();
-    const token = getToken();
     const router = useRouter();
 
+    const saveTravels = useStoreActions<StoreActions>(
+        (actions) => actions.createTravelRequest
+    );
+
     const handleSubmit = useCallback((travel: TravelRequest) => {
-        createTravel(token, { name: travel.name, cover: travel.cover, budget: travel.budget }).then((res) => {
-            notification(t("created_travel_success"), "success")
+        saveTravels({ name: travel.name, cover: travel.cover, budget: travel.budget }).then(() => {
+            notification(t("travel_create_success"), "success")
             router.push(`/${ROUTES.travel}`)
         }).catch((err) => {
             notification(err.message, "error")
         })
-    }, [router, t, token])
+    }, [router, saveTravels, t])
 
     return (
         <TravelEditTemplate

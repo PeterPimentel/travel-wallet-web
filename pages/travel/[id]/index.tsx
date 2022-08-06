@@ -2,21 +2,19 @@ import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { InferGetServerSidePropsType } from 'next'
 
-import { useTravel } from "../../../src/hooks/useTravel";
 import { withSession } from "../../../src/lib/withSession"
+import useTravels from '../../../src/hooks/useTravels';
+import { getSelectedTravel } from '../../../src/util';
 
 import { NextPageWithLayout } from '../../_app';
 import { ExpenseList } from "../../../src/components/organism/ExpenseList/ExpenseList";
 import TravelPageLayout from '../../../src/components/organism/TravelPageLayout/TravelPageLayout';
-import useTravels from '../../../src/hooks/useTravels';
 
 const TravelPage: NextPageWithLayout = ({ }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const router = useRouter();
 
-    // const { data } = useTravel(Number(router.query.id));
     const { data } = useTravels()
-    const travel = data ? data.find(t => t.id === Number(router.query.id)) : null;
-    const expenses = travel ? travel.expenses : []
+    const { expenses } = getSelectedTravel(data, Number(router.query.id))
 
     return <ExpenseList expenses={expenses} />
 }
