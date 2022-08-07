@@ -57,3 +57,6 @@ https://www.honeybadger.io/blog/currency-money-calculations-in-javascript/
 https://www.techomoro.com/change-navbar-style-with-the-scroll-in-a-next-js-website/
 
 https://javascript.plainenglish.io/react-18-useeffect-double-call-for-apis-emergency-fix-724b7ee6a646
+
+https://letsbuildui.dev/articles/a-3d-hover-effect-using-css-transforms
+https://agm1984.medium.com/use-react-to-make-a-photo-follow-the-mouse-aka-transform-perspective-or-tilt-7c38f1b3a623

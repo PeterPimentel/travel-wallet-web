@@ -1,5 +1,7 @@
 {
-    "menu_home": "Home",
+    "menu_contacts": "Contacts",
     "menu_features": "Features",
-    "menu_contacts": "Contacts"
+    "menu_home": "Home",
+    "sign_in": "Log In",
+    "sign_up": "Sign Up"
 }

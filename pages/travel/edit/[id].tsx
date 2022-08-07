@@ -3,15 +3,15 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import { InferGetServerSidePropsType } from "next";
+import { useStoreActions } from "easy-peasy";
 
 import { ROUTES } from "../../../src/constants";
 import { TravelRequest } from "../../../src/types/ApiType";
 import { withSession } from "../../../src/lib/withSession";
 import { NextPageWithLayout } from "../../_app";
-import { getToken } from "../../../src/service/token";
-import { updateTravel, deleteTravel } from "../../../src/service/travel";
 import useTravels from "../../../src/hooks/useTravels";
 import { getSelectedTravel } from "../../../src/util";
+import { StoreActions } from "../../../src/types/StoreType";
 
 import { TravelEditTemplate } from "../../../src/components/templates/TravelEditTemplate/TravelEditTemplate";
 import { notification } from "../../../src/components/atoms/Notification/Notification";
@@ -22,28 +22,36 @@ import { NotFoundTemplate } from "../../../src/components/templates/NotFoundTemp
 const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const { t } = useTranslation();
     const router = useRouter();
-    const token = getToken();
 
+    const updateTravel = useStoreActions<StoreActions>(
+        (actions) => actions.updateTravelRequest
+    );
+    const deleteTravel = useStoreActions<StoreActions>(
+        (actions) => actions.deleteTravelRequest
+    );
     const { data: travels, isLoading } = useTravels()
-    const { travel: data, hasTravel } = getSelectedTravel(travels, Number(router.query.id))
+
+    const travelId = router.query.id;
+
+    const { travel: data, hasTravel } = getSelectedTravel(travels, Number(travelId))
 
     const handleSubmit = useCallback((travel: TravelRequest) => {
-        updateTravel(token, data?.id, { name: travel.name, cover: travel.cover, budget: travel.budget }).then(() => {
+        updateTravel({ id: travelId, name: travel.name, cover: travel.cover, budget: travel.budget }).then(() => {
             notification(t("updated_travel_success"), "success")
-            router.push(`/${ROUTES.travel}/${router.query.id}`)
+            router.push(`/${ROUTES.travel}/${travelId}`)
         }).catch((err) => {
             notification(err.message, "error")
         })
-    }, [data?.id, router, t, token])
+    }, [router, t, travelId, updateTravel])
 
     const handleRemove = useCallback(() => {
-        deleteTravel(token, data?.id).then(() => {
+        deleteTravel(travelId).then(() => {
             notification(t("delete_travel_success"), "success")
             router.push(`/${ROUTES.travel}`)
         }).catch((err) => {
             notification(err.message, "error")
         })
-    }, [data?.id, router, t, token])
+    }, [deleteTravel, router, t, travelId])
 
     if (isLoading) {
         return <PageLoader isLoading={isLoading} />

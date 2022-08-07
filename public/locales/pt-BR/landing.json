@@ -1,5 +1,7 @@
 {
-    "menu_home": "Início",
+    "menu_contacts": "Contatos",
     "menu_features": "Funcionalidades",
-    "menu_contacts": "Contatos"
+    "menu_home": "Início",
+    "sign_in": "Entrar",
+    "sign_up": "Cadastrar"
 }

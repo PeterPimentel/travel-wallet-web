@@ -1,5 +1,8 @@
 @import '~antd/dist/antd.css';
 
+html {
+scroll-behavior: smooth;
+}
 body {
   background-color: var(--bg-color);
   margin: 0;
@@ -30,7 +33,6 @@ body {
   --primary-color: #5377F0;
   --light-primary-color: #eef1fd;
 
-  --secondary-color: #e66464;
   --bg-color: #f3f6fb;
 
   --space-1: 2px;
@@ -42,4 +44,6 @@ body {
   --space-8: 16px;
   --space-12: 24px;
   --space-24: 48px;
+
+  --menu-icon-size: 32px
 }

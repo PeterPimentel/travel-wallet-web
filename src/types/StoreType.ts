@@ -12,11 +12,15 @@ export type StoreActions = {
   saveExpense: Action<StoreEntities, Expense>;
   removeExpense: Action<StoreEntities, Expense>;
   updateExpense: Action<StoreEntities, Expense>;
+  removeTravel: Action<StoreEntities, Travel>;
+  updateTravel: Action<StoreEntities, Travel>;
   getTravelsRequest: Thunk<StoreActions, null>;
   createTravelRequest: Thunk<StoreActions, Partial<Travel>>;
   createExpenseRequest: Thunk<StoreActions, Partial<Expense>>;
   deleteExpenseRequest: Thunk<StoreActions, Partial<number>>;
   updateExpenseRequest: Thunk<StoreActions, Partial<Expense>>;
+  deleteTravelRequest: Thunk<StoreActions, Partial<number>>;
+  updateTravelRequest: Thunk<StoreActions, Partial<Travel>>;
 };
 
 export type StoreState = StoreEntities & StoreActions;

@@ -1,8 +1,11 @@
 import { useCallback, useState } from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
-import { APP_NAME } from "../../src/constants";
+import { APP_NAME, ROUTES } from "../../src/constants";
 import { signup } from "../../src/service/auth";
 import { AuthRequest } from "../../src/types/ApiType";
+import { saveToken } from "../../src/service/token";
 
 import { AppLogo } from "../../src/components/atoms/AppLogo/AppLogo";
 import { H3 } from "../../src/components/atoms/Typography/Typography";
@@ -11,18 +14,21 @@ import { SignInForm } from "../../src/components/organism/SignInForm/SignInForm"
 import styles from "./style.module.css"
 
 const SignupPage = () => {
-    const [buttonLoading, setButtonLoading] = useState(false)
     const [apiError, setApiError] = useState("")
+    const [buttonLoading, setButtonLoading] = useState(false)
+    const router = useRouter();
 
-    const handleSubmit = useCallback(async (data: AuthRequest) => {
+    const handleSubmit = useCallback(async (authData: AuthRequest) => {
         setButtonLoading(true);
-        signup(data).then(() => {
-        }).catch((error) => {
-            setApiError(error.message)
-        }).finally(() => {
+        signup(authData).then((res) => {
+            saveToken(res.token)
             setButtonLoading(false)
+            router.push(`/${ROUTES.travel}`)
+        }).catch((error) => {
+            setButtonLoading(false)
+            setApiError(error.message)
         })
-    }, [])
+    }, [router])
 
     return <div className={styles.page}>
         <div className={styles.logoContainer}>
@@ -36,6 +42,14 @@ const SignupPage = () => {
             onSubmit={handleSubmit}
         />
     </div>
+}
+
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['auth'])),
+        },
+    };
 }
 
 export default SignupPage

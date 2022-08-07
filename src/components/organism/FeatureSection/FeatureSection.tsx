@@ -13,7 +13,7 @@ export const FeatureSection = ({ features }: FeatureSectionProps) => {
     const { t } = useTranslation();
 
     return (
-        <section className={styles.section} id="features">
+        <section className={styles.section}>
             <H4>{t('landing:menu_features')}</H4>
             <div className={styles.cards}>
                 {
