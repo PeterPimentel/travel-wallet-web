@@ -39,6 +39,7 @@ header.header>h5 {
     font-size: 10px;
     color: white;
     margin-left: 2px;
+    text-transform: uppercase;
 }
 
 .expenses [class*="ant-statistic"] {

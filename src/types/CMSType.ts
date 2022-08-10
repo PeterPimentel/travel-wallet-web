@@ -9,3 +9,15 @@ export type Feature = {
 export type FeatureApiResponse = {
   data: Feature[];
 };
+
+export type HeroMarketing = {
+  id: number;
+  status: string;
+  title: string;
+  summary: string;
+  main_image: string;
+};
+
+export type HeroMarketingApiResponse = {
+  data: HeroMarketing;
+};

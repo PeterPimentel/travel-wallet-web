@@ -5,7 +5,19 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--space-8);
-    background-color: var(--bg-color);
+    background-color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.appName {
+    font-size: 23px;
+    color: var(--primary-color);
+    padding: 0 var(--space-4);
+    font-weight: 700;
 }
 
 .scrolled {

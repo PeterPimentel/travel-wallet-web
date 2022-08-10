@@ -4,15 +4,20 @@ import classname from "classnames";
 import { useRouter } from "next/router";
 
 import { getLandingURL } from "../../../util";
+import { APP_NAME } from "../../../constants";
 
+import { HamburguerMenu } from "../../molecules/HamburguerMenu/HamburguerMenu";
 import { AppLogo } from "../../atoms/AppLogo/AppLogo";
 import { CommonLink } from "../../atoms/CommonLink/CommonLink"
-
-import style from "./style.module.css";
-import { HamburguerMenu } from "../../molecules/HamburguerMenu/HamburguerMenu";
 import { Text } from "../../atoms/Typography/Typography";
 
+import style from "./style.module.css";
+
 const MENU_OPTIONS = [
+    {
+        label: "landing:menu_home",
+        url: "home",
+    },
     {
         label: "landing:menu_features",
         url: "features",
@@ -63,7 +68,10 @@ export const LandingHeader = ({ onClick }: LandingHeaderProps) => {
     return (
         <nav className={navBarStyle}>
             <CommonLink to={getLandingURL()}>
-                <AppLogo variant="regular" size="large" />
+                <div className={style.logo}>
+                    <AppLogo variant="regular" size="large" />
+                    <span className={style.appName}>{APP_NAME}</span>
+                </div>
             </CommonLink>
             <div>
                 <ul className={style.menu}>

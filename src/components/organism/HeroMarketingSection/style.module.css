@@ -1,0 +1,41 @@
+.section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.content {
+    max-width: 50%;
+}
+
+.content > h4 {
+    font-size: 64px;
+    color: var(--primary-color);
+}
+
+.content>span {
+    font-size: 24px;
+}
+
+.imageContainer > img{
+    width: auto;
+    height: 450px;
+    /* border-radius: 16px; Add it to the image */
+    border-radius: 16px;
+}
+
+@media (max-width: 700px) {
+    .section {
+        flex-direction: column;
+        gap: var(--space-12)
+    }
+
+    .imageContainer>img {
+        width: auto;
+        height: 360px;
+    }
+
+    .content {
+        max-width: 100%;
+    }
+}

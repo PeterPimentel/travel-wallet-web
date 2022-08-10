@@ -1,4 +1,5 @@
 import { FaRocket, FaChartPie, FaMoneyBillAlt, } from "react-icons/fa"
+import { MdFileDownloadOff } from "react-icons/md"
 
 import styles from "./style.module.css"
 
@@ -10,6 +11,8 @@ export const FeatureIcon = ({ icon }: { icon: string }) => {
             return <div className={styles.icon}><FaChartPie style={{ color: "#5377F0", fontSize: '32px' }} /></div>
         case "attach_money":
             return <div className={styles.icon}><FaMoneyBillAlt style={{ color: "#5377F0", fontSize: '32px' }} /></div>
+        case "file_download_off":
+            return <div className={styles.icon}><MdFileDownloadOff style={{ color: "#5377F0", fontSize: '32px' }} /></div>
         default:
             return null
     }

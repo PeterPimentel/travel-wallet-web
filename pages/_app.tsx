@@ -28,11 +28,6 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
       {getLayout(<Component {...pageProps} />)}
     </StoreProviderCasted>
   );
-  // return getLayout(
-  //   <StoreProviderCasted store={store}>
-  //     <Component {...pageProps} />
-  //   </StoreProviderCasted>
-  // )
 };
 
 export default appWithTranslation(MyApp);

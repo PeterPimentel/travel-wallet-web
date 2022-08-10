@@ -1,6 +1,13 @@
+.section {
+    padding: var(--space-4) 0;
+}
+
 .section > h4 {
     text-transform: uppercase;
     margin-bottom: var(--space-24);
+    text-align: center;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.45);
 }
 
 .cards {
