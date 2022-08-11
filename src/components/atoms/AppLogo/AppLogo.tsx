@@ -1,7 +1,9 @@
+import { LogoSize } from "../../../types/CommonType";
+
 import styles from "./style.module.css";
 
 interface AppLogoProps {
-    size?: "s" | "regular" | "large" | "extraLarge";
+    size?: LogoSize;
     variant?: "regular" | "white";
 }
 

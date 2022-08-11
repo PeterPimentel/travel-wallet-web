@@ -2,7 +2,7 @@ import { useCallback, useState, FC } from "react";
 import { useTranslation } from "next-i18next";
 
 import { AuthRequest } from "../../../types/ApiType";
-import { isValidSignInSubmit, isValidSignUpSubmit } from "../../../util";
+import { getSignInURL, getSignUpURL, isValidSignInSubmit, isValidSignUpSubmit } from "../../../util";
 
 import { Button } from "../../atoms/Button/Button";
 import { Input } from "../../atoms/Input/Input";
@@ -10,6 +10,7 @@ import { InputPassword } from "../../atoms/Input/InputPassword";
 import { Text } from "../../atoms/Typography/Typography";
 
 import styles from "./style.module.css"
+import { CommonLink } from "../../atoms/CommonLink/CommonLink";
 
 interface FormErrors {
     email: boolean;
@@ -40,6 +41,8 @@ export const SignInForm: FC<SignInFormProps> = ({ buttonLoading, type, error, on
     const { t } = useTranslation();
 
     const submitLabel = type === "signup" ? "auth:sign_up" : "auth:sign_in";
+    const linkLabel = type === "signup" ? "auth:already_have_account" : "auth:dont_have_account";
+    const linkURL = type === "signup" ? getSignInURL() : getSignUpURL();
 
     const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -108,6 +111,9 @@ export const SignInForm: FC<SignInFormProps> = ({ buttonLoading, type, error, on
             </div>
             <div className={styles.submitContainer}>
                 <Button loading={buttonLoading} type="submit">{t(submitLabel)}</Button>
+            </div>
+            <div>
+                <CommonLink to={linkURL}>{t(linkLabel)}</CommonLink>
             </div>
         </form>
     )

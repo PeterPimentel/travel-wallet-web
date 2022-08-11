@@ -2,14 +2,13 @@ import { useCallback, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
-import { APP_NAME, ROUTES } from "../../src/constants";
+import { ROUTES } from "../../src/constants";
 import { signup } from "../../src/service/auth";
 import { AuthRequest } from "../../src/types/ApiType";
 import { saveToken } from "../../src/service/token";
 
-import { AppLogo } from "../../src/components/atoms/AppLogo/AppLogo";
-import { H3 } from "../../src/components/atoms/Typography/Typography";
 import { SignInForm } from "../../src/components/organism/SignInForm/SignInForm";
+import { LogoWithName } from "../../src/components/molecules/LogoWithName/LogoWithName";
 
 import styles from "./style.module.css"
 
@@ -31,10 +30,7 @@ const SignupPage = () => {
     }, [router])
 
     return <div className={styles.page}>
-        <div className={styles.logoContainer}>
-            <AppLogo size="extraLarge" />
-            <H3>{APP_NAME}</H3>
-        </div>
+        <LogoWithName size="extraLarge" layout="vertical" />
         <SignInForm
             type="signup"
             error={apiError}

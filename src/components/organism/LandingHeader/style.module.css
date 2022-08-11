@@ -6,6 +6,7 @@
     justify-content: space-between;
     padding: var(--space-8);
     background-color: white;
+    z-index: 10;
 }
 
 .logo {

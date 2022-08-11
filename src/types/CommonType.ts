@@ -18,3 +18,5 @@ export interface AppSession {
   username: string;
   id: number;
 }
+
+export type LogoSize = "small" | "regular" | "large" | "extraLarge";

@@ -17,7 +17,8 @@ export const HeroMarketingSection = ({ hero }: HeroMarketingSectionProps) => {
                 <Text type="secondary">{hero.summary}</Text>
             </div>
             <div className={styles.imageContainer}>
-                <img src={getAssetSrc(hero.main_image)} alt="app screenshot" />
+                <img className={styles.mainImage} src={getAssetSrc(hero.main_image)} alt="app screenshot" />
+                {/* <img className={styles.cover} src="https://harthorg.sirv.com/travel-wallet/travel_page_no_border.png" alt="app screenshot" /> */}
             </div>
         </section>
     )

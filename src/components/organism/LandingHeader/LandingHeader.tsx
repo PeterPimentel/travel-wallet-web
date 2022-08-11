@@ -3,13 +3,9 @@ import { useEffect, useState } from "react";
 import classname from "classnames";
 import { useRouter } from "next/router";
 
-import { getLandingURL } from "../../../util";
-import { APP_NAME } from "../../../constants";
-
-import { HamburguerMenu } from "../../molecules/HamburguerMenu/HamburguerMenu";
-import { AppLogo } from "../../atoms/AppLogo/AppLogo";
-import { CommonLink } from "../../atoms/CommonLink/CommonLink"
 import { Text } from "../../atoms/Typography/Typography";
+import { HamburguerMenu } from "../../molecules/HamburguerMenu/HamburguerMenu";
+import { LogoWithName } from "../../molecules/LogoWithName/LogoWithName";
 
 import style from "./style.module.css";
 
@@ -67,12 +63,7 @@ export const LandingHeader = ({ onClick }: LandingHeaderProps) => {
 
     return (
         <nav className={navBarStyle}>
-            <CommonLink to={getLandingURL()}>
-                <div className={style.logo}>
-                    <AppLogo variant="regular" size="large" />
-                    <span className={style.appName}>{APP_NAME}</span>
-                </div>
-            </CommonLink>
+            <LogoWithName size="large" layout="horizontal" />
             <div>
                 <ul className={style.menu}>
                     {
