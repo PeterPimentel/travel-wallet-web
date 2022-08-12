@@ -1,0 +1,9 @@
+.container {
+    width: 100%;
+}
+
+.action {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: var(--space-8);
+}

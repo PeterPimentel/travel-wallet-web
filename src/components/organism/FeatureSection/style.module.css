@@ -1,0 +1,19 @@
+.section {
+        padding-bottom: var(--space-8);
+}
+
+.section > h4 {
+    text-transform: uppercase;
+    margin-bottom: var(--space-12);
+    text-align: center;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-12);
+    flex-wrap: wrap;
+}

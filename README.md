@@ -32,3 +32,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+https://stackoverflow.com/questions/65451349/next-js-combined-with-an-external-rest-api-authentication-and-atuhorization
+
+https://medium.com/vmlyrpoland-tech/nextjs-with-full-stack-authorization-based-on-jwt-and-external-api-e9977f9fdd5e
+
+https://vizzuality.github.io/devismos/docs/researches/next-auth/
+
+https://cloudcoders.xyz/blog/nextauth-credentials-provider-with-external-api-and-login-page/
+
+https://trabeepocket.com/
+
+https://ui8.net/rifat-sarkar/products/travelm-app-ui-kit
+
+https://www.melhoresdestinos.com.br/gastos-de-viagem-aplicativos.html
+
+https://ui8.net/10am-studio/products/sarang-wallet---e-wallet-mobile-app
+
+https://ui8.net/avo/products/deleted-61614f70266138003c0da83a
+
+https://ui8.net/bogdan-pitiriciu/products/globe-travel-app
+https://www.honeybadger.io/blog/currency-money-calculations-in-javascript/
+
+https://www.techomoro.com/change-navbar-style-with-the-scroll-in-a-next-js-website/
+
+https://javascript.plainenglish.io/react-18-useeffect-double-call-for-apis-emergency-fix-724b7ee6a646
+
+https://letsbuildui.dev/articles/a-3d-hover-effect-using-css-transforms
+https://agm1984.medium.com/use-react-to-make-a-photo-follow-the-mouse-aka-transform-perspective-or-tilt-7c38f1b3a623

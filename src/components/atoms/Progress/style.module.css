@@ -1,0 +1,33 @@
+.container {
+    width: 100%;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.bar {
+    border-radius: 8px;
+}
+
+.small {
+    height: 3px;
+}
+
+.regular {
+    height: 5px;
+}
+
+.big {
+    height: 7px;
+}
+
+.danger {
+    background-color: var(--feedback-danger-color);
+}
+
+.warning {
+    background-color: var(--feedback-warning-color);
+}
+
+.info {
+    background-color: var(--feedback-info-color);
+}

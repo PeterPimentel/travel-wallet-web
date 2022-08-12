@@ -1,0 +1,16 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 64px;
+
+    background-color: white;
+}
+
+.navList {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}

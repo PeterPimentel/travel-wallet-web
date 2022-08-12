@@ -1,0 +1,53 @@
+.header {
+    height: 170px;
+    padding: 16px;
+    background-color: var(--primary-color);
+}
+
+.expenses {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navigationContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navigation {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 0;
+    gap: 2px;
+}
+
+.actions {
+    position: absolute;
+    right: 0;
+}
+
+header.header>h5 {
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+.balance > span{
+    font-size: 10px;
+    color: white;
+    margin-left: 2px;
+    text-transform: uppercase;
+}
+
+.expenses [class*="ant-statistic"] {
+    color: white !important;
+}
+
+.skeleton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,10 @@
+.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--dark-gray);
+}
+
+.link.active {
+    color: var(--primary-color);
+}

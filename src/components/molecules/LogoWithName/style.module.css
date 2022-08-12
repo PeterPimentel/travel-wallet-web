@@ -1,0 +1,35 @@
+.logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.horizontal {
+    flex-direction: row;
+}
+
+.text {
+    color: var(--primary-color);
+    padding: 0 var(--space-4);
+    font-weight: 700;
+}
+
+.small {
+    font-size: 8px;
+}
+
+.regular {
+    font-size: 16px;
+}
+
+.large {
+    font-size: 24px;
+}
+
+.extraLarge {
+    font-size: 36px;
+}

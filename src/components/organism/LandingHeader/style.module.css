@@ -1,0 +1,61 @@
+.navigation {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-8);
+    background-color: white;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.appName {
+    font-size: 23px;
+    color: var(--primary-color);
+    padding: 0 var(--space-4);
+    font-weight: 700;
+}
+
+.scrolled {
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.menuItem {
+    padding: 0 var(--space-6);
+}
+
+.menuItem > span{
+    cursor: pointer;
+}
+
+.menuItem>span:hover {
+    color: var(--primary-color)
+}
+
+
+.hamburguerMenu {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .hamburguerMenu {
+        display: inherit;
+    }
+
+    .menu {
+        display: none;
+    }
+}

@@ -1,0 +1,72 @@
+.container {
+    position: relative;
+}
+
+.baseImage {
+    width: auto;
+    height: 450px;
+}
+
+.cover {
+    position: absolute;
+    left: 112px;
+    top: 75px;
+    
+    width: 145px;
+
+    opacity: 0;
+}
+
+.fadeIn {
+    animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.fadeOut {
+    animation: fade-out 1s ease-out both;
+}
+
+@media (max-width: 700px) {
+    .baseImage {
+        width: auto;
+        height: 360px;
+    }
+
+    .cover {
+        left: 89px;
+        top: 60px;
+        width: 116px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .baseImage {
+        width: auto;
+        height: 620px;
+    }
+
+    .cover {
+        left: 155px;
+        top: 103px;
+        width: 199px;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
