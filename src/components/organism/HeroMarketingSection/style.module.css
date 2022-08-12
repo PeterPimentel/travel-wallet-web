@@ -17,21 +17,6 @@
     font-size: 24px;
 }
 
-.imageContainer {
-    position: relative;
-}
-
-.mainImage {
-    width: auto;
-    height: 450px;
-}
-
-.cover {
-    position: absolute;
-    left: -40px;
-    top: 6px;
-    width: 450px;
-}
 
 @media (max-width: 700px) {
     .section {
@@ -39,31 +24,7 @@
         gap: var(--space-12)
     }
 
-    .mainImage {
-        width: auto;
-        height: 360px;
-    }
-
-    .cover {
-        left: -34px;
-        top: 6px;
-        width: 360px;
-    }
-
     .content {
         max-width: 100%;
-    }
-}
-
-@media (min-width: 1200px) {
-    .mainImage {
-        width: auto;
-        height: 620px;
-    }
-
-    .cover {
-        left: -55px;
-        top: 10px;
-        width: 620px;
     }
 }

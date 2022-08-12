@@ -22,6 +22,6 @@ export async function fetchResource<T>(resource: string): Promise<T> {
 
 export function getAssetSrc(id: string): string {
   // return `${CMS_API_URL}/assets/${id}`;
-  return "https://harthorg.sirv.com/travel-wallet/marketing_1.png";
-  // return "https://harthorg.sirv.com/travel-wallet/marketing_2.png";
+  // return "https://harthorg.sirv.com/travel-wallet/marketing_1.png";
+  return "https://harthorg.sirv.com/travel-wallet/marketing/marketing_2.png";
 }
