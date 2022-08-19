@@ -1,5 +1,6 @@
-import { useTranslation } from "next-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import Image from "next/image";
+
 import { ROUTES } from "../../../constants";
 import { Button } from "../../atoms/Button/Button";
 

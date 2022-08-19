@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { useRouter } from 'next/router'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation'
 import { useStoreActions } from 'easy-peasy';
 
 import { ExpenseRequest } from '../../../../src/types/ApiType';
@@ -11,6 +10,7 @@ import { formatDate } from '../../../../src/util/dateHelper';
 import useTravels from '../../../../src/hooks/useTravels';
 import { getSelectedTravel } from '../../../../src/util';
 import { StoreActions } from '../../../../src/types/StoreType';
+import { common } from '../../../../src/constants/locales';
 
 import { EditExpenseTemplate } from '../../../../src/components/templates/ExpenseEditTemplate/EditExpenseTemplate';
 import TravelPageLayout from '../../../../src/components/organism/TravelPageLayout/TravelPageLayout';
@@ -40,7 +40,7 @@ export const AddTravelPage = () => {
             travelId: Number(travelId),
             id: Number(expenseId),
         }).then(() => {
-            notification(t("update_expense_success"), "success")
+            notification(t(common.update_expense_success), "success")
             router.push(`/${ROUTES.travel}/${travelId}`)
         }).catch((err) => {
             notification(err.message, "error")
@@ -49,7 +49,7 @@ export const AddTravelPage = () => {
 
     const handleRemove = useCallback(() => {
         deleteExpense(Number(expenseId)).then(() => {
-            notification(t("delete_expense_success"), "success")
+            notification(t(common.delete_expense_success), "success")
             router.push(`/${ROUTES.travel}/${travelId}`)
         }).catch((err) => {
             notification(err.message, "error")
@@ -58,9 +58,9 @@ export const AddTravelPage = () => {
 
     return <EditExpenseTemplate
         expense={{ ...expense, date: formatDate(new Date(expense.date)) }}
-        headerText={t("edit_expense")}
+        headerText={t(common.edit_expense)}
         onSubmit={handleSubmit}
-        footer={<DangerZone buttonText={t("delete_expense")} onClick={handleRemove} />}
+        footer={<DangerZone buttonText={t(common.delete_expense)} onClick={handleRemove} />}
     />
 }
 
@@ -76,7 +76,6 @@ export const getServerSideProps = (withSession(async function (ctx) {
     return {
         props: {
             session: ctx.req.session,
-            ...(await serverSideTranslations(ctx.locale, ['common'])),
         },
     }
 }))

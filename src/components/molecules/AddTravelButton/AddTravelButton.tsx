@@ -1,6 +1,8 @@
 import { FC } from "react";
-import { useTranslation } from 'react-i18next';
+import useTranslation from 'next-translate/useTranslation'
 import { FaPlusCircle } from "react-icons/fa";
+
+import { common } from "../../../constants/locales";
 
 import { Text } from "../../atoms/Typography/Typography"
 
@@ -12,7 +14,7 @@ export const AddTravelButton: FC = () => {
     return (
         <div className={styles.optionButton}>
             <FaPlusCircle />
-            <Text>{t('add')}</Text>
+            <Text>{t(common.add)}</Text>
         </div>
     )
 }

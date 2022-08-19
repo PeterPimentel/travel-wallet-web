@@ -1,11 +1,11 @@
 import { FaUserCircle } from "react-icons/fa";
-import { useTranslation } from "react-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import useTranslation from 'next-translate/useTranslation'
 
 import { ROUTES } from "../../src/constants";
 import { withSessionHOC } from "../../src/lib/withSessionHOC";
-
+import { common } from "../../src/constants/locales";
 import useTravels from "../../src/hooks/useTravels";
+
 import { CommonLink } from "../../src/components/atoms/CommonLink/CommonLink";
 import { Loading } from "../../src/components/atoms/Loading/Loading";
 import { H5, Text } from "../../src/components/atoms/Typography/Typography";
@@ -30,7 +30,7 @@ const TravelsPage = ({ session }) => {
         </header>
         <div className={styles.pageContent}>
             <div>
-                <H5>{t("welcome_message")}</H5>
+                <H5>{t(common.welcome_message)}</H5>
                 <Text>{session?.username}</Text>
             </div>
             <CommonLink to={`/${ROUTES.travel}/new`}>
@@ -48,14 +48,6 @@ const TravelsPage = ({ session }) => {
             </div>
         </div>
     </div>
-}
-
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ['common'])),
-        },
-    };
 }
 
 export default withSessionHOC(TravelsPage);

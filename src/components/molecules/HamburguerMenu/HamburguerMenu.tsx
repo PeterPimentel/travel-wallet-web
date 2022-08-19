@@ -1,4 +1,4 @@
-import { useTranslation } from "next-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import { useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import classname from "classnames";

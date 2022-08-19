@@ -1,9 +1,10 @@
 import { FC } from "react";
-import { useTranslation } from "next-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import { FaListUl, FaPlusCircle, FaChartPie } from "react-icons/fa";
 import { useRouter } from "next/router";
 
 import { ROUTES } from "../../../constants";
+import { common } from "../../../constants/locales";
 
 import { NavigationLink } from "../../atoms/NavigationLink/NavigationLink";
 
@@ -22,15 +23,15 @@ export const TravelFooter: FC<TravelFooterProps> = ({ id }) => {
             <nav className={styles.navList}>
                 <NavigationLink to={`/${ROUTES.travel}/${id}`} active={router.pathname === "/travel/[id]"}>
                     <FaListUl />
-                    <span>{t('expenses')}</span>
+                    <span>{t(common.expenses)}</span>
                 </NavigationLink>
                 <NavigationLink to={`/${ROUTES.travel}/${id}/${ROUTES.newExpense}`} active={router.pathname === "/travel/[id]/expense/new"} >
                     <FaPlusCircle />
-                    <span>{t('add')}</span>
+                    <span>{t(common.add)}</span>
                 </NavigationLink>
                 <NavigationLink to={`/${ROUTES.travel}/${id}/${ROUTES.overview}`} active={router.pathname === "/travel/[id]/overview"}>
                     <FaChartPie />
-                    <span>{t('overview')}</span>
+                    <span>{t(common.overview)}</span>
                 </NavigationLink>
             </nav>
         </footer>

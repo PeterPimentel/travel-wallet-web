@@ -1,6 +1,5 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { FC, useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from "next/router";
 import { useStoreActions } from "easy-peasy";
 
@@ -8,6 +7,7 @@ import { TravelRequest } from "../../src/types/ApiType";
 import { ROUTES } from "../../src/constants";
 import { withSessionHOC } from "../../src/lib/withSessionHOC";
 import { StoreActions } from "../../src/types/StoreType";
+import { common } from "../../src/constants/locales";
 
 import { TravelEditTemplate } from "../../src/components/templates/TravelEditTemplate/TravelEditTemplate";
 import { notification } from "../../src/components/atoms/Notification/Notification";
@@ -22,9 +22,9 @@ const AddTravelPage: FC = () => {
 
     const handleSubmit = useCallback((travel: TravelRequest) => {
         saveTravels({ name: travel.name, cover: travel.cover, budget: travel.budget }).then(() => {
-            notification(t("travel_create_success"), "success")
+            notification(t(common.travel_create_success), "success")
             router.push(`/${ROUTES.travel}`)
-        }).catch((err) => {
+        }).catch((err: Error) => {
             notification(err.message, "error")
         })
     }, [router, saveTravels, t])
@@ -32,19 +32,11 @@ const AddTravelPage: FC = () => {
     return (
         <TravelEditTemplate
             headerLink={`/${ROUTES.travel}`}
-            headerLinkText={t("cancel")}
-            pageTitle={t("add_travel")}
+            headerLinkText={t(common.cancel)}
+            pageTitle={t(common.add_travel)}
             onSubmit={handleSubmit}
         />
     )
-}
-
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ['common'])),
-        },
-    };
 }
 
 export default withSessionHOC(AddTravelPage)

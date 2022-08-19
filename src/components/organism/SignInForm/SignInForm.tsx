@@ -1,16 +1,17 @@
 import { useCallback, useState, FC } from "react";
-import { useTranslation } from "next-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 import { AuthRequest } from "../../../types/ApiType";
 import { getSignInURL, getSignUpURL, isValidSignInSubmit, isValidSignUpSubmit } from "../../../util";
+import { auth } from "../../../constants/locales";
 
 import { Button } from "../../atoms/Button/Button";
 import { Input } from "../../atoms/Input/Input";
 import { InputPassword } from "../../atoms/Input/InputPassword";
 import { Text } from "../../atoms/Typography/Typography";
+import { CommonLink } from "../../atoms/CommonLink/CommonLink";
 
 import styles from "./style.module.css"
-import { CommonLink } from "../../atoms/CommonLink/CommonLink";
 
 interface FormErrors {
     email: boolean;
@@ -40,8 +41,8 @@ export const SignInForm: FC<SignInFormProps> = ({ buttonLoading, type, error, on
 
     const { t } = useTranslation();
 
-    const submitLabel = type === "signup" ? "auth:sign_up" : "auth:sign_in";
-    const linkLabel = type === "signup" ? "auth:already_have_account" : "auth:dont_have_account";
+    const submitLabel = type === "signup" ? auth.sign_up : auth.sign_in;
+    const linkLabel = type === "signup" ? auth.already_have_account : auth.dont_have_account;
     const linkURL = type === "signup" ? getSignInURL() : getSignUpURL();
 
     const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
@@ -77,13 +78,13 @@ export const SignInForm: FC<SignInFormProps> = ({ buttonLoading, type, error, on
                     required
                     type="email"
                     value={email}
-                    placeholder={t("auth:input_login_placeholder")}
+                    placeholder={t(auth.input_login_placeholder)}
                     onChange={(event) => {
                         setErros(prevErrors => ({ ...prevErrors, email: false }))
                         setEmail(event.target.value)
                     }}
                 />
-                {errors.email ? <Text type="danger">{t("auth:invalid_email")}</Text> : null}
+                {errors.email ? <Text type="danger">{t(auth.invalid_email)}</Text> : null}
             </div>
             {
                 type === "signup" ? (
@@ -91,23 +92,23 @@ export const SignInForm: FC<SignInFormProps> = ({ buttonLoading, type, error, on
                         <Input
                             required
                             value={username}
-                            placeholder={t("auth:input_username_placeholder")}
+                            placeholder={t(auth.input_username_placeholder)}
                             onChange={(event) => {
                                 setErros(prevErrors => ({ ...prevErrors, username: false }))
                                 setUsername(event.target.value)
                             }}
                         />
-                        {errors.username ? <Text type="danger">{t("auth:invalid_username")}</Text> : null}
+                        {errors.username ? <Text type="danger">{t(auth.invalid_username)}</Text> : null}
                     </div>
                 ) : null
             }
             <div className={styles.inputContainer}>
                 <InputPassword
                     value={password}
-                    placeholder={t("auth:input_password_placeholder")}
+                    placeholder={t(auth.input_password_placeholder)}
                     onChange={(event) => setPassword(event.target.value)}
                 />
-                {errors.password ? <Text type="danger">{t("auth:password_error")}</Text> : null}
+                {errors.password ? <Text type="danger">{t(auth.password_error)}</Text> : null}
             </div>
             <div className={styles.submitContainer}>
                 <Button loading={buttonLoading} type="submit">{t(submitLabel)}</Button>

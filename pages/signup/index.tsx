@@ -1,5 +1,4 @@
 import { useCallback, useState } from "react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
 import { ROUTES } from "../../src/constants";
@@ -38,14 +37,6 @@ const SignupPage = () => {
             onSubmit={handleSubmit}
         />
     </div>
-}
-
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ['auth'])),
-        },
-    };
 }
 
 export default SignupPage
