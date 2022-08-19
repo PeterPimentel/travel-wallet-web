@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { InferGetServerSidePropsType } from 'next'
 
 import { withSession } from "../../../src/lib/withSession"
@@ -28,14 +27,12 @@ TravelPage.getLayout = function getLayout(page) {
 }
 
 export const getServerSideProps = (withSession(async function ({
-    locale,
     req,
 }) {
 
     return {
         props: {
             session: req.session,
-            ...(await serverSideTranslations(locale, ['common'])),
         },
     }
 }))

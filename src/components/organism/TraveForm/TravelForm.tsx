@@ -1,8 +1,9 @@
 import { FC, useCallback, useState } from "react";
-import { useTranslation } from "next-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 import { TravelRequest } from "../../../types/ApiType";
 import { isValidTravelSubmit } from "../../../util";
+import { common } from "../../../constants/locales";
 
 import { Button } from "../../atoms/Button/Button";
 import { Input } from "../../atoms/Input/Input";
@@ -34,7 +35,7 @@ export const TravelForm: FC<TravelFormProps> = ({
     const [budget, setBudget] = useState(initialBudget || 0)
     const [imageCover, setImageCover] = useState(initialCover || "")
     const [error, setError] = useState<TravelFormError>({ name: false, cover: false })
-    const { t } = useTranslation();
+    const { t } = useTranslation('common');
 
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setError(error => ({ ...error, name: false }))
@@ -73,7 +74,7 @@ export const TravelForm: FC<TravelFormProps> = ({
                     required
                     value={name}
                     error={error.name}
-                    placeholder={t("input_travel_name_placeholder")}
+                    placeholder={t(common.input_travel_name_placeholder)}
                     onChange={handleNameChange}
                 />
             </div>
@@ -84,12 +85,12 @@ export const TravelForm: FC<TravelFormProps> = ({
                 />
             </div>
             <div className={styles.inputContainer}>
-                <H5>{t("travel_cover")}</H5>
-                {error.cover ? <Text type="danger">{t("travel_cover_not_set")}</Text> : null}
+                <H5>{t(common.travel_cover)}</H5>
+                {error.cover ? <Text type="danger">{t(common.travel_cover_not_set)}</Text> : null}
                 <TravelImageRadioButton value={imageCover} onChange={handleImageCoverChange} />
             </div>
             <div className={styles.submitContainer}>
-                <Button type="submit">{t("save")}</Button>
+                <Button type="submit">{t(common.add)}</Button>
             </div>
         </form>
     )

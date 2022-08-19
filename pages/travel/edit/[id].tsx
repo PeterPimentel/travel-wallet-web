@@ -1,6 +1,5 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from "next/router";
 import { InferGetServerSidePropsType } from "next";
 import { useStoreActions } from "easy-peasy";
@@ -12,6 +11,7 @@ import { NextPageWithLayout } from "../../_app";
 import useTravels from "../../../src/hooks/useTravels";
 import { getSelectedTravel } from "../../../src/util";
 import { StoreActions } from "../../../src/types/StoreType";
+import { common } from "../../../src/constants/locales";
 
 import { TravelEditTemplate } from "../../../src/components/templates/TravelEditTemplate/TravelEditTemplate";
 import { notification } from "../../../src/components/atoms/Notification/Notification";
@@ -37,7 +37,7 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
 
     const handleSubmit = useCallback((travel: TravelRequest) => {
         updateTravel({ id: travelId, name: travel.name, cover: travel.cover, budget: travel.budget }).then(() => {
-            notification(t("updated_travel_success"), "success")
+            notification(t(common.updated_travel_success), "success")
             router.push(`/${ROUTES.travel}/${travelId}`)
         }).catch((err) => {
             notification(err.message, "error")
@@ -46,7 +46,7 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
 
     const handleRemove = useCallback(() => {
         deleteTravel(travelId).then(() => {
-            notification(t("delete_travel_success"), "success")
+            notification(t(common.delete_travel_success), "success")
             router.push(`/${ROUTES.travel}`)
         }).catch((err) => {
             notification(err.message, "error")
@@ -64,28 +64,26 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
     return (
         <TravelEditTemplate
             headerLink={`/${ROUTES.travel}/${router.query.id}`}
-            headerLinkText={t("cancel")}
-            pageTitle={t("edit_travel")}
+            headerLinkText={t(common.cancel)}
+            pageTitle={t(common.edit_travel)}
             travel={{
                 name: data?.name,
                 cover: data?.cover,
                 budget: data.budget
             }}
-            footer={<DangerZone buttonText={t("delete_travel")} onClick={handleRemove} />}
+            footer={<DangerZone buttonText={t(common.delete_travel)} onClick={handleRemove} />}
             onSubmit={handleSubmit}
         />
     )
 }
 
 export const getServerSideProps = (withSession(async function ({
-    locale,
     req,
 }) {
 
     return {
         props: {
             session: req.session,
-            ...(await serverSideTranslations(locale, ['common'])),
         },
     }
 }))

@@ -1,8 +1,9 @@
 import { FC } from "react";
-import { useTranslation } from 'react-i18next';
+import useTranslation from 'next-translate/useTranslation'
 
 import { ExpenseType } from "../../../types/ExpenseType";
 import { EXPENSE_TYPE } from "../../../constants";
+import { common } from "../../../constants/locales";
 
 import { ExpenseIcon } from "../../atoms/ExpenseIcon/ExpenseIcon";
 import { Text } from "../../atoms/Typography/Typography"
@@ -18,37 +19,37 @@ const expensesType = [
     {
         type: EXPENSE_TYPE.activity,
         id: "activity",
-        label: "expense_type_activity"
+        label: common.expense_type_activity,
     },
     {
         type: EXPENSE_TYPE.food,
         id: "food",
-        label: "expense_type_food"
+        label: common.expense_type_food,
     },
     {
         type: EXPENSE_TYPE.hotel,
         id: "hotel",
-        label: "expense_type_hotel"
+        label: common.expense_type_hotel,
     },
     {
         type: EXPENSE_TYPE.shopping,
         id: "shopping",
-        label: "expense_type_shopping"
+        label: common.expense_type_shopping,
     },
     {
         type: EXPENSE_TYPE.transport,
         id: "transport",
-        label: "expense_type_transport",
+        label: common.expense_type_transport,
     },
     {
         type: EXPENSE_TYPE.flight,
         id: "flight",
-        label: "expense_type_flight",
+        label: common.expense_type_flight,
     },
     {
         type: EXPENSE_TYPE.other,
         id: "other",
-        label: "expense_type_other",
+        label: common.expense_type_other,
     }
 ]
 

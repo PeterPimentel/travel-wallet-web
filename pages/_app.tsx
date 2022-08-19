@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import { appWithTranslation } from 'next-i18next';
 import { AppProps } from 'next/app';
 import { ReactElement } from 'react';
 import { StoreProvider } from 'easy-peasy';
@@ -30,5 +29,5 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   );
 };
 
-export default appWithTranslation(MyApp);
+export default MyApp;
 

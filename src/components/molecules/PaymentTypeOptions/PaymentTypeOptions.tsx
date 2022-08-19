@@ -1,8 +1,9 @@
 import { FC } from "react";
-import { useTranslation } from "next-i18next";
-import { RadioButtonOnChangeEvent } from "../../../types/CommonType";
+import useTranslation from 'next-translate/useTranslation'
 
+import { RadioButtonOnChangeEvent } from "../../../types/CommonType";
 import { PaymentType } from "../../../types/ExpenseType";
+import { common } from "../../../constants/locales";
 
 import { PaymentIcon } from "../../atoms/PaymentIcon/PaymentIcon";
 import { RadioButton } from "../../atoms/RadioButton/RadioButton";
@@ -36,11 +37,11 @@ export const PaymentTypeOptions: FC<PaymentTypeOptionsProps> = ({ paymentType, o
         <div>
             <RadioButton onChange={onChange} value={paymentType} options={[
                 {
-                    text: <PaymentTypeOption type="CASH" text={t("cash")} />,
+                    text: <PaymentTypeOption type="CASH" text={t(common.cash)} />,
                     value: "CASH"
                 },
                 {
-                    text: <PaymentTypeOption type="CARD" text={t("card")} />,
+                    text: <PaymentTypeOption type="CARD" text={t(common.card)} />,
                     value: "CARD"
                 },
             ]} />

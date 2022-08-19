@@ -1,20 +1,21 @@
 import { EXPENSE_TYPE } from "../constants";
+import { common } from "../constants/locales";
 import { ExpenseType } from "../types/ExpenseType";
 
 export const mapApiTypeToTranslationKey = (type: ExpenseType): string => {
   switch (type) {
     case EXPENSE_TYPE.food:
-      return "expense_type_food";
+      return common.expense_type_food;
     case EXPENSE_TYPE.hotel:
-      return "expense_type_hotel";
+      return common.expense_type_hotel;
     case EXPENSE_TYPE.transport:
-      return "expense_type_transport";
+      return common.expense_type_transport;
     case EXPENSE_TYPE.shopping:
-      return "expense_type_shopping";
+      return common.expense_type_shopping;
     case EXPENSE_TYPE.activity:
-      return "expense_type_activity";
+      return common.expense_type_activity;
     default:
-      return "expense_type_other";
+      return common.expense_type_other;
   }
 };
 

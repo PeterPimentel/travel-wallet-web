@@ -1,6 +1,9 @@
-import { useTranslation } from "next-i18next";
+import useTranslation from 'next-translate/useTranslation'
+
+import { landing } from '../../../constants/locales';
 import { Feature } from "../../../types/CMSType";
-import { H4, Text } from "../../atoms/Typography/Typography";
+
+import { H4 } from "../../atoms/Typography/Typography";
 import { FeatureCard } from "../../molecules/FeatureCard/FeatureCard";
 
 import styles from "./style.module.css"
@@ -14,7 +17,7 @@ export const FeatureSection = ({ features }: FeatureSectionProps) => {
 
     return (
         <section className={styles.section}>
-            <H4>{t('landing:menu_features')}</H4>
+            <H4>{t(landing.menu_features)}</H4>
             <div className={styles.cards}>
                 {
                     features.map(feature => (

@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from 'next-i18next';
 import { useRef } from 'react';
 
 import { APP_NAME } from '../src/constants';
@@ -57,7 +55,7 @@ export default function Home({ cmsData }: HomeProps) {
   )
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps() {
   const featuresPromise = fetchResource<FeatureApiResponse>('app_features')
   const heroMarketingPromise = fetchResource<HeroMarketingApiResponse>('app_hero_marketing')
 
@@ -68,8 +66,7 @@ export async function getStaticProps({ locale }) {
       cmsData: {
         features: features.data,
         hero: heroMarketing.data,
-      },
-      ...(await serverSideTranslations(locale, ['landing'])),
+      }
     },
   };
 }

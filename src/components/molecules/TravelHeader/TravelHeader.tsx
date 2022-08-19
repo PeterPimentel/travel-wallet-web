@@ -1,17 +1,17 @@
 import { Statistic } from "antd"
 import { useMemo } from "react";
-import { useTranslation } from "next-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import { FaArrowLeft, FaEdit } from "react-icons/fa";
 import { useRouter } from "next/router";
 
 import { Expense } from "../../../types/ExpenseType";
 import { formatMoney, getDailyExpensesAverage, getTotalExpenses } from "../../../util";
+import { common } from "../../../constants/locales";
 
 import { CommonLink } from "../../atoms/CommonLink/CommonLink";
 import { SkeletonText } from "../../atoms/Skeleton/Skeleton";
 import { H5, Text } from "../../atoms/Typography/Typography";
 import { AppLogo } from "../../atoms/AppLogo/AppLogo";
-
 import { BalanceProgress } from "../BalanceProgress/BalanceProgress";
 
 import styles from "./style.module.css";
@@ -36,7 +36,7 @@ export const TravelHeader = ({ budget, name, expenses }: TravelHeaderProps) => {
             <div className={styles.navigationContainer}>
                 <div className={styles.navigation}>
                     <FaArrowLeft color="white" />
-                    <CommonLink color="white" to="/travel">{t('travels_link')}</CommonLink>
+                    <CommonLink color="white" to="/travel">{t(common.travels_link)}</CommonLink>
                 </div>
                 <AppLogo variant="white" />
                 <div className={styles.actions}>
@@ -48,14 +48,14 @@ export const TravelHeader = ({ budget, name, expenses }: TravelHeaderProps) => {
             {!name ? <div className={styles.skeleton}><SkeletonText /> </div> : null}
             {name ? <H5>{name}</H5> : null}
             <div className={styles.expenses}>
-                <Statistic title={t("daily_average_expenses")} value={dailyAverage} precision={2} />
+                <Statistic title={t(common.daily_average_expenses)} value={dailyAverage} precision={2} />
                 <div>
-                    <Statistic title={t("total_expenses")} value={total} precision={2} />
+                    <Statistic title={t(common.total_expenses)} value={total} precision={2} />
                     {budget ? (
                         <div>
                             <BalanceProgress percent={balancePercent} />
                             <div className={styles.balance} >
-                                <Text type="secondary">{t("balance")}</Text>
+                                <Text type="secondary">{t(common.balance)}</Text>
                                 <Text type="secondary">{formatMoney(balance)}</Text>
                             </div>
                         </div>

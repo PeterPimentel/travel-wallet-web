@@ -1,5 +1,7 @@
 import { FC } from "react";
-import { useTranslation } from "next-i18next";
+import useTranslation from 'next-translate/useTranslation'
+
+import { common } from "../../../constants/locales";
 
 import { Button } from "../../atoms/Button/Button";
 import { Divider } from "../../atoms/Divider/Divider";
@@ -17,7 +19,7 @@ export const DangerZone: FC<DangerZoneProps> = ({ buttonText, onClick }) => {
 
     return (
         <div className={styles.container}>
-            <Divider><Text type="danger">{t("danger_zone")}</Text></Divider>
+            <Divider><Text type="danger">{t(common.danger_zone)}</Text></Divider>
             <div className={styles.action}>
                 <Button danger onClick={onClick}>{buttonText}</Button>
             </div>

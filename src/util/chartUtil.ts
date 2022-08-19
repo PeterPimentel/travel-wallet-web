@@ -1,4 +1,5 @@
 import { EXPENSE_COLORS, EXPENSE_TYPE } from "../constants";
+import { common } from "../constants/locales";
 import { PieData, BarData } from "../types/ChartType";
 import { Expense } from "../types/ExpenseType";
 import { formatDate } from "./dateHelper";
@@ -37,13 +38,13 @@ export const getTotalExpensesByCategory = (
       }
     },
     [
-      { x: "activity", y: 0, label: "expense_type_activity" },
-      { x: "flight", y: 0, label: "expense_type_flight" },
-      { x: "food", y: 0, label: "expense_type_food" },
-      { x: "hotel", y: 0, label: "expense_type_hotel" },
-      { x: "other", y: 0, label: "expense_type_other" },
-      { x: "shopping", y: 0, label: "expense_type_shopping" },
-      { x: "transport", y: 0, label: "expense_type_transport" },
+      { x: "activity", y: 0, label: common.expense_type_activity },
+      { x: "flight", y: 0, label: common.expense_type_flight },
+      { x: "food", y: 0, label: common.expense_type_food },
+      { x: "hotel", y: 0, label: common.expense_type_hotel },
+      { x: "other", y: 0, label: common.expense_type_other },
+      { x: "shopping", y: 0, label: common.expense_type_shopping },
+      { x: "transport", y: 0, label: common.expense_type_transport },
     ]
   );
 
@@ -70,5 +71,5 @@ export const getDailyExpenses = (expenses: Expense[]): BarData[] => {
 };
 
 export const getPieChartColors = (data: PieData[]) => {
-  return data.map(element => EXPENSE_COLORS[element.x]);
-}
+  return data.map((element) => EXPENSE_COLORS[element.x]);
+};

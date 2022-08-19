@@ -1,9 +1,9 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
 import { getDailyExpenses } from "../../../../src/util/chartUtil";
 import useTravels from "../../../../src/hooks/useTravels";
 import { getSelectedTravel } from "../../../../src/util";
+import { withSession } from "../../../../src/lib/withSession";
 
 import { BarChart } from "../../../../src/components/atoms/BarChart/BarChart";
 import { CategoryPieChart } from "../../../../src/components/molecules/CategoryPieChart/CategoryPieChart";
@@ -43,12 +43,12 @@ OverviewPage.getLayout = function getLayout(page) {
     )
 }
 
-export async function getServerSideProps(context) {
+export const getServerSideProps = (withSession(async function (ctx) {
     return {
         props: {
-            ...(await serverSideTranslations(context.locale, ['common'])),
+            session: ctx.req.session,
         },
-    };
-}
+    }
+}))
 
 export default OverviewPage;

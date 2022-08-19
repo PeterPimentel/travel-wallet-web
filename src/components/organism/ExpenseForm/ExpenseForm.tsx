@@ -1,10 +1,11 @@
 import { FC, useCallback, useState } from "react";
-import { useTranslation } from "next-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 import { ExpenseRequest } from "../../../types/ApiType";
 import { ExpenseType, PaymentType } from "../../../types/ExpenseType";
 import { isValidExpenseSubmit } from "../../../util";
 import { formatDate } from "../../../util/dateHelper";
+import { common } from "../../../constants/locales";
 
 import { Button } from "../../atoms/Button/Button";
 import { DatePicker } from "../../atoms/DatePicker/DatePicker";
@@ -93,7 +94,7 @@ export const ExpenseForm: FC<ExpenseFormProps> = ({
                     <div>
                         <DatePicker onChange={setDate} value={date} />
                     </div>
-                    <Button onClick={() => setDate(formatDate(new Date()))}>{t("today")}</Button>
+                    <Button onClick={() => setDate(formatDate(new Date()))}>{t(common.today)}</Button>
                 </div>
             </div>
             <div className={styles.inputContainer}>
@@ -101,7 +102,7 @@ export const ExpenseForm: FC<ExpenseFormProps> = ({
                     required
                     value={title}
                     error={error.title}
-                    placeholder={t("input_expense_title_placeholder")}
+                    placeholder={t(common.input_expense_title_placeholder)}
                     onChange={handleTitleChange}
                 />
             </div>
@@ -115,12 +116,12 @@ export const ExpenseForm: FC<ExpenseFormProps> = ({
             <div className={styles.inputContainer}>
                 <TextArea
                     value={description}
-                    placeholder={t("input_expense_description_placeholder")}
+                    placeholder={t(common.input_expense_description_placeholder)}
                     onChange={(event) => setDescription(event.target.value)}
                 />
             </div>
             <div>
-                <H5>{t("category")}</H5>
+                <H5>{t(common.category)}</H5>
                 <ExpenseTypeRadioButton
                     value={expenseType}
                     onChange={(event) => setExpenseType(event.target.value as ExpenseType)}
@@ -128,7 +129,7 @@ export const ExpenseForm: FC<ExpenseFormProps> = ({
             </div>
 
             <div className={styles.submitContainer}>
-                <Button type="submit">{t("save")}</Button>
+                <Button type="submit">{t(common.add)}</Button>
             </div>
         </form>
     )

@@ -1,0 +1,21 @@
+{
+    "locales": [
+        "en",
+        "pt"
+    ],
+    "defaultLocale": "en",
+    "pages": {
+        "*": [
+            "common"
+        ],
+        "/": [
+            "landing"
+        ],
+        "/signin": [
+            "auth"
+        ],
+        "/signup": [
+            "auth"
+        ]
+    }
+}

@@ -1,4 +1,4 @@
-import { useTranslation } from "next-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import { useEffect, useState } from "react";
 import classname from "classnames";
 import { useRouter } from "next/router";
@@ -8,26 +8,27 @@ import { HamburguerMenu } from "../../molecules/HamburguerMenu/HamburguerMenu";
 import { LogoWithName } from "../../molecules/LogoWithName/LogoWithName";
 
 import style from "./style.module.css";
+import { landing } from '../../../constants/locales';
 
 const MENU_OPTIONS = [
     {
-        label: "landing:menu_home",
+        label: landing.menu_home,
         url: "home",
     },
     {
-        label: "landing:menu_features",
+        label: landing.menu_features,
         url: "features",
     },
     {
-        label: "landing:menu_contacts",
+        label: landing.menu_contacts,
         url: "contact",
     },
     {
-        label: "landing:sign_in",
+        label: landing.sign_in,
         url: "/signin",
     },
     {
-        label: "landing:sign_up",
+        label: landing.sign_up,
         url: "/signup",
     },
 ]

@@ -1,12 +1,8 @@
-const { i18n } = require('./next-i18next.config')
+const nextTranslate = require('next-translate')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  i18n,
-  images: {
-    domains: ['cdn.pixabay.com'],
-  },
+  reactStrictMode: true
 }
 
-module.exports = nextConfig
+module.exports = nextTranslate(nextConfig)
