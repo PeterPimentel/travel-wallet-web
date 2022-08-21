@@ -22,7 +22,9 @@ interface TravelEditTemplateProps {
 export const TravelEditTemplate: FC<TravelEditTemplateProps> = ({ headerLink, headerLinkText, pageTitle, travel, footer, onSubmit }) => {
     return (
         <div className={styles.page}>
-            <BasicHeader link={headerLink} linkText={headerLinkText} />
+            <div className={styles.header}>
+                <BasicHeader link={headerLink} linkText={headerLinkText} />
+            </div>
             <div className={styles.content}>
                 <div className={styles.title}>
                     <H3>{pageTitle}</H3>

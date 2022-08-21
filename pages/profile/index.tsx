@@ -25,7 +25,9 @@ const ProfilePage: FC = () => {
 
     return (
         <div className={styles.page}>
-            <BasicHeader link={`/${ROUTES.travel}`} linkText={t(common.back)} />
+            <div className={styles.header}>
+                <BasicHeader link={`/${ROUTES.travel}`} linkText={t(common.back)} />
+            </div>
             <div className={styles.content}>
                 <div className={styles.info}>
                     <H3>{t(common.profile)}</H3>

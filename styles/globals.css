@@ -45,5 +45,8 @@ body {
   --space-12: 24px;
   --space-24: 48px;
 
-  --menu-icon-size: 32px
+  --menu-icon-size: 32px;
+  --basic-header-height: 64px;
+  --travel-header-height: 170px;
+  --travel-footer-height: 64px;
 }

@@ -23,7 +23,7 @@ export const Expense: FC<ExpenseProps> = ({ title, type, value }) => {
     return (
         <div className={styles.expense}>
             <ExpenseIcon type={type} />
-            <div>
+            <div className={styles.info}>
                 <H5>{title}</H5>
                 <Text type="secondary">{expenseType}</Text>
             </div>

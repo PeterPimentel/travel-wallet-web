@@ -1,7 +1,10 @@
 .header {
-    height: 170px;
+    position: fixed;
+    height: var(--travel-header-height);
+    width: 100%;
     padding: 16px;
     background-color: var(--primary-color);
+    z-index: 10;
 }
 
 .expenses {
