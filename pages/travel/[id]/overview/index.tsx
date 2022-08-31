@@ -1,13 +1,12 @@
 import { useRouter } from "next/router";
 
-import { getDailyExpenses } from "../../../../src/util/chartUtil";
 import useTravels from "../../../../src/hooks/useTravels";
 import { getSelectedTravel } from "../../../../src/util";
 import { withSession } from "../../../../src/lib/withSession";
 
-import { BarChart } from "../../../../src/components/atoms/BarChart/BarChart";
 import { CategoryPieChart } from "../../../../src/components/molecules/CategoryPieChart/CategoryPieChart";
 import TravelPageLayout from "../../../../src/components/organism/TravelPageLayout/TravelPageLayout";
+import { DayliExpensesBardChart } from "../../../../src/components/molecules/DayliExpenseBarChart/DayliExpenseBarChart";
 
 import styles from "./style.module.css"
 
@@ -17,19 +16,13 @@ const OverviewPage = () => {
     const { data } = useTravels()
     const { expenses } = getSelectedTravel(data, Number(router.query.id))
 
-    const barData = getDailyExpenses(expenses)
-
     return (
         <div>
             <div className={styles.chartContainer}>
-                <div className={styles.chart}>
-                    <BarChart data={barData} color="#5377F0" />
-                </div>
+                <DayliExpensesBardChart expenses={expenses} />
             </div>
             <div className={styles.chartContainer}>
-                <div className={styles.chart}>
-                    <CategoryPieChart expenses={expenses} />
-                </div>
+                <CategoryPieChart expenses={expenses} />
             </div>
         </div>
     )

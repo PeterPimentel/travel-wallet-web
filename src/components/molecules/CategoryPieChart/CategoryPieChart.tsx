@@ -1,10 +1,13 @@
 import { FC, useMemo } from "react";
 import useTranslation from 'next-translate/useTranslation'
+import dynamic from 'next/dynamic'
 
 import { Expense } from "../../../types/ExpenseType"
-import { getPieChartColors, getTotalExpensesByCategory } from "../../../util/chartUtil";
+import { getTotalExpensesByCategory } from "../../../util/chartUtil";
 
-import { PieChart } from "../../atoms/PieChart/PieChart"
+const PieChart = dynamic(() => import('../../atoms/PieChart/PieChart'), {
+    ssr: false,
+});
 
 interface CategoryPieChartProps {
     expenses: Expense[];
@@ -15,23 +18,14 @@ export const CategoryPieChart: FC<CategoryPieChartProps> = ({ expenses }) => {
 
     const pie = useMemo(() => {
         const data = getTotalExpensesByCategory(expenses, true)
-        const filteredColors = getPieChartColors(data)
 
-        const translatedData = data.map(d => {
-            d.label = `${t(d.label)}(${d.y.toFixed(2)})`
+        return data.map(d => {
+            d.label = t(d.label)
             return d
         })
-
-        return {
-            data: translatedData,
-            colors: filteredColors,
-        }
     }, [expenses, t]);
 
     return (
-        <PieChart
-            data={pie.data}
-            colors={pie.colors}
-        />
+        <PieChart data={pie} />
     )
 }

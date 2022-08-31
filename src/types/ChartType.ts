@@ -1,10 +1,6 @@
-export interface PieData {
-    x: string;
-    y: number;
+export interface ChartData {
+    id: string;
+    value: number;
     label: string;
-}
-
-export interface BarData {
-    x: string;
-    y: number;
+    color: string;
 }

@@ -1,20 +1,26 @@
-import { FC } from "react"
-import { VictoryPie } from "victory"
+import { ResponsivePie } from "@nivo/pie"
 
-import { PieData } from "../../../types/ChartType"
+import { ChartData } from "../../../types/ChartType"
 
 interface PieChartProps {
-    data: PieData[];
-    colors: string[];
+    data: ChartData[];
 }
 
-export const PieChart: FC<PieChartProps> = ({ data, colors }) => {
+const MARGIN_Y = 60;
+const MARGIN_X = 80;
+
+const PieChart = ({ data }: PieChartProps) => {
     return (
-        <div>
-            <VictoryPie
-                colorScale={colors}
-                data={data}
-            />
-        </div>
+        <ResponsivePie
+            data={data}
+            margin={{ top: MARGIN_Y, right: MARGIN_X, bottom: MARGIN_Y, left: MARGIN_X }}
+            activeOuterRadiusOffset={8}
+            arcLinkLabel={d => `${d.label}`}
+            arcLabelsTextColor="#ffffff"
+            colors={{ 'datum': 'data.color' }}
+            animate={false}
+        />
     )
 }
+
+export default PieChart

@@ -1,22 +1,25 @@
-import { VictoryChart, VictoryTheme, VictoryBar } from "victory"
+import { ResponsiveBar } from "@nivo/bar";
 
-import { BarData } from "../../../types/ChartType";
+import { ChartData } from "../../../types/ChartType";
 
 interface BarChartProps {
-    data: BarData[];
-    color: string;
+    data: ChartData[];
 }
 
-export const BarChart = ({ data, color }: BarChartProps) => {
+const MARGIN_Y = 60;
+const MARGIN_X = 80;
+
+const BarChart = ({ data }: BarChartProps) => {
     return (
-        <VictoryChart
-            theme={VictoryTheme.grayscale}
-            domainPadding={10}
-        >
-            <VictoryBar
-                style={{ data: { fill: color } }}
-                data={data}
-            />
-        </VictoryChart>
-    )
+        <ResponsiveBar
+            margin={{ top: MARGIN_Y, right: MARGIN_X, bottom: MARGIN_Y, left: MARGIN_X }}
+            data={data as any}
+            indexBy="id"
+            keys={["value"]}
+            labelTextColor="inherit:darker(1.4)"
+            colors={{ 'datum': 'data.color' }}
+        />
+    );
 }
+
+export default BarChart;
