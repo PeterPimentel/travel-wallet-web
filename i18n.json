@@ -16,6 +16,9 @@
         ],
         "/signup": [
             "auth"
+        ],
+        "/travel/[id]/overview": [
+            "overview"
         ]
     }
 }
