@@ -34,6 +34,7 @@ export const common = {
   logout: "common:logout",
   overview: "common:overview",
   profile: "common:profile",
+  save: "common:save",
   today: "common:today",
   total_expenses: "common:total_expenses",
   travel_cover_not_set: "common:travel_cover_not_set",
@@ -45,6 +46,11 @@ export const common = {
   username_in_use: "common:username_in_use",
   welcome_message: "common:welcome_message",
 };
+
+export const overview = {
+    daily_expenses: "overview:daily_expenses",
+    expenses_by_category: "overview:expenses_by_category",
+}
 
 export const auth = {
   already_have_account: "auth:already_have_account",

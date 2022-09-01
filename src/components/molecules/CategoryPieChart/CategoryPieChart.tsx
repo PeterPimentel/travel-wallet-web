@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 
 import { Expense } from "../../../types/ExpenseType"
 import { getTotalExpensesByCategory } from "../../../util/chartUtil";
+import { common, overview } from "../../../constants/locales";
 
 const PieChart = dynamic(() => import('../../atoms/PieChart/PieChart'), {
     ssr: false,
@@ -17,15 +18,15 @@ export const CategoryPieChart: FC<CategoryPieChartProps> = ({ expenses }) => {
     const { t } = useTranslation();
 
     const pie = useMemo(() => {
-        const data = getTotalExpensesByCategory(expenses, true)
+        const data = getTotalExpensesByCategory(expenses)
+        const labels = data.labels.map(label => t(label))
 
-        return data.map(d => {
-            d.label = t(d.label)
-            return d
-        })
+        data.labels = labels
+
+        return data;
     }, [expenses, t]);
 
     return (
-        <PieChart data={pie} />
+        <PieChart data={pie} title={t(overview.expenses_by_category)} dataLabel="" />
     )
 }

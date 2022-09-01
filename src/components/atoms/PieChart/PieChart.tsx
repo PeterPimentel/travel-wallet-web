@@ -1,25 +1,39 @@
-import { ResponsivePie } from "@nivo/pie"
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
-import { ChartData } from "../../../types/ChartType"
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+import { ChartJsData } from "../../../types/ChartType"
 
 interface PieChartProps {
-    data: ChartData[];
+    data: ChartJsData;
+    title: string;
+    dataLabel: string;
 }
 
-const MARGIN_Y = 60;
-const MARGIN_X = 80;
-
-const PieChart = ({ data }: PieChartProps) => {
+const PieChart = ({ data, title, dataLabel }: PieChartProps) => {
     return (
-        <ResponsivePie
-            data={data}
-            margin={{ top: MARGIN_Y, right: MARGIN_X, bottom: MARGIN_Y, left: MARGIN_X }}
-            activeOuterRadiusOffset={8}
-            arcLinkLabel={d => `${d.label}`}
-            arcLabelsTextColor="#ffffff"
-            colors={{ 'datum': 'data.color' }}
-            animate={false}
-        />
+        <Pie
+            data={{
+                labels: data.labels,
+                datasets: [{
+                    label: dataLabel,
+                    borderColor: data.dataset.backgroundColor,
+                    ...data.dataset
+                }],
+            }}
+            options={{
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom' as const,
+                    },
+                    title: {
+                        display: true,
+                        text: title,
+                    },
+                },
+            }} />
     )
 }
 

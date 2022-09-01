@@ -1,76 +1,69 @@
-import { EXPENSE_COLORS, EXPENSE_TYPE } from "../constants";
+import { EXPENSE_TYPE, MAPPED_COLORS_BY_TYPE } from "../constants";
 import { common } from "../constants/locales";
-import { ChartData } from "../types/ChartType";
+import { ChartJsData } from "../types/ChartType";
 import { Expense } from "../types/ExpenseType";
 import { formatDate } from "./dateHelper";
 import { getTotalExpensesPeerDay } from "./expensesUtil";
 
+const MAPPED_LOCALES_BY_TYPE = {
+  [EXPENSE_TYPE.activity]: common.expense_type_activity,
+  [EXPENSE_TYPE.flight]: common.expense_type_flight,
+  [EXPENSE_TYPE.food]: common.expense_type_food,
+  [EXPENSE_TYPE.hotel]: common.expense_type_hotel,
+  [EXPENSE_TYPE.other]: common.expense_type_other,
+  [EXPENSE_TYPE.shopping]: common.expense_type_shopping,
+  [EXPENSE_TYPE.transport]: common.expense_type_transport,
+}
+
 export const getTotalExpensesByCategory = (
   expenses: Expense[],
-  clean?: boolean
-): ChartData[] => {
-  const data = expenses.reduce(
-    (acc: ChartData[], curr: Expense) => {
-      switch (curr.type) {
-        case EXPENSE_TYPE.activity:
-          acc[0].value = acc[0].value + curr.value;
-          return acc;
-        case EXPENSE_TYPE.flight:
-          acc[1].value = acc[1].value + curr.value;
-          return acc;
-        case EXPENSE_TYPE.food:
-          acc[2].value = acc[2].value + curr.value;
-          return acc;
-        case EXPENSE_TYPE.hotel:
-          acc[3].value = acc[3].value + curr.value;
-          return acc;
-        case EXPENSE_TYPE.other:
-          acc[4].value = acc[4].value + curr.value;
-          return acc;
-        case EXPENSE_TYPE.shopping:
-          acc[5].value = acc[5].value + curr.value;
-          return acc;
-        case EXPENSE_TYPE.transport:
-          acc[6].value = acc[6].value + curr.value;
-          return acc;
-        default:
-          return acc;
-      }
+): ChartJsData => {
+  const mappedExpenses = expenses.reduce(
+    (acc: Record<string, number>, curr: Expense) => {
+      const storedValue = acc[curr.type];
+      acc[curr.type] = storedValue ? storedValue + curr.value : curr.value;
+      return acc
     },
-    [
-      { id: "activity", value: 0, label: common.expense_type_activity, color:EXPENSE_COLORS.activity },
-      { id: "flight", value: 0, label: common.expense_type_flight, color:EXPENSE_COLORS.flight },
-      { id: "food", value: 0, label: common.expense_type_food, color:EXPENSE_COLORS.food },
-      { id: "hotel", value: 0, label: common.expense_type_hotel, color:EXPENSE_COLORS.hotel },
-      { id: "other", value: 0, label: common.expense_type_other, color:EXPENSE_COLORS.other },
-      { id: "shopping", value: 0, label: common.expense_type_shopping, color:EXPENSE_COLORS.shopping },
-      { id: "transport", value: 0, label: common.expense_type_transport, color:EXPENSE_COLORS.transport },
-    ]
+    {}
   );
 
-  if (clean) {
-    return data.filter((d) => d.value > 0);
-  }
+  const chartData = Object.keys(mappedExpenses).reduce((acc: ChartJsData, key: string) => {
+    acc.labels.push(MAPPED_LOCALES_BY_TYPE[key])
+    acc.dataset.data.push(mappedExpenses[key])
+    acc.dataset.backgroundColor.push(MAPPED_COLORS_BY_TYPE[key])
+  
+    return acc;  
+  },
+    {
+      labels: [],
+      dataset: {
+        data: [],
+        backgroundColor: [],
+      }
+    })
 
-  return data;
+  return chartData;
 };
 
 export const getDailyExpenses = (
   expenses: Expense[],
-): ChartData[] => {
+): ChartJsData => {
   const total = getTotalExpensesPeerDay(expenses);
 
-  return Object.keys(total).reduce(
-    (acc: ChartData[], key: string) => {
-      const date = formatDate(new Date(key), "dd/MM")
-      acc.push({
-        color: "#5377F0",
-        id: date,
-        label: date,
-        value: total[key]
-      });
-      return acc;
-    },
-    []
+  return Object.keys(total).reduce((acc: ChartJsData, key: string) => {
+    acc.labels.push(formatDate(new Date(key), "dd/MM"))
+
+    acc.dataset.data.push(total[key])
+    acc.dataset.backgroundColor.push("#5377F0")
+
+    return acc;
+  },
+    {
+      labels: [],
+      dataset: {
+        data: [],
+        backgroundColor: [],
+      }
+    }
   );
 };

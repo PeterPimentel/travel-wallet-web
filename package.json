@@ -9,10 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nivo/bar": "^0.79.1",
-    "@nivo/core": "^0.79.0",
-    "@nivo/pie": "^0.79.1",
     "antd": "^4.21.4",
+    "chart.js": "^3.9.1",
     "classnames": "^2.3.1",
     "currency.js": "^2.0.4",
     "date-fns": "^2.28.0",
@@ -21,6 +19,7 @@
     "next-translate": "^1.5.0",
     "nookies": "^2.5.2",
     "react": "18.2.0",
+    "react-chartjs-2": "^4.3.1",
     "react-datepicker": "^4.8.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",

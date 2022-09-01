@@ -1,24 +1,54 @@
-import { ResponsiveBar } from "@nivo/bar";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
 
-import { ChartData } from "../../../types/ChartType";
+import { ChartJsData } from "../../../types/ChartType";
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
 interface BarChartProps {
-    data: ChartData[];
+    data: ChartJsData;
+    title: string;
+    dataLabel: string;
 }
 
-const MARGIN_Y = 60;
-const MARGIN_X = 80;
+const BarChart = ({ data, title, dataLabel }: BarChartProps) => {
 
-const BarChart = ({ data }: BarChartProps) => {
     return (
-        <ResponsiveBar
-            margin={{ top: MARGIN_Y, right: MARGIN_X, bottom: MARGIN_Y, left: MARGIN_X }}
-            data={data as any}
-            indexBy="id"
-            keys={["value"]}
-            labelTextColor="inherit:darker(1.4)"
-            colors={{ 'datum': 'data.color' }}
-        />
+        <Bar
+            options={{
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top' as const,
+                    },
+                    title: {
+                        display: true,
+                        text: title,
+                    },
+                },
+            }}
+            data={{
+                labels: data.labels,
+                datasets: [{
+                    label: dataLabel,
+                    ...data.dataset
+                }],
+            }} />
     );
 }
 

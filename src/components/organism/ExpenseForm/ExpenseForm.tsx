@@ -129,7 +129,7 @@ export const ExpenseForm: FC<ExpenseFormProps> = ({
             </div>
 
             <div className={styles.submitContainer}>
-                <Button type="submit">{t(common.add)}</Button>
+                <Button type="submit">{t(common.save)}</Button>
             </div>
         </form>
     )
