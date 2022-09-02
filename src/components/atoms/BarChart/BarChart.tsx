@@ -1,22 +1,55 @@
-import { VictoryChart, VictoryTheme, VictoryBar } from "victory"
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
 
-import { BarData } from "../../../types/ChartType";
+import { ChartJsData } from "../../../types/ChartType";
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
 interface BarChartProps {
-    data: BarData[];
-    color: string;
+    data: ChartJsData;
+    title: string;
+    dataLabel: string;
 }
 
-export const BarChart = ({ data, color }: BarChartProps) => {
+const BarChart = ({ data, title, dataLabel }: BarChartProps) => {
+
     return (
-        <VictoryChart
-            theme={VictoryTheme.grayscale}
-            domainPadding={10}
-        >
-            <VictoryBar
-                style={{ data: { fill: color } }}
-                data={data}
-            />
-        </VictoryChart>
-    )
+        <Bar
+            options={{
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top' as const,
+                    },
+                    title: {
+                        display: true,
+                        text: title,
+                    },
+                },
+            }}
+            data={{
+                labels: data.labels,
+                datasets: [{
+                    label: dataLabel,
+                    ...data.dataset
+                }],
+            }} />
+    );
 }
+
+export default BarChart;

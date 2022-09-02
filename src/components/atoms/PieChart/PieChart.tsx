@@ -1,20 +1,40 @@
-import { FC } from "react"
-import { VictoryPie } from "victory"
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
-import { PieData } from "../../../types/ChartType"
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+import { ChartJsData } from "../../../types/ChartType"
 
 interface PieChartProps {
-    data: PieData[];
-    colors: string[];
+    data: ChartJsData;
+    title: string;
+    dataLabel: string;
 }
 
-export const PieChart: FC<PieChartProps> = ({ data, colors }) => {
+const PieChart = ({ data, title, dataLabel }: PieChartProps) => {
     return (
-        <div>
-            <VictoryPie
-                colorScale={colors}
-                data={data}
-            />
-        </div>
+        <Pie
+            data={{
+                labels: data.labels,
+                datasets: [{
+                    label: dataLabel,
+                    borderColor: data.dataset.backgroundColor,
+                    ...data.dataset
+                }],
+            }}
+            options={{
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom' as const,
+                    },
+                    title: {
+                        display: true,
+                        text: title,
+                    },
+                },
+            }} />
     )
 }
+
+export default PieChart
