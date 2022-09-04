@@ -34,6 +34,7 @@ const ProfilePage: FC = () => {
                     <Button onClick={handleLogout}>{t(common.logout)}</Button>
                 </div>
                 <DangerZone
+                    resource={t(common.account)}
                     buttonText={t(common.delete_profile)}
                     onClick={() => null}
                 />

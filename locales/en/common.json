@@ -1,4 +1,5 @@
 {
+    "account": "account",
     "add_expense": "Add expense",
     "add_travel": "Add Travel",
     "add": "Add",
@@ -8,6 +9,7 @@
     "card": "Card",
     "cash": "Cash",
     "category": "Category",
+    "confirmation_message": "Are you sure to delete this {{resource_type}}?",
     "daily_average_expenses": "DAILY AVERAGE",
     "danger_zone": "Danger zone",
     "delete_expense_success": "Expense deleted with success",
@@ -26,11 +28,13 @@
     "expense_type_other": "Other",
     "expense_type_shopping": "Shopping",
     "expense_type_transport": "Transport",
+    "expense": "expense",
     "expenses": "Expenses",
     "input_expense_description_placeholder": "Expense Description",
     "input_expense_title_placeholder": "Expense Title",
     "input_travel_name_placeholder": "Travel Title",
     "logout": "Logout",
+    "no": "No",
     "overview": "Overview",
     "profile": "Profile",
     "save": "Save",
@@ -39,9 +43,11 @@
     "travel_cover_not_set": "Please, select a travel cover",
     "travel_cover": "Travel cover",
     "travel_create_success": "Travel created",
+    "travel": "travel",
     "travels_link": "Travels",
     "update_expense_success": "Expense updated!",
     "updated_travel_success": "Travel updated!",
     "username_in_use": "This username is already taken",
-    "welcome_message": "Welcome!"
+    "welcome_message": "Welcome!",
+    "yes": "Yes"
 }

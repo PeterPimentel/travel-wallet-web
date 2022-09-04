@@ -71,7 +71,7 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
                 cover: data?.cover,
                 budget: data.budget
             }}
-            footer={<DangerZone buttonText={t(common.delete_travel)} onClick={handleRemove} />}
+            footer={<DangerZone resource={t(common.travel)} buttonText={t(common.delete_travel)} onClick={handleRemove} />}
             onSubmit={handleSubmit}
         />
     )

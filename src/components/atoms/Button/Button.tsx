@@ -1,8 +1,13 @@
 import { FC } from "react";
 import { Button as BaseButton } from "antd"
+import classname from "classnames";
+
+import styles from "./style.module.css"
+
 
 interface ButtonProps {
     children: React.ReactNode;
+    icon?: React.ReactNode;
     danger?: boolean;
     loading?: boolean;
     type?: "submit" | "button"
@@ -10,7 +15,9 @@ interface ButtonProps {
     onClick?: () => void;
 }
 
-export const Button: FC<ButtonProps> = ({ children, danger = false, loading = false, size = "middle", type = "button", onClick }) => {
+export const Button: FC<ButtonProps> = ({ children, icon = null, danger = false, loading = false, size = "middle", type = "button", onClick }) => {
+
+    const buttonStyle = classname({ [styles.icon]: !!icon })
 
     const handleOnClick = () => {
         if (onClick) {
@@ -19,6 +26,8 @@ export const Button: FC<ButtonProps> = ({ children, danger = false, loading = fa
     }
 
     return <BaseButton
+        className={buttonStyle}
+        icon={icon}
         loading={loading}
         type="primary"
         shape="round"

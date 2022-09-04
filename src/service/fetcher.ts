@@ -22,6 +22,10 @@ export async function fetcher<T>(url: string, config: Config): Promise<T> {
   if (response.ok) {
     return response.json();
   } else {
+    if(response.status === 404){
+      throw new Error("Service Unavailable");
+    }
+
     const error = await response.json();
     if (error.message) {
       throw error;
