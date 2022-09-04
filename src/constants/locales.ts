@@ -1,4 +1,5 @@
 export const common = {
+  account: "common:account",
   add_expense: "common:add_expense",
   add_travel: "common:add_travel",
   add: "common:add",
@@ -8,6 +9,7 @@ export const common = {
   card: "common:card",
   cash: "common:cash",
   category: "common:category",
+  confirmation_message: "common:confirmation_message",
   daily_average_expenses: "common:daily_average_expenses",
   danger_zone: "common:danger_zone",
   delete_expense_success: "common:delete_expense_success",
@@ -26,12 +28,13 @@ export const common = {
   expense_type_other: "common:expense_type_other",
   expense_type_shopping: "common:expense_type_shopping",
   expense_type_transport: "common:expense_type_transport",
+  expense: "common:expense",
   expenses: "common:expenses",
-  input_expense_description_placeholder:
-    "common:input_expense_description_placeholder",
+  input_expense_description_placeholder: "common:input_expense_description_placeholder",
   input_expense_title_placeholder: "common:input_expense_title_placeholder",
   input_travel_name_placeholder: "common:input_travel_name_placeholder",
   logout: "common:logout",
+  no: "common:no",
   overview: "common:overview",
   profile: "common:profile",
   save: "common:save",
@@ -40,11 +43,13 @@ export const common = {
   travel_cover_not_set: "common:travel_cover_not_set",
   travel_cover: "common:travel_cover",
   travel_create_success: "common:travel_create_success",
+  travel: "common:travel",
   travels_link: "common:travels_link",
   update_expense_success: "common:update_expense_success",
   updated_travel_success: "common:updated_travel_success",
   username_in_use: "common:username_in_use",
   welcome_message: "common:welcome_message",
+  yes: "common:yes",
 };
 
 export const overview = {

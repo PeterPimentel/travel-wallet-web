@@ -60,7 +60,7 @@ export const AddTravelPage = () => {
         expense={{ ...expense, date: formatDate(new Date(expense.date)) }}
         headerText={t(common.edit_expense)}
         onSubmit={handleSubmit}
-        footer={<DangerZone buttonText={t(common.delete_expense)} onClick={handleRemove} />}
+        footer={<DangerZone resource={t(common.expense)} buttonText={t(common.delete_expense)} onClick={handleRemove} />}
     />
 }
 
