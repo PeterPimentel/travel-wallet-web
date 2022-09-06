@@ -2,8 +2,7 @@ import Head from 'next/head'
 import { useRef } from 'react';
 
 import { APP_NAME } from '../src/constants';
-import { fetchResource } from '../src/service/cms';
-import { Feature, FeatureApiResponse, HeroMarketing, HeroMarketingApiResponse } from '../src/types/CMSType';
+import { Feature, LandingPage, HeroMarketing } from '../src/types/CMSType';
 
 import { LandingHeader } from '../src/components/organism/LandingHeader/LandingHeader'
 import { FeatureSection } from '../src/components/organism/FeatureSection/FeatureSection';
@@ -11,6 +10,7 @@ import { HeroMarketingSection } from '../src/components/organism/HeroMarketingSe
 import { LandingFooter } from '../src/components/organism/LandingFooter/LandingFooter';
 
 import styles from "./index.module.css"
+import { getCMSResource } from '../src/service/cms';
 
 type HomeProps = {
   cmsData: {
@@ -56,17 +56,11 @@ export default function Home({ cmsData }: HomeProps) {
 }
 
 export async function getStaticProps() {
-  const featuresPromise = fetchResource<FeatureApiResponse>('app_features')
-  const heroMarketingPromise = fetchResource<HeroMarketingApiResponse>('app_hero_marketing')
-
-  const [heroMarketing, features] = await Promise.all([heroMarketingPromise, featuresPromise])
+  const landingPage = await getCMSResource<LandingPage>('landing_page')
 
   return {
     props: {
-      cmsData: {
-        features: features.data,
-        hero: heroMarketing.data,
-      }
+      cmsData: landingPage
     },
   };
 }
