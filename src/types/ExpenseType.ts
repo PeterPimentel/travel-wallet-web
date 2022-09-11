@@ -16,6 +16,13 @@ export interface ExpensesGroup {
     [date: string]: Expense[];
 }
 
+export interface ExpenseTableData {
+    type: ExpenseType;
+    value: number;
+    label: string;
+}
+
+
 export interface DailyCost {
     [date: string]: number;
 }

@@ -1,9 +1,9 @@
 import { EXPENSE_TYPE, MAPPED_COLORS_BY_TYPE } from "../constants";
 import { common } from "../constants/locales";
 import { ChartJsData } from "../types/ChartType";
-import { Expense } from "../types/ExpenseType";
+import { Expense, ExpenseTableData, ExpenseType } from "../types/ExpenseType";
 import { formatDate } from "./dateHelper";
-import { getTotalExpensesPeerDay } from "./expensesUtil";
+import { getTotalExpensesPeerDay, getMappedCategoryExpenses } from "./expensesUtil";
 
 const MAPPED_LOCALES_BY_TYPE = {
   [EXPENSE_TYPE.activity]: common.expense_type_activity,
@@ -15,17 +15,10 @@ const MAPPED_LOCALES_BY_TYPE = {
   [EXPENSE_TYPE.transport]: common.expense_type_transport,
 }
 
-export const getTotalExpensesByCategory = (
+export const getExpensesByCategoryChartFormat = (
   expenses: Expense[],
 ): ChartJsData => {
-  const mappedExpenses = expenses.reduce(
-    (acc: Record<string, number>, curr: Expense) => {
-      const storedValue = acc[curr.type];
-      acc[curr.type] = storedValue ? storedValue + curr.value : curr.value;
-      return acc
-    },
-    {}
-  );
+  const mappedExpenses = getMappedCategoryExpenses(expenses)
 
   const chartData = Object.keys(mappedExpenses).reduce((acc: ChartJsData, key: string) => {
     acc.labels.push(MAPPED_LOCALES_BY_TYPE[key])
@@ -45,7 +38,23 @@ export const getTotalExpensesByCategory = (
   return chartData;
 };
 
-export const getDailyExpenses = (
+export const getExpensesByCategory = (
+  expenses: Expense[],
+): ExpenseTableData[] => {
+  const mappedExpenses = getMappedCategoryExpenses(expenses)
+  const expensesData = Object.keys(mappedExpenses).map((key: ExpenseType) => {
+    return {
+      type: key,
+      value:  mappedExpenses[key],
+      label: MAPPED_LOCALES_BY_TYPE[key],
+    }
+  })
+
+  return expensesData;
+};
+
+
+export const getDailyExpensesChartFormat = (
   expenses: Expense[],
 ): ChartJsData => {
   const total = getTotalExpensesPeerDay(expenses);

@@ -7,6 +7,7 @@ import { withSession } from "../../../../src/lib/withSession";
 import { CategoryPieChart } from "../../../../src/components/molecules/CategoryPieChart/CategoryPieChart";
 import TravelPageLayout from "../../../../src/components/organism/TravelPageLayout/TravelPageLayout";
 import { DayliExpensesBardChart } from "../../../../src/components/molecules/DayliExpenseBarChart/DayliExpenseBarChart";
+import { ExpensesCategoryList } from "../../../../src/components/molecules/ExpensesCategoryList/ExpensesCategoryList";
 
 import styles from "./style.module.css"
 
@@ -17,12 +18,15 @@ const OverviewPage = () => {
     const { expenses } = getSelectedTravel(data, Number(router.query.id))
 
     return (
-        <div>
+        <div className={styles.page}>
             <div className={styles.chartContainer}>
                 <DayliExpensesBardChart expenses={expenses} />
             </div>
             <div className={styles.chartContainer}>
                 <CategoryPieChart expenses={expenses} />
+            </div>
+            <div className={styles.chartContainer}>
+                <ExpensesCategoryList expenses={expenses} />
             </div>
         </div>
     )

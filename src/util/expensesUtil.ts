@@ -25,6 +25,19 @@ export const getTotalExpensesPeerDay = (expenses: Expense[]): DailyCost => {
   }, {} as DailyCost);
 };
 
+
+
+// The key is a ExpenseType
+// E.g "FOOD" | "TRANSPORT"
+export const getMappedCategoryExpenses = (expenses: Expense[]) => expenses.reduce(
+    (acc: Record<string, number>, curr: Expense) => {
+      const storedValue = acc[curr.type];
+      acc[curr.type] = storedValue ? storedValue + curr.value : curr.value;
+      return acc
+    },
+    {}
+  );
+
 export const getDailyExpensesAverage = (expenses: Expense[]): number => {
   const totalPeerDay = getTotalExpensesPeerDay(expenses);
 
@@ -47,12 +60,6 @@ export const getTotalExpenses = (expenses: Expense[]): number => {
   }, 0);
 
   return total;
-};
-
-type FallbackData = {
-  name: string;
-  budget: number;
-  expenses: Expense[];
 };
 
 export const getSelectedTravel = (
