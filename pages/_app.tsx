@@ -2,6 +2,8 @@ import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { ReactElement } from 'react';
 import { StoreProvider } from 'easy-peasy';
+import NextProgress from "next-progress";
+
 import { store } from '../src/store/store';
 
 import '../styles/globals.css'
@@ -24,6 +26,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <StoreProviderCasted store={store}>
+      <NextProgress color='#1098F7' options={{ showSpinner: false }} />
       {getLayout(<Component {...pageProps} />)}
     </StoreProviderCasted>
   );

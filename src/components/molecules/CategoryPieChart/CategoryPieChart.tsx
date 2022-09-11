@@ -3,8 +3,8 @@ import useTranslation from 'next-translate/useTranslation'
 import dynamic from 'next/dynamic'
 
 import { Expense } from "../../../types/ExpenseType"
-import { getTotalExpensesByCategory } from "../../../util/chartUtil";
-import { common, overview } from "../../../constants/locales";
+import { getExpensesByCategoryChartFormat } from "../../../util/chartUtil";
+import { overview } from "../../../constants/locales";
 
 const PieChart = dynamic(() => import('../../atoms/PieChart/PieChart'), {
     ssr: false,
@@ -18,7 +18,7 @@ export const CategoryPieChart: FC<CategoryPieChartProps> = ({ expenses }) => {
     const { t } = useTranslation();
 
     const pie = useMemo(() => {
-        const data = getTotalExpensesByCategory(expenses)
+        const data = getExpensesByCategoryChartFormat(expenses)
         const labels = data.labels.map(label => t(label))
 
         data.labels = labels
