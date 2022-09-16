@@ -15,6 +15,7 @@ export const common = {
   delete_expense_success: "common:delete_expense_success",
   delete_expense: "common:delete_expense",
   delete_profile: "common:delete_profile",
+  delete_profile_success: "common:delete_profile_success",
   delete_travel_success: "common:delete_travel_success",
   delete_travel: "common:delete_travel",
   edit_expense: "common:edit_expense",
@@ -30,7 +31,8 @@ export const common = {
   expense_type_transport: "common:expense_type_transport",
   expense: "common:expense",
   expenses: "common:expenses",
-  input_expense_description_placeholder: "common:input_expense_description_placeholder",
+  input_expense_description_placeholder:
+    "common:input_expense_description_placeholder",
   input_expense_title_placeholder: "common:input_expense_title_placeholder",
   input_travel_name_placeholder: "common:input_travel_name_placeholder",
   logout: "common:logout",
@@ -53,9 +55,9 @@ export const common = {
 };
 
 export const overview = {
-    daily_expenses: "overview:daily_expenses",
-    expenses_by_category: "overview:expenses_by_category",
-}
+  daily_expenses: "overview:daily_expenses",
+  expenses_by_category: "overview:expenses_by_category",
+};
 
 export const auth = {
   already_have_account: "auth:already_have_account",

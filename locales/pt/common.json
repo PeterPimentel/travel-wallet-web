@@ -15,6 +15,7 @@
     "delete_expense_success": "Despesa deletada com sucesso",
     "delete_expense": "Apagar despesa",
     "delete_profile": "Apagar conta",
+    "delete_profile_success": "Conta apagada com sucesso",
     "delete_travel_success": "Viagem apagada com sucesso",
     "delete_travel": "Apagar viagem",
     "edit_expense": "Editar despesa",
