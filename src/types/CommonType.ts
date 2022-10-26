@@ -20,3 +20,8 @@ export interface AppSession {
 }
 
 export type LogoSize = "small" | "regular" | "large" | "extraLarge";
+
+export type SelectOption = {
+  value: string;
+  text: string;
+}

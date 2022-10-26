@@ -1,5 +1,4 @@
 import { Expense } from "../types/ExpenseType";
-import { Travel } from "../types/TravelType";
 import { fetcher } from "./fetcher";
 
 export const createExpense = async (

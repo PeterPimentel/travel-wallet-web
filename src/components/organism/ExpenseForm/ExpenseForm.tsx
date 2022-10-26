@@ -2,6 +2,7 @@ import { FC, useCallback, useState } from "react";
 import useTranslation from 'next-translate/useTranslation'
 
 import { ExpenseRequest } from "../../../types/ApiType";
+import { Location } from "../../../types/LocationType";
 import { ExpenseType, PaymentType } from "../../../types/ExpenseType";
 import { isValidExpenseSubmit } from "../../../util";
 import { formatDate } from "../../../util/dateHelper";
@@ -16,6 +17,7 @@ import { H5 } from "../../atoms/Typography/Typography";
 import { CurrencyInput } from "../../molecules/CurrencyInput/CurrencyInput";
 import { ExpenseTypeRadioButton } from "../../molecules/ExpenseTypeRadioButton/ExpenseTypeRadioButton";
 import { PaymentTypeOptions } from "../../molecules/PaymentTypeOptions/PaymentTypeOptions";
+import { PlaceSelect } from "../../molecules/PlaceSelect/PlaceSelect";
 
 import styles from "./style.module.css"
 
@@ -24,8 +26,10 @@ interface ExpenseFormProps {
     initialDate?: string;
     initialDescription?: string;
     initialExpenseType?: ExpenseType;
+    initialLocation?: Location;
     initialPaymentType?: PaymentType;
     initialTitle?: string;
+    travelId: number;
     onSubmit: (expense: ExpenseRequest) => void
 }
 
@@ -39,8 +43,10 @@ export const ExpenseForm: FC<ExpenseFormProps> = ({
     initialDate,
     initialDescription,
     initialExpenseType,
+    initialLocation,
     initialPaymentType,
     initialTitle,
+    travelId,
     onSubmit
 }) => {
     const [amount, setAmount] = useState(initalAmount || 0)
@@ -49,6 +55,7 @@ export const ExpenseForm: FC<ExpenseFormProps> = ({
     const [expenseType, setExpenseType] = useState<ExpenseType>(initialExpenseType || "FOOD")
     const [paymentType, setPaymentType] = useState<PaymentType>(initialPaymentType || "CASH")
     const [title, setTitle] = useState(initialTitle || "")
+    const [location, setLocation] = useState<Location>(initialLocation || null)
     const [error, setError] = useState<ExpenseFormError>({ title: false, amount: false })
     const { t } = useTranslation();
 
@@ -78,10 +85,11 @@ export const ExpenseForm: FC<ExpenseFormProps> = ({
                 title: title.trim(),
                 type: expenseType,
                 value: amount,
+                location: location,
             })
         }
 
-    }, [amount, date, description, expenseType, onSubmit, paymentType, title])
+    }, [amount, date, description, expenseType, location, onSubmit, paymentType, title])
 
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -119,6 +127,9 @@ export const ExpenseForm: FC<ExpenseFormProps> = ({
                     placeholder={t(common.input_expense_description_placeholder)}
                     onChange={(event) => setDescription(event.target.value)}
                 />
+            </div>
+            <div className={styles.inputContainer}>
+                <PlaceSelect travelId={travelId} value={location ? `${location.id}` : null} onSelect={setLocation} />
             </div>
             <div>
                 <H5>{t(common.category)}</H5>
