@@ -35,7 +35,7 @@ export const TravelForm: FC<TravelFormProps> = ({
     const [budget, setBudget] = useState(initialBudget || 0)
     const [imageCover, setImageCover] = useState(initialCover || "")
     const [error, setError] = useState<TravelFormError>({ name: false, cover: false })
-    const { t } = useTranslation('common');
+    const { t } = useTranslation();
 
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setError(error => ({ ...error, name: false }))

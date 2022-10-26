@@ -1,0 +1,15 @@
+.selecetContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selectBox {
+    width: 90%;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

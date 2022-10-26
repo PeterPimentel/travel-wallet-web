@@ -34,7 +34,7 @@ export const AddTravelPage = () => {
         })
     }, [travelId, createExpense, t, router])
 
-    return <EditExpenseTemplate headerText={t(common.add_expense)} onSubmit={handleSubmit} />
+    return <EditExpenseTemplate travelId={Number(travelId)} headerText={t(common.add_expense)} onSubmit={handleSubmit} />
 }
 
 AddTravelPage.getLayout = function getLayout(page) {

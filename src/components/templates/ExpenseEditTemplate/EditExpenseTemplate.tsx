@@ -11,10 +11,11 @@ interface EditExpenseTemplateProps {
     headerText: string;
     expense?: ExpenseRequest;
     footer?: ReactNode;
+    travelId: number;
     onSubmit: (expense: ExpenseRequest) => void
 }
 
-export const EditExpenseTemplate: FC<EditExpenseTemplateProps> = ({ headerText, expense, footer, onSubmit }) => {
+export const EditExpenseTemplate: FC<EditExpenseTemplateProps> = ({ headerText, travelId, expense, footer, onSubmit }) => {
 
     return (
         <div className={styles.content}>
@@ -25,9 +26,11 @@ export const EditExpenseTemplate: FC<EditExpenseTemplateProps> = ({ headerText, 
                 initalAmount={expense?.value}
                 initialDate={expense?.date}
                 initialDescription={expense?.description}
+                initialLocation={expense?.location}
                 initialExpenseType={expense?.type}
                 initialTitle={expense?.title}
                 initialPaymentType={expense?.payment}
+                travelId={travelId}
                 onSubmit={onSubmit}
             />
             {footer}

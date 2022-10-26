@@ -1,3 +1,4 @@
+import { Location } from "./LocationType"
 export interface Expense {
     date: string;
     description?: string;
@@ -7,9 +8,11 @@ export interface Expense {
     type: ExpenseType;
     value: number;
     payment: PaymentType;
+    locationId?: number;
+    location?: Location;
 };
 
-export type ExpenseType = "FOOD" | "TRANSPORT" | "HOTEL" | "SHOPPING" |"ACTIVITY"
+export type ExpenseType = "FOOD" | "TRANSPORT" | "HOTEL" | "SHOPPING" | "ACTIVITY"
 
 
 export interface ExpensesGroup {
