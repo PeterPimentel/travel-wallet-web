@@ -1,5 +1,3 @@
-import { FC } from "react";
-
 import { FaHotel, FaShoppingCart, FaBus, FaShapes, FaHamburger, FaRunning, FaPlaneDeparture } from "react-icons/fa";
 
 import { EXPENSE_TYPE } from "../../../constants";
@@ -7,12 +5,11 @@ import { ExpenseType } from "../../../types/ExpenseType";
 
 import styles from "./style.module.css"
 
-
 interface ExpenseIconProps {
     type: ExpenseType
 }
 
-export const ExpenseIcon: FC<ExpenseIconProps> = ({ type }) => {
+export const ExpenseIcon = ({ type }: ExpenseIconProps) => {
     switch (type) {
         case EXPENSE_TYPE.food:
             return <div className={`${styles.icon} ${styles.food}`}><FaHamburger style={{ color: "white" }} /></div>
