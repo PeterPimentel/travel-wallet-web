@@ -8,6 +8,7 @@ import { ROUTES } from "../../src/constants";
 import { withSessionHOC } from "../../src/lib/withSessionHOC";
 import { StoreActions } from "../../src/types/StoreType";
 import { common } from "../../src/constants/locales";
+import { apiLocales, apiLocalesMap } from "../../src/constants/apiLocales";
 
 import { TravelEditTemplate } from "../../src/components/templates/TravelEditTemplate/TravelEditTemplate";
 import { notification } from "../../src/components/atoms/Notification/Notification";
@@ -25,7 +26,11 @@ const AddTravelPage: FC = () => {
             notification(t(common.travel_create_success), "success")
             router.push(`/${ROUTES.travel}`)
         }).catch((err: Error) => {
-            notification(err.message, "error")
+            if (apiLocales.includes(err.message)) {
+                notification(t(apiLocalesMap[err.message]), "error")
+            } else {
+                notification(err.message, "error")
+            }
         })
     }, [router, saveTravels, t])
 

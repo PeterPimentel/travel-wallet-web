@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react"
+import { ReactNode } from "react"
 import Link from 'next/link'
 import classname from "classnames"
 
@@ -10,7 +10,7 @@ interface CommonLinkProps {
     color?: "white" | "blue" | "black";
 }
 
-export const CommonLink: FC<CommonLinkProps> = ({ children, to, color = "blue" }) => {
+export const CommonLink = ({ children, to, color = "blue" }: CommonLinkProps) => {
     const linkStyle = classname({
         [styles.white]: color === "white",
         [styles.black]: color === "black",

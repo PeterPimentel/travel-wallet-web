@@ -1,11 +1,10 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Divider as BaseDivider } from 'antd';
-
 
 interface DividerProps {
     children: string | ReactNode;
 }
 
-export const Divider: FC<DividerProps> = ({ children }) => {
+export const Divider = ({ children }: DividerProps) => {
     return <BaseDivider plain>{children}</BaseDivider>
 }

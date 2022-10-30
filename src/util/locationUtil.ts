@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid'
+import { v4 as uuidv4 } from 'uuid';
 
 import { SelectOption } from "../types/CommonType";
 import { Location } from "../types/LocationType";
@@ -6,7 +6,7 @@ import { Travel } from '../types/TravelType';
 
 export const addLocationIdentifier = (location: Location[]): Location[] => {
     return location.map((location) => ({
-        id: nanoid(),
+        id: uuidv4(),
         ...location,
     }))
 }
