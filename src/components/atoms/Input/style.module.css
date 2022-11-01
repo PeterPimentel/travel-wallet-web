@@ -1,0 +1,11 @@
+.input:not(.ant-input-status-error) {
+    border: 1px solid var(--light-gray);
+}
+
+.input:focus {
+    border: 1px solid var(--primary-color);
+}
+
+.input:hover {
+    border: 1px solid var(--primary-color);
+}

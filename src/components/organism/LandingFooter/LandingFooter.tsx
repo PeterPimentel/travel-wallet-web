@@ -1,4 +1,5 @@
 import { FaInstagram } from "react-icons/fa"
+import { BASE_COLORS } from "../../../constants"
 
 import { Text } from "../../atoms/Typography/Typography"
 import { LogoWithName } from "../../molecules/LogoWithName/LogoWithName"
@@ -16,7 +17,7 @@ export const LandingFooter = () => {
             </div>
             <div className={styles.sideContent}>
                 <a href="https://www.instagram.com/" target="blank">
-                    <FaInstagram style={{ color: "#5377F0", fontSize: '32px' }} />
+                    <FaInstagram style={{ color: BASE_COLORS.primary, fontSize: '32px' }} />
                 </a>
             </div>
         </footer>

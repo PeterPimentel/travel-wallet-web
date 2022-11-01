@@ -1,6 +1,8 @@
 import { FC, ReactNode } from "react";
 import { Input as BaseInput } from "antd"
 
+import styles from "./style.module.css"
+
 interface InputProps {
     placeholder: string;
     value: string | number;
@@ -14,6 +16,7 @@ interface InputProps {
 
 export const Input: FC<InputProps> = ({ placeholder, value, disabled = false, required = false, prefix, error = false, type = "text", onChange }) => {
     return <BaseInput
+        className={styles.input}
         disabled={disabled}
         placeholder={placeholder}
         prefix={prefix}

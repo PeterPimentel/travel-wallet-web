@@ -1,4 +1,4 @@
-import { EXPENSE_TYPE, MAPPED_COLORS_BY_TYPE } from "../constants";
+import { BASE_COLORS, EXPENSE_TYPE, MAPPED_COLORS_BY_TYPE } from "../constants";
 import { common } from "../constants/locales";
 import { ChartJsData } from "../types/ChartType";
 import { Expense, ExpenseTableData, ExpenseType } from "../types/ExpenseType";
@@ -24,8 +24,8 @@ export const getExpensesByCategoryChartFormat = (
     acc.labels.push(MAPPED_LOCALES_BY_TYPE[key])
     acc.dataset.data.push(mappedExpenses[key])
     acc.dataset.backgroundColor.push(MAPPED_COLORS_BY_TYPE[key])
-  
-    return acc;  
+
+    return acc;
   },
     {
       labels: [],
@@ -45,7 +45,7 @@ export const getExpensesByCategory = (
   const expensesData = Object.keys(mappedExpenses).map((key: ExpenseType) => {
     return {
       type: key,
-      value:  mappedExpenses[key],
+      value: mappedExpenses[key],
       label: MAPPED_LOCALES_BY_TYPE[key],
     }
   })
@@ -63,7 +63,7 @@ export const getDailyExpensesChartFormat = (
     acc.labels.push(formatDate(new Date(key), "dd/MM"))
 
     acc.dataset.data.push(total[key])
-    acc.dataset.backgroundColor.push("#5377F0")
+    acc.dataset.backgroundColor.push(BASE_COLORS.primary)
 
     return acc;
   },

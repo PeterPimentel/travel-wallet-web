@@ -18,6 +18,12 @@ export const EXPENSE_COLORS = {
   transport: "#1098F7",
 };
 
+export const BASE_COLORS = {
+  primary: "#5377F0",
+  primary_hover: "#728ff2",
+  primary_active: "#096dd9",
+}
+
 export const ROUTES = {
   newExpense: "expense/new",
   overview: "overview",

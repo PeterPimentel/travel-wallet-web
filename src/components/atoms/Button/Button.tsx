@@ -13,7 +13,7 @@ interface ButtonProps {
     disabled?: boolean;
     type?: "submit" | "button";
     size?: "large" | "middle" | "small";
-    layout?: "primary" | "default" | "dashed";
+    layout?: "primary" | "default";
     onClick?: () => void;
 }
 
@@ -28,8 +28,7 @@ export const Button: FC<ButtonProps> = ({
     layout = "primary",
     onClick
 }) => {
-
-    const buttonStyle = classname({ [styles.icon]: !!icon })
+    const buttonStyle = classname({ [styles.icon]: !!icon }, styles[layout])
 
     const handleOnClick = () => {
         if (onClick) {

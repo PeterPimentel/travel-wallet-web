@@ -5,6 +5,7 @@ import { StoreProvider } from 'easy-peasy';
 import NextProgress from "next-progress";
 
 import { store } from '../src/store/store';
+import { BASE_COLORS } from '../src/constants';
 
 import '../styles/globals.css'
 
@@ -26,7 +27,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <StoreProviderCasted store={store}>
-      <NextProgress color='#1098F7' options={{ showSpinner: false }} />
+      <NextProgress color={BASE_COLORS.primary_active} options={{ showSpinner: false }} />
       {getLayout(<Component {...pageProps} />)}
     </StoreProviderCasted>
   );

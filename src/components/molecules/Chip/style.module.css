@@ -13,15 +13,15 @@
 }
 
 .success {
-    background-color: #52c41a;
+    background-color: var(--feedback-success-color);
 }
 
 .warning {
-    background-color: #faad14;
+    background-color: var(--feedback-warning-color);
 }
 
 .danger {
-    background-color: #ff4d4f;
+    background-color: var(--feedback-danger-color);
 }
 
 .chip>span {
