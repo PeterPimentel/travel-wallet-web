@@ -10,12 +10,24 @@ interface ButtonProps {
     icon?: React.ReactNode;
     danger?: boolean;
     loading?: boolean;
-    type?: "submit" | "button"
+    disabled?: boolean;
+    type?: "submit" | "button";
     size?: "large" | "middle" | "small";
+    layout?: "primary" | "default" | "dashed";
     onClick?: () => void;
 }
 
-export const Button: FC<ButtonProps> = ({ children, icon = null, danger = false, loading = false, size = "middle", type = "button", onClick }) => {
+export const Button: FC<ButtonProps> = ({
+    children,
+    icon = null,
+    danger = false,
+    loading = false,
+    disabled = false,
+    size = "middle",
+    type = "button",
+    layout = "primary",
+    onClick
+}) => {
 
     const buttonStyle = classname({ [styles.icon]: !!icon })
 
@@ -29,7 +41,8 @@ export const Button: FC<ButtonProps> = ({ children, icon = null, danger = false,
         className={buttonStyle}
         icon={icon}
         loading={loading}
-        type="primary"
+        disabled={disabled}
+        type={layout}
         shape="round"
         size={size}
         danger={danger}

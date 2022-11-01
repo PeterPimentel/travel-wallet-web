@@ -24,3 +24,11 @@ export const getSession = (token: string) => async (_: string) => {
     token,
   });
 };
+
+
+export const retryActivation = async (token: string) => {
+  return await fetcher<AuthApiResponse>("/auth/activation/retry", {
+    method: "GET",
+    token,
+  });
+};

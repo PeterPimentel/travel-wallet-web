@@ -18,3 +18,9 @@
     flex-direction: column;
     align-items: center;
 }
+
+.activationMail {
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--space-2);
+}

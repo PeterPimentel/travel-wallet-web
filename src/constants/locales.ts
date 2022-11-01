@@ -1,5 +1,7 @@
 export const common = {
   account: "common:account",
+  activation_email_retry: "common:activation_email_retry",
+  activation_email_sent: "common:activation_email_sent",
   add_expense: "common:add_expense",
   add_travel: "common:add_travel",
   add: "common:add",
