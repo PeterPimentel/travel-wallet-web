@@ -12,6 +12,7 @@ export interface User {
   username: string;
   email: string;
   id: number;
+  active: boolean;
 }
 
 export interface AppSession {

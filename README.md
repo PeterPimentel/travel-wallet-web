@@ -60,3 +60,13 @@ https://javascript.plainenglish.io/react-18-useeffect-double-call-for-apis-emerg
 
 https://letsbuildui.dev/articles/a-3d-hover-effect-using-css-transforms
 https://agm1984.medium.com/use-react-to-make-a-photo-follow-the-mouse-aka-transform-perspective-or-tilt-7c38f1b3a623
+
+https://www.uschamber.com/co/run/finance/monetize-your-website
+
+https://webflow.com/blog/how-to-monetize-a-website
+
+https://www.hostinger.com/tutorials/how-to-monetize-a-website/
+
+https://www.hostinger.com/tutorials/affiliate-marketing-tools
+
+https://www.hostinger.com/tutorials/affiliate-marketing-programs/

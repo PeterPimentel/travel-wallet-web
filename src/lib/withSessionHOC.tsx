@@ -2,6 +2,11 @@ import { useRouter } from "next/router";
 
 import { ROUTES } from "../constants";
 import useSession from "../hooks/useSession";
+import { User } from "../types/CommonType";
+
+export type SessionProps = {
+    data: User
+}
 
 export function withSessionHOC(Component) {
     return function Wrapper(props) {

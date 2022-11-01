@@ -1,5 +1,7 @@
 {
     "account": "conta",
+    "activation_email_retry": "Reenviar email de ativação",
+    "activation_email_sent": "Email enviado, verifique sua caixa de entrada e span",
     "add_expense": "Adicionar despesa",
     "add_travel": "Adicionar viagem",
     "add": "Adicionar",

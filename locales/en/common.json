@@ -1,5 +1,7 @@
 {
     "account": "account",
+    "activation_email_retry": "Send activation email",
+    "activation_email_sent": "Email sent, please check your mailbox",
     "add_expense": "Add expense",
     "add_travel": "Add Travel",
     "add": "Add",
