@@ -3,3 +3,38 @@
     align-items: center;
     gap: var(--space-2);
 }
+
+.primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.primary:hover {
+    background-color: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+}
+
+.primary:focus {
+    background-color: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+}
+
+.primary:active {
+    background-color: var(--primary-color-active);
+    border-color: var(--primary-color-active);
+}
+
+.default {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.default:hover {
+    color: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+}
+
+.default:focus {
+    color: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+}
