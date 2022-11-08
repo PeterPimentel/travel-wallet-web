@@ -1,72 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎨 Travel Wallet Web 🎨
 
-## Getting Started
+### How to run
 
-First, run the development server:
+clone the [travel-wallet-api](https://github.com/PeterPimentel/travel-wallet-api)
+
+Then, run the development server from both projects:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+>It is important to also setting up the environment variables.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Project Design
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+[Ant Desing](https://ant.design/) as UI Library
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Project Structure
 
-## Learn More
+[Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)
 
-To learn more about Next.js, take a look at the following resources:
+### Theme tokens
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Colors
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<div style="background-color:#cccccc; border-radius:8px; padding:8px">
 
-## Deploy on Vercel
+<span>Primary: </span><span  style="color:#5377F0">#5377F0</span>
+<span>Primary Hover: </span><span  style="color:#728ff2">#728ff2</span>
+<span>Primary Active: </span><span  style="color:#096dd9">#096dd9</span>
+<span>Primary Light: </span><span  style="color:#eef1fd">#eef1fd</span>
+<span>Background Color: </span><span  style="color:#f3f6fb">#f3f6fb</span>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+</div>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### Spaces
 
-https://stackoverflow.com/questions/65451349/next-js-combined-with-an-external-rest-api-authentication-and-atuhorization
-
-https://medium.com/vmlyrpoland-tech/nextjs-with-full-stack-authorization-based-on-jwt-and-external-api-e9977f9fdd5e
-
-https://vizzuality.github.io/devismos/docs/researches/next-auth/
-
-https://cloudcoders.xyz/blog/nextauth-credentials-provider-with-external-api-and-login-page/
-
-https://trabeepocket.com/
-
-https://ui8.net/rifat-sarkar/products/travelm-app-ui-kit
-
-https://www.melhoresdestinos.com.br/gastos-de-viagem-aplicativos.html
-
-https://ui8.net/10am-studio/products/sarang-wallet---e-wallet-mobile-app
-
-https://ui8.net/avo/products/deleted-61614f70266138003c0da83a
-
-https://ui8.net/bogdan-pitiriciu/products/globe-travel-app
-https://www.honeybadger.io/blog/currency-money-calculations-in-javascript/
-
-https://www.techomoro.com/change-navbar-style-with-the-scroll-in-a-next-js-website/
-
-https://javascript.plainenglish.io/react-18-useeffect-double-call-for-apis-emergency-fix-724b7ee6a646
-
-https://letsbuildui.dev/articles/a-3d-hover-effect-using-css-transforms
-https://agm1984.medium.com/use-react-to-make-a-photo-follow-the-mouse-aka-transform-perspective-or-tilt-7c38f1b3a623
-
-https://www.uschamber.com/co/run/finance/monetize-your-website
-
-https://webflow.com/blog/how-to-monetize-a-website
-
-https://www.hostinger.com/tutorials/how-to-monetize-a-website/
-
-https://www.hostinger.com/tutorials/affiliate-marketing-tools
-
-https://www.hostinger.com/tutorials/affiliate-marketing-programs/
+```css
+--space-1: 2px;
+--space-2: 4px;
+--space-3: 6px;
+--space-4: 8px;
+--space-5: 10px;
+--space-6: 12px;
+--space-8: 16px;
+--space-12: 24px;
+--space-16: 32px;
+--space-24: 48px;
+```

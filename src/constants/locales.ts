@@ -65,6 +65,7 @@ export const overview = {
 };
 
 export const auth = {
+  activation_email_sent: "auth:activation_email_sent",
   already_have_account: "auth:already_have_account",
   dont_have_account: "auth:dont_have_account",
   input_login_placeholder: "auth:input_login_placeholder",

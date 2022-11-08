@@ -1,19 +1,26 @@
 export type Feature = {
-  id: number;
+  id: string;
   icon: string;
   title: string;
   description: string;
 };
 
 export type HeroMarketing = {
-  id: number;
-  status: string;
   title: string;
   summary: string;
 };
 
+export type Carousel = string;
+
+export type SocialLink = {
+  link: string;
+  type: string;
+};
 
 export type LandingPage = {
-  features: Feature[];
   hero: HeroMarketing;
+  features: Feature[];
+  carousel: Carousel[],
+  cover: string;
+  social: SocialLink[];
 }

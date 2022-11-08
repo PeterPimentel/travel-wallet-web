@@ -2,7 +2,7 @@
     position: fixed;
     height: var(--travel-header-height);
     width: 100%;
-    padding: 16px;
+    padding: var(--space-8);
     background-color: var(--primary-color);
     z-index: 10;
 }
@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     left: 0;
-    gap: 2px;
+    gap: var(--space-1);
 }
 
 .actions {
@@ -38,7 +38,7 @@ header.header>h5 {
     margin: 0;
 }
 
-.balance > span{
+.balance>span {
     font-size: 10px;
     color: white;
     margin-left: 2px;

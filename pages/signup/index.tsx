@@ -1,32 +1,31 @@
 import { useCallback, useState } from "react";
-import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
-import { ROUTES } from "../../src/constants";
 import { signup } from "../../src/service/auth";
 import { AuthRequest } from "../../src/types/ApiType";
-import { saveToken } from "../../src/service/token";
+import { auth } from "../../src/constants/locales";
 
 import { SignInForm } from "../../src/components/organism/SignInForm/SignInForm";
 import { LogoWithName } from "../../src/components/molecules/LogoWithName/LogoWithName";
+import { notification } from "../../src/components/atoms/Notification/Notification";
 
 import styles from "./style.module.css"
 
 const SignupPage = () => {
     const [apiError, setApiError] = useState("")
     const [buttonLoading, setButtonLoading] = useState(false)
-    const router = useRouter();
+    const { t } = useTranslation();
 
     const handleSubmit = useCallback(async (authData: AuthRequest) => {
         setButtonLoading(true);
-        signup(authData).then((res) => {
-            saveToken(res.token)
-            setButtonLoading(false)
-            router.push(`/${ROUTES.travel}`)
+        signup(authData).then(() => {
+            notification(t(auth.activation_email_sent), "success")
         }).catch((error) => {
-            setButtonLoading(false)
             setApiError(error.message)
+        }).finally(() => {
+            setButtonLoading(false)
         })
-    }, [router])
+    }, [t])
 
     return <div className={styles.page}>
         <LogoWithName size="extraLarge" layout="vertical" />
