@@ -2,35 +2,30 @@
 import { useEffect, useState } from "react";
 import classnames from "classnames";
 
-import { CDN_IMAGE_BASE_URL } from "../../../constants";
-
 import styles from "./style.module.css"
 
-const MOBILE_PHONE_GRID = `${CDN_IMAGE_BASE_URL}marketing/marketing_2.png`
+type AppScreensProps = {
+    images: string[]
+    cover: string
+}
 
-const SCREEN_IMAGES = [
-    `${CDN_IMAGE_BASE_URL}marketing/travel_page_no_border.png`,
-    `${CDN_IMAGE_BASE_URL}marketing/expense_page_1_no_border.png`,
-    `${CDN_IMAGE_BASE_URL}marketing/add_expense_page_no_border.png`,
-]
+export const AppScreens = ({ images, cover }: AppScreensProps) => {
+    const imagesSize = images.length - 1;
 
-const IMAGES_COUNT = SCREEN_IMAGES.length - 1
-
-export const AppScreens = () => {
-    const [currentFade, setCurrentFade] = useState(IMAGES_COUNT) // Last Index
-    const [nextFade, setNextFade] = useState(IMAGES_COUNT - 1) // First Index
+    const [currentFade, setCurrentFade] = useState(imagesSize) // Last Index
+    const [nextFade, setNextFade] = useState(imagesSize - 1) // First Index
 
     useEffect(() => {
         let myInterval = setInterval(() => {
-            const newCurrent = currentFade - 1 < 0 ? IMAGES_COUNT : currentFade - 1
-            const nextCurrent = newCurrent - 1 < 0 ? IMAGES_COUNT : newCurrent - 1
+            const newCurrent = currentFade - 1 < 0 ? imagesSize : currentFade - 1
+            const nextCurrent = newCurrent - 1 < 0 ? imagesSize : newCurrent - 1
             setCurrentFade(newCurrent)
             setNextFade(nextCurrent)
         }, 10000)
         return () => {
             clearInterval(myInterval);
         };
-    }, [currentFade]);
+    }, [currentFade, imagesSize]);
 
     const getStyle = (index: number) => {
         return classnames(styles.cover, {
@@ -41,9 +36,9 @@ export const AppScreens = () => {
 
     return (
         <div className={styles.container}>
-            <img className={styles.baseImage} src={MOBILE_PHONE_GRID} alt="mobile phone grid" />
+            <img className={styles.baseImage} src={cover} alt="mobile phone grid" />
             {
-                SCREEN_IMAGES.map((image, i) => (<img key={image} className={getStyle(i)} src={image} alt="app screens" />))
+                images.map((image, i) => (<img key={image} className={getStyle(i)} src={image} alt="app screens" />))
             }
         </div>
     )

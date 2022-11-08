@@ -1,6 +1,6 @@
 .expenseTypeRadioButton {
     display: flex;
-    gap: 16px;
+    gap: var(--space-8);
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;

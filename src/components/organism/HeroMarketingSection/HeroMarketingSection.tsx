@@ -1,4 +1,4 @@
-import { HeroMarketing } from "../../../types/CMSType";
+import { Carousel, HeroMarketing } from "../../../types/CMSType";
 
 import { H4, Text } from "../../atoms/Typography/Typography";
 import { AppScreens } from "../../atoms/AppScreens/AppScreens";
@@ -7,9 +7,11 @@ import styles from "./style.module.css"
 
 type HeroMarketingSectionProps = {
     hero: HeroMarketing;
+    carousel: Carousel[];
+    cover: string;
 }
 
-export const HeroMarketingSection = ({ hero }: HeroMarketingSectionProps) => {
+export const HeroMarketingSection = ({ hero, carousel, cover }: HeroMarketingSectionProps) => {
 
     return (
         <section className={styles.section}>
@@ -17,7 +19,7 @@ export const HeroMarketingSection = ({ hero }: HeroMarketingSectionProps) => {
                 <H4>{hero.title}</H4>
                 <Text type="secondary">{hero.summary}</Text>
             </div>
-            <AppScreens />
+            <AppScreens images={carousel} cover={cover} />
         </section>
     )
 }

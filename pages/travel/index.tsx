@@ -1,4 +1,3 @@
-import { FaUserCircle } from "react-icons/fa";
 import useTranslation from 'next-translate/useTranslation'
 
 import { ROUTES } from "../../src/constants";
@@ -9,29 +8,22 @@ import useTravels from "../../src/hooks/useTravels";
 import { CommonLink } from "../../src/components/atoms/CommonLink/CommonLink";
 import { Loading } from "../../src/components/atoms/Loading/Loading";
 import { H5, Text } from "../../src/components/atoms/Typography/Typography";
-import { AppLogo } from "../../src/components/atoms/AppLogo/AppLogo";
+import { TravelListHeader } from "../../src/components/molecules/TravelListHeader/TravelListHeader";
 import { AddTravelButton } from "../../src/components/molecules/AddTravelButton/AddTravelButton";
 import { TravelCard } from "../../src/components/organism/TravelCard/TravelCard";
 
 import styles from "./style.module.css"
 
-const TravelsPage = ({ session }) => {
+const TravelsPage = (props) => {
     const { t } = useTranslation();
     const { data, isLoading } = useTravels()
 
     return <div className={styles.page}>
-        <header className={styles.header}>
-            <div className={styles.headerContent}>
-                <AppLogo />
-                <CommonLink to={`/${ROUTES.profile}`}>
-                    <FaUserCircle style={{ width: "24px", height: "24px" }} />
-                </CommonLink>
-            </div>
-        </header>
+        <TravelListHeader hasActions={!props.data?.active} />
         <div className={styles.pageContent}>
             <div>
                 <H5>{t(common.welcome_message)}</H5>
-                <Text>{session?.username}</Text>
+                <Text>{props.data?.username}</Text>
             </div>
             <CommonLink to={`/${ROUTES.travel}/new`}>
                 <AddTravelButton />

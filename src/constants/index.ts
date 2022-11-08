@@ -45,6 +45,6 @@ export const MAPPED_COLORS_BY_TYPE = {
 
 export const DATE_FORMAT = "dd-MM-yyyy";
 
-export const CDN_IMAGE_BASE_URL = "https://harthorg.sirv.com/travel-wallet/";
+export const CDN_IMAGE_BASE_URL = process.env.NEXT_PUBLIC_IMAGE_CDN_URL;
 
 export const APP_NAME = "Travel Wallet";
