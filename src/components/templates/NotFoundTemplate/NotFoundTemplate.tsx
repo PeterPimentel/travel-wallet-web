@@ -1,11 +1,13 @@
 import useTranslation from 'next-translate/useTranslation'
-import Image from "next/image";
+import Head from 'next/head'
 
-import { ROUTES } from "../../../constants";
+import { APP_NAME, ROUTES } from "../../../constants";
+import { common } from '../../../constants/locales';
+
+import { AppLogo } from '../../atoms/AppLogo/AppLogo';
 import { Button } from "../../atoms/Button/Button";
-
 import { NavigationLink } from "../../atoms/NavigationLink/NavigationLink";
-import { H1, Text } from "../../atoms/Typography/Typography";
+import { Text } from "../../atoms/Typography/Typography";
 
 import styles from "./style.module.css"
 
@@ -17,16 +19,27 @@ export const NotFoundTemplate = ({ }: NotFoundTemplateProps) => {
 
     return (
         <div className={styles.page}>
+            <Head>
+                <title>{`404 - ${APP_NAME}`}</title>
+                <meta name="description" content={APP_NAME} />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <div className={styles.header}>
+                <NavigationLink to={`/`}>
+                    <AppLogo variant='white' />
+                </NavigationLink>
+            </div>
             <div className={styles.content}>
-                <H1>404</H1>
-                <Text>{t('not_found_text')}</Text>
+                <Text>{t(common.not_found_text)}</Text>
                 <Button>
                     <NavigationLink to={`/${ROUTES.travel}`}>
-                        {t('back')}
+                        {t(common.back)}
                     </NavigationLink>
                 </Button>
             </div>
-            <Image src="/assets/lost_404.png" alt="Not found" width={750} height={500} />
+            <div className={styles.credit}>
+                <a href="https://www.freepik.com/free-vector/error-404-concept-landing-page_4730712.htm#query=404&position=6&from_view=search&track=sph">Image by pikisuperstar</a>
+            </div>
         </div>
     )
 }

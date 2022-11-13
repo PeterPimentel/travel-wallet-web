@@ -39,6 +39,7 @@ export const common = {
   input_travel_name_placeholder: "common:input_travel_name_placeholder",
   logout: "common:logout",
   no: "common:no",
+  not_found_text: "common:not_found_text",
   overview: "common:overview",
   profile: "common:profile",
   save: "common:save",

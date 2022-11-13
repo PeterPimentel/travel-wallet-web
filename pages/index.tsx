@@ -1,8 +1,7 @@
-import Head from 'next/head'
 import { useRef } from 'react';
 
-import { APP_NAME } from '../src/constants';
 import { LandingPage } from '../src/types/CMSType';
+import { getCMSResource } from '../src/service/cms';
 
 import { LandingHeader } from '../src/components/organism/LandingHeader/LandingHeader'
 import { FeatureSection } from '../src/components/organism/FeatureSection/FeatureSection';
@@ -10,7 +9,6 @@ import { HeroMarketingSection } from '../src/components/organism/HeroMarketingSe
 import { LandingFooter } from '../src/components/organism/LandingFooter/LandingFooter';
 
 import styles from "./index.module.css"
-import { getCMSResource } from '../src/service/cms';
 
 type HomeProps = {
   cmsData: LandingPage
@@ -31,11 +29,6 @@ export default function Home({ cmsData }: HomeProps) {
 
   return (
     <div>
-      <Head>
-        <title>{APP_NAME}</title>
-        <meta name="description" content={APP_NAME} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <LandingHeader onClick={handleScroll} />
       <main className={styles.content}>
         <div ref={homeRef} className={`${styles.contentSection} ${styles.contrastSection}`}>

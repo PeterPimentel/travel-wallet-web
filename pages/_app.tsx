@@ -1,11 +1,12 @@
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
+import Head from 'next/head'
 import { ReactElement } from 'react';
 import { StoreProvider } from 'easy-peasy';
 import NextProgress from "next-progress";
 
 import { store } from '../src/store/store';
-import { BASE_COLORS } from '../src/constants';
+import { APP_NAME, BASE_COLORS } from '../src/constants';
 
 import '../styles/globals.css'
 
@@ -27,6 +28,11 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <StoreProviderCasted store={store}>
+      <Head>
+        <title>{APP_NAME}</title>
+        <meta name="description" content={APP_NAME} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <NextProgress color={BASE_COLORS.primary_active} options={{ showSpinner: false }} />
       {getLayout(<Component {...pageProps} />)}
     </StoreProviderCasted>
