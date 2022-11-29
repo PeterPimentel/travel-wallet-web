@@ -2,6 +2,7 @@ import { BASE_COLORS, EXPENSE_TYPE, MAPPED_COLORS_BY_TYPE } from "../constants";
 import { common } from "../constants/locales";
 import { ChartJsData } from "../types/ChartType";
 import { Expense, ExpenseTableData, ExpenseType } from "../types/ExpenseType";
+import { sortByDate } from "./commonUtil";
 import { formatDate } from "./dateHelper";
 import { getTotalExpensesPeerDay, getMappedCategoryExpenses } from "./expensesUtil";
 
@@ -58,10 +59,10 @@ export const getDailyExpensesChartFormat = (
   expenses: Expense[],
 ): ChartJsData => {
   const total = getTotalExpensesPeerDay(expenses);
+  const sortedDate = sortByDate(Object.keys(total))
 
-  return Object.keys(total).reduce((acc: ChartJsData, key: string) => {
+  return sortedDate.reduce((acc: ChartJsData, key: string) => {
     acc.labels.push(formatDate(new Date(key), "dd/MM"))
-
     acc.dataset.data.push(total[key])
     acc.dataset.backgroundColor.push(BASE_COLORS.primary)
 

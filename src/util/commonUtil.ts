@@ -1,5 +1,6 @@
 import { EXPENSE_TYPE } from "../constants";
 import { common } from "../constants/locales";
+import { SortMode } from "../types/CommonType";
 import { ExpenseType } from "../types/ExpenseType";
 
 export const mapApiTypeToTranslationKey = (type: ExpenseType): string => {
@@ -14,21 +15,11 @@ export const mapApiTypeToTranslationKey = (type: ExpenseType): string => {
       return common.expense_type_shopping;
     case EXPENSE_TYPE.activity:
       return common.expense_type_activity;
+    case EXPENSE_TYPE.flight:
+      return common.expense_type_flight;
     default:
       return common.expense_type_other;
   }
-};
-
-export const isValidExpenseSubmit = (title: string, amount: number) => {
-  if (!title || title.trim().length === 0) {
-    return false;
-  }
-
-  if (!amount || amount <= 0) {
-    return false;
-  }
-
-  return true;
 };
 
 export const isValidTravelSubmit = (name: string, cover: string) => {
@@ -87,3 +78,17 @@ export const isValidSignInSubmit = (
 
   return true;
 };
+
+export const sortByDate = (dates: string[], mode: SortMode = "ASC"): string[] => {
+  const sortedDate = dates.sort((dateA: string, dateB: string) => {
+    if (mode === "DESC") {
+      // @ts-ignore
+      return new Date(dateB) - new Date(dateA)
+    } else {
+      // @ts-ignore
+      return new Date(dateA) - new Date(dateB)
+    }
+  });
+
+  return sortedDate
+}

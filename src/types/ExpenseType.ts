@@ -12,7 +12,7 @@ export interface Expense {
     location?: Location;
 };
 
-export type ExpenseType = "FOOD" | "TRANSPORT" | "HOTEL" | "SHOPPING" | "ACTIVITY"
+export type ExpenseType = "FOOD" | "TRANSPORT" | "HOTEL" | "SHOPPING" | "ACTIVITY" | "FLIGHT"
 
 
 export interface ExpensesGroup {

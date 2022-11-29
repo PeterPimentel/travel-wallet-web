@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { Expense } from "../../../types/ExpenseType";
-import { formatMoney, getTotalExpenses, groupExpenses } from "../../../util"
+import { formatMoney, getTotalExpenses, groupExpenses, sortByDate } from "../../../util"
 import { formatDate } from "../../../util/dateHelper";
 
 import { CommonLink } from "../../atoms/CommonLink/CommonLink";
@@ -17,11 +17,12 @@ interface ExpenseListProps {
 
 export const ExpenseList: FC<ExpenseListProps> = ({ expenses }) => {
     const groupedExpenses = groupExpenses(expenses);
+    const sortedDates = sortByDate(Object.keys(groupedExpenses), "DESC")
 
     return (
         <div className={styles.container}>
             {
-                Object.keys(groupedExpenses).map((expenseDate) => (
+                sortedDates.map((expenseDate) => (
                     <div key={expenseDate} className={styles.expenseList}>
                         <div className={styles.header}>
                             <Text type="secondary">{formatDate(new Date(expenseDate))}</Text>

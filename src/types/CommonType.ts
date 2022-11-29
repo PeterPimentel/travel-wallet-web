@@ -26,3 +26,5 @@ export type SelectOption = {
   value: string;
   text: string;
 }
+
+export type SortMode = "ASC" | "DESC";
