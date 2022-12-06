@@ -2,11 +2,12 @@ import { FC, useState, useCallback } from "react";
 import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from "next/router";
 
-import { ROUTES } from "../../src/constants";
 import { SessionProps, withSessionHOC } from "../../src/lib/withSessionHOC";
 import { getToken, removeToken } from "../../src/service/token";
 import { common } from "../../src/constants/locales";
 import { remove } from "../../src/service/user";
+import { retryActivation } from "../../src/service/auth";
+import { getTravelsURL } from "../../src/util";
 
 import { Button } from "../../src/components/atoms/Button/Button";
 import { notification } from "../../src/components/atoms/Notification/Notification";
@@ -16,7 +17,6 @@ import { BasicHeader } from "../../src/components/molecules/BasicHeader/BasicHea
 import { DangerZone } from "../../src/components/molecules/DangerZone/DangerZone";
 
 import styles from "./style.module.css"
-import { retryActivation } from "../../src/service/auth";
 
 const ProfilePage: FC = (props: SessionProps) => {
     const { t } = useTranslation();
@@ -57,7 +57,7 @@ const ProfilePage: FC = (props: SessionProps) => {
     return (
         <div className={styles.page}>
             <div className={styles.header}>
-                <BasicHeader link={`/${ROUTES.travel}`} linkText={t(common.back)} />
+                <BasicHeader link={getTravelsURL()} linkText={t(common.back)} />
             </div>
             <div className={styles.content}>
                 <div className={styles.info}>

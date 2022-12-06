@@ -1,9 +1,9 @@
 import useTranslation from 'next-translate/useTranslation'
 
-import { ROUTES } from "../../src/constants";
 import { withSessionHOC } from "../../src/lib/withSessionHOC";
 import { common } from "../../src/constants/locales";
 import useTravels from "../../src/hooks/useTravels";
+import { getTravelURL } from '../../src/util';
 
 import { CommonLink } from "../../src/components/atoms/CommonLink/CommonLink";
 import { Loading } from "../../src/components/atoms/Loading/Loading";
@@ -25,14 +25,14 @@ const TravelsPage = (props) => {
                 <H5>{t(common.welcome_message)}</H5>
                 <Text>{props.data?.username}</Text>
             </div>
-            <CommonLink to={`/${ROUTES.travel}/new`}>
+            <CommonLink to={getTravelURL('new')}>
                 <AddTravelButton />
             </CommonLink>
             <div className={styles.travels}>
                 {isLoading ? <Loading loading={isLoading} size="large" /> : null}
                 {(data || []).map(travel => (
                     <div key={travel.id} className={styles.travelCard}>
-                        <CommonLink to={`/${ROUTES.travel}/${travel.id}`}>
+                        <CommonLink to={getTravelURL(travel.id)}>
                             <TravelCard title={travel.name} cover={travel.cover} expenses={travel.expenses} />
                         </CommonLink>
                     </div>

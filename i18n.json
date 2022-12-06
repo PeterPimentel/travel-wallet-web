@@ -19,6 +19,9 @@
         ],
         "/travel/[id]/overview": [
             "overview"
+        ],
+        "/request": [
+            "request"
         ]
     }
 }

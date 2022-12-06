@@ -2,11 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import useTranslation from "next-translate/useTranslation";
 
-import { ROUTES } from "../../src/constants";
 import { signin } from "../../src/service/auth"
 import { AuthRequest } from "../../src/types/ApiType";
 import { saveToken } from "../../src/service/token";
 import { apiLocalesMap, apiLocales } from "../../src/constants/apiLocales";
+import { getTravelsURL } from "../../src/util";
 
 import { notification } from "../../src/components/atoms/Notification/Notification";
 import { LogoWithName } from "../../src/components/molecules/LogoWithName/LogoWithName";
@@ -26,7 +26,7 @@ const SiginPage = () => {
         setButtonLoading(true);
         signin(email, password).then((res) => {
             saveToken(res.token)
-            router.push(`/${ROUTES.travel}`)
+            router.push(getTravelsURL())
         }).catch((error) => {
             setApiError(error.message)
         }).finally(() => {

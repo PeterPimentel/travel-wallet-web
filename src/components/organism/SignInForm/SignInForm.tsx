@@ -2,7 +2,7 @@ import { useCallback, useState, FC } from "react";
 import useTranslation from 'next-translate/useTranslation'
 
 import { AuthRequest } from "../../../types/ApiType";
-import { getSignInURL, getSignUpURL, isValidSignInSubmit, isValidSignUpSubmit } from "../../../util";
+import { getPasswordRequestURL, getSignInURL, getSignUpURL, isValidSignInSubmit, isValidSignUpSubmit } from "../../../util";
 import { auth } from "../../../constants/locales";
 
 import { Button } from "../../atoms/Button/Button";
@@ -113,6 +113,9 @@ export const SignInForm: FC<SignInFormProps> = ({ buttonLoading, type, error, on
             <div className={styles.submitContainer}>
                 <Button loading={buttonLoading} type="submit">{t(submitLabel)}</Button>
             </div>
+            {
+                type === "signin" ? (<CommonLink to={getPasswordRequestURL()}>{t(auth.forgot_password)}</CommonLink>) : null
+            }
             <div>
                 <CommonLink to={linkURL}>{t(linkLabel)}</CommonLink>
             </div>

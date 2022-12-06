@@ -1,8 +1,9 @@
 import useTranslation from 'next-translate/useTranslation'
 import Head from 'next/head'
 
-import { APP_NAME, ROUTES } from "../../../constants";
+import { APP_NAME } from "../../../constants";
 import { common } from '../../../constants/locales';
+import { getTravelsURL } from '../../../util';
 
 import { AppLogo } from '../../atoms/AppLogo/AppLogo';
 import { Button } from "../../atoms/Button/Button";
@@ -32,7 +33,7 @@ export const NotFoundTemplate = ({ }: NotFoundTemplateProps) => {
             <div className={styles.content}>
                 <Text>{t(common.not_found_text)}</Text>
                 <Button>
-                    <NavigationLink to={`/${ROUTES.travel}`}>
+                    <NavigationLink to={getTravelsURL()}>
                         {t(common.back)}
                     </NavigationLink>
                 </Button>

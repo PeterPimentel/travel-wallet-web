@@ -1,0 +1,20 @@
+{
+    "email_me": "Enviar email",
+    "input_email_placeholder": "Email",
+    "input_password_placeholder": "Nova senha",
+    "input_code_placeholder": "Código de verificação",
+    "input_error_empty_email": "É necessário informar o email associado a conta",
+    "input_error_invalid_code": "É necessário informar o código enviado para seu email",
+    "input_error_required_field": "Preenchimento obrigatório",
+    "password_reset_email_help": "Enviaremos um email com o código verificação para redefinir sua senha.",
+    "password_reset_security_code_help": "Enviamos um código de verificação. Nâo recebeu um email? Verifique o spam ou solicite um novo código.",
+    "password_reset": "Redefinir senha",
+    "reset_password_button_label": "Redefinir senha",
+    "security_verification": "Verificação de segurança",
+    "reset_password_finished": "Finalizado",
+    "tw_user_not_found": "Não foi possível encontrar uma conta associada a esse email",
+    "tw_password_reset_limit_exceeded": "Limite de solicitações excedido! Poderá voltar a tentar em 24h",
+    "reset_password_finished_help": "Sua Senha foi atualizada com sucesso!",
+    "sign_in": "Entrar",
+    "tw_password_reset_invalid_code": "Código de verificação inválido"
+}

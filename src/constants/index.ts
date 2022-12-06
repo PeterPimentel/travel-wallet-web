@@ -24,15 +24,6 @@ export const BASE_COLORS = {
   primary_active: "#096dd9",
 }
 
-export const ROUTES = {
-  newExpense: "expense/new",
-  overview: "overview",
-  profile: "profile",
-  signin: "signin",
-  signup: "signup",
-  travel: "travel",
-};
-
 export const MAPPED_COLORS_BY_TYPE = {
   [EXPENSE_TYPE.activity]: EXPENSE_COLORS.activity,
   [EXPENSE_TYPE.flight]: EXPENSE_COLORS.flight,

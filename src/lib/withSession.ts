@@ -1,6 +1,6 @@
-import { ROUTES } from "../constants";
 import { getSession } from "../service/auth";
 import { getToken } from "../service/token";
+import { getSignInURL } from "../util";
 
 export function withSession(getServerSideCb) {
   return async (context) => {
@@ -20,7 +20,7 @@ export function withSession(getServerSideCb) {
       return {
         redirect: {
           permanent: false,
-          destination: `${ROUTES.signin}`,
+          destination: getSignInURL(),
         },
       };
     }

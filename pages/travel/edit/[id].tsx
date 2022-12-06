@@ -4,12 +4,11 @@ import { useRouter } from "next/router";
 import { InferGetServerSidePropsType } from "next";
 import { useStoreActions } from "easy-peasy";
 
-import { ROUTES } from "../../../src/constants";
 import { TravelRequest } from "../../../src/types/ApiType";
 import { withSession } from "../../../src/lib/withSession";
 import { NextPageWithLayout } from "../../_app";
 import useTravels from "../../../src/hooks/useTravels";
-import { getSelectedTravel } from "../../../src/util";
+import { getSelectedTravel, getTravelsURL, getTravelURL } from "../../../src/util";
 import { StoreActions } from "../../../src/types/StoreType";
 import { common } from "../../../src/constants/locales";
 
@@ -38,7 +37,7 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
     const handleSubmit = useCallback((travel: TravelRequest) => {
         updateTravel({ id: travelId, name: travel.name, cover: travel.cover, budget: travel.budget }).then(() => {
             notification(t(common.updated_travel_success), "success")
-            router.push(`/${ROUTES.travel}/${travelId}`)
+            router.push(getTravelURL(travelId as string))
         }).catch((err) => {
             notification(err.message, "error")
         })
@@ -47,7 +46,7 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
     const handleRemove = useCallback(() => {
         deleteTravel(travelId).then(() => {
             notification(t(common.delete_travel_success), "success")
-            router.push(`/${ROUTES.travel}`)
+            router.push(getTravelsURL())
         }).catch((err) => {
             notification(err.message, "error")
         })
@@ -63,7 +62,7 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
 
     return (
         <TravelEditTemplate
-            headerLink={`/${ROUTES.travel}/${router.query.id}`}
+            headerLink={getTravelURL(router.query.id as string)}
             headerLinkText={t(common.cancel)}
             pageTitle={t(common.edit_travel)}
             travel={{

@@ -20,9 +20,14 @@ export async function fetcher<T>(url: string, config: Config): Promise<T> {
   });
 
   if (response.ok) {
+    // No Content
+    if (response.status === 204) {
+      return null
+    }
+
     return response.json();
   } else {
-    if(response.status === 404){
+    if (response.status === 404) {
       throw new Error("Service Unavailable");
     }
 

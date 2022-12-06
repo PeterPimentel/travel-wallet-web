@@ -19,9 +19,10 @@ export interface HookApiResponse<T> {
 export type APIError = {
     status: number;
     message: string;
+    code: string;
 }
 
 export type AuthApiResponse = {
-  user: User,
-  token: string
+    user: User,
+    token: string,
 } 

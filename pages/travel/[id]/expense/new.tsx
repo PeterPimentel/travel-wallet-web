@@ -4,7 +4,6 @@ import useTranslation from 'next-translate/useTranslation'
 
 import { ExpenseRequest } from '../../../../src/types/ApiType';
 import { withSession } from '../../../../src/lib/withSession';
-import { ROUTES } from '../../../../src/constants';
 import { useStoreActions } from 'easy-peasy';
 import { StoreActions } from '../../../../src/types/StoreType';
 import { common } from '../../../../src/constants/locales';
@@ -12,6 +11,7 @@ import { common } from '../../../../src/constants/locales';
 import { EditExpenseTemplate } from '../../../../src/components/templates/ExpenseEditTemplate/EditExpenseTemplate';
 import TravelPageLayout from '../../../../src/components/organism/TravelPageLayout/TravelPageLayout';
 import { notification } from '../../../../src/components/atoms/Notification/Notification';
+import { getTravelURL } from '../../../../src/util';
 
 export const AddTravelPage = () => {
     const router = useRouter();
@@ -28,7 +28,7 @@ export const AddTravelPage = () => {
             travelId: Number(travelId),
         }).then(() => {
             notification(t(common.expense_create_success), "success")
-            router.push(`/${ROUTES.travel}/${travelId}`)
+            router.push(getTravelURL(travelId as string))
         }).catch((err) => {
             notification(err.message, "error")
         })

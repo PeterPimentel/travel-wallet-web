@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 
-import { ROUTES } from "../constants";
 import useSession from "../hooks/useSession";
 import { User } from "../types/CommonType";
+import { getSignInURL } from "../util";
 
 export type SessionProps = {
     data: User
@@ -14,7 +14,7 @@ export function withSessionHOC(Component) {
         const { data, error, isLoading } = useSession()
 
         if (!isLoading && error) {
-            router.push(`/${ROUTES.signin}`)
+            router.push(getSignInURL())
         }
 
         const modifiedProps = {

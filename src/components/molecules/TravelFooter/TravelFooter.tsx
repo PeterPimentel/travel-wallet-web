@@ -3,8 +3,8 @@ import useTranslation from 'next-translate/useTranslation'
 import { FaListUl, FaPlusCircle, FaChartPie } from "react-icons/fa";
 import { useRouter } from "next/router";
 
-import { ROUTES } from "../../../constants";
 import { common } from "../../../constants/locales";
+import { getNewExpenseURL, getOverviewURL, getTravelURL } from "../../../util";
 
 import { NavigationLink } from "../../atoms/NavigationLink/NavigationLink";
 
@@ -21,15 +21,15 @@ export const TravelFooter: FC<TravelFooterProps> = ({ id }) => {
     return (
         <footer className={styles.footer}>
             <nav className={styles.navList}>
-                <NavigationLink to={`/${ROUTES.travel}/${id}`} active={router.pathname === "/travel/[id]"}>
+                <NavigationLink to={getTravelURL(id)} active={router.pathname === "/travel/[id]"}>
                     <FaListUl />
                     <span>{t(common.expenses)}</span>
                 </NavigationLink>
-                <NavigationLink to={`/${ROUTES.travel}/${id}/${ROUTES.newExpense}`} active={router.pathname === "/travel/[id]/expense/new"} >
+                <NavigationLink to={`${getTravelURL(id)}${getNewExpenseURL()}`} active={router.pathname === "/travel/[id]/expense/new"} >
                     <FaPlusCircle />
                     <span>{t(common.add)}</span>
                 </NavigationLink>
-                <NavigationLink to={`/${ROUTES.travel}/${id}/${ROUTES.overview}`} active={router.pathname === "/travel/[id]/overview"}>
+                <NavigationLink to={`${getTravelURL(id)}${getOverviewURL()}`} active={router.pathname === "/travel/[id]/overview"}>
                     <FaChartPie />
                     <span>{t(common.overview)}</span>
                 </NavigationLink>

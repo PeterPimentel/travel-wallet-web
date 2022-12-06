@@ -5,10 +5,9 @@ import { useStoreActions } from 'easy-peasy';
 
 import { ExpenseRequest } from '../../../../src/types/ApiType';
 import { withSession } from '../../../../src/lib/withSession';
-import { ROUTES } from '../../../../src/constants';
 import { formatDate } from '../../../../src/util/dateHelper';
 import useTravels from '../../../../src/hooks/useTravels';
-import { getSelectedTravel } from '../../../../src/util';
+import { getSelectedTravel, getTravelURL } from '../../../../src/util';
 import { StoreActions } from '../../../../src/types/StoreType';
 import { common } from '../../../../src/constants/locales';
 
@@ -41,7 +40,7 @@ export const AddTravelPage = () => {
             id: Number(expenseId),
         }).then(() => {
             notification(t(common.update_expense_success), "success")
-            router.push(`/${ROUTES.travel}/${travelId}`)
+            router.push(getTravelURL(travelId as string))
         }).catch((err) => {
             notification(err.message, "error")
         })
@@ -50,7 +49,7 @@ export const AddTravelPage = () => {
     const handleRemove = useCallback(() => {
         deleteExpense(Number(expenseId)).then(() => {
             notification(t(common.delete_expense_success), "success")
-            router.push(`/${ROUTES.travel}/${travelId}`)
+            router.push(getTravelURL(travelId as string))
         }).catch((err) => {
             notification(err.message, "error")
         })

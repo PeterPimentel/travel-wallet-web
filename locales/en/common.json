@@ -52,10 +52,11 @@
     "travel_create_success": "Travel created",
     "travel": "travel",
     "travels_link": "Travels",
-    "tw_lbl_account_not_activated": "Please, verify your email to activate your account.",
+    "tw_account_not_activated": "Please, verify your email to activate your account.",
     "update_expense_success": "Expense updated!",
     "updated_travel_success": "Travel updated!",
     "username_in_use": "This username is already taken",
     "welcome_message": "Welcome!",
-    "yes": "Yes"
+    "yes": "Yes",
+    "unexpected_error": "Sorry, an unexpected error happened"
 }

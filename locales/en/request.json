@@ -1,0 +1,20 @@
+{
+    "email_me": "Email Me",
+    "input_email_placeholder": "Email",
+    "input_password_placeholder": "New password",
+    "input_code_placeholder": "Security code",
+    "input_error_empty_email": "It is mandatory to inform the email associated with the account",
+    "input_error_invalid_code": "It is mandatory to inform the security code sent to your email",
+    "input_error_required_field": "It is mandatory to fill this field",
+    "password_reset_email_help": "We will send you an email with the verification code to reset your password.",
+    "password_reset_security_code_help": "We've sent you a secutiry code. Didn't receive an email? Check your junk folder or request another link.",
+    "password_reset": "Password reset",
+    "reset_password_button_label": "Reset password",
+    "security_verification": "Security Verification",
+    "reset_password_finished": "Finished",
+    "tw_user_not_found": "Unable to find the account associated with the provided email",
+    "tw_password_reset_limit_exceeded": "Password reset requests limit exceded! You will be able to try again in 24h",
+    "reset_password_finished_help": "Your password have been updated with success!",
+    "sign_in": "Log In",
+    "tw_password_reset_invalid_code": "Invalid secutiry code provided"
+}

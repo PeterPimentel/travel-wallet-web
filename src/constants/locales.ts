@@ -58,6 +58,7 @@ export const common = {
   username_in_use: "common:username_in_use",
   welcome_message: "common:welcome_message",
   yes: "common:yes",
+  unexpected_error: "common:unexpected_error",
 };
 
 export const overview = {
@@ -69,6 +70,7 @@ export const auth = {
   activation_email_sent: "auth:activation_email_sent",
   already_have_account: "auth:already_have_account",
   dont_have_account: "auth:dont_have_account",
+  forgot_password: "auth:forgot_password",
   input_login_placeholder: "auth:input_login_placeholder",
   input_password_placeholder: "auth:input_password_placeholder",
   input_username_placeholder: "auth:input_username_placeholder",
@@ -86,3 +88,21 @@ export const landing = {
   sign_in: "landing:sign_in",
   sign_up: "landing:sign_up",
 };
+
+export const request = {
+  email_me: "request:email_me",
+  input_email_placeholder: "request:input_email_placeholder",
+  input_password_placeholder: "request:input_password_placeholder",
+  input_code_placeholder: "request:input_code_placeholder",
+  input_error_empty_email: "request:input_error_empty_email",
+  input_error_invalid_code: "request:input_error_invalid_code",
+  input_error_required_field: "request:input_error_required_field",
+  password_reset_email_help: "request:password_reset_email_help",
+  password_reset_security_code_help: "request:password_reset_security_code_help",
+  password_reset: "request:password_reset",
+  reset_password_button_label: "request:reset_password_button_label",
+  security_verification: "request:security_verification",
+  reset_password_finished: "request:reset_password_finished",
+  reset_password_finished_help: "request:reset_password_finished_help",
+  sign_in: "request:sign_in",
+}
