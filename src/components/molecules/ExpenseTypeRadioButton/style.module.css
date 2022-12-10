@@ -54,3 +54,7 @@
 .inputContainer .input:checked~.other {
     border-color: var(--other-color);
 }
+
+.inputContainer .input:checked~.drink {
+    border-color: var(--drink-color);
+}

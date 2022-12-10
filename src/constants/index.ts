@@ -1,5 +1,6 @@
 export const EXPENSE_TYPE = {
   activity: "ACTIVITY",
+  drink: "DRINK",
   flight: "FLIGHT",
   food: "FOOD",
   hotel: "HOTEL",
@@ -8,9 +9,15 @@ export const EXPENSE_TYPE = {
   transport: "TRANSPORT",
 };
 
+export const EXPENSE_PAYMENT = {
+  cash: "CASH",
+  card: "CARD",
+};
+
 export const EXPENSE_COLORS = {
   activity: "#B9A394",
-  flight: "#3f51b5",
+  drink: "#3f51b5",
+  flight: "#0073c6",
   food: "#E15554",
   hotel: "#E8C547",
   other: "#E2B6CF",
@@ -26,6 +33,7 @@ export const BASE_COLORS = {
 
 export const MAPPED_COLORS_BY_TYPE = {
   [EXPENSE_TYPE.activity]: EXPENSE_COLORS.activity,
+  [EXPENSE_TYPE.drink]: EXPENSE_COLORS.drink,
   [EXPENSE_TYPE.flight]: EXPENSE_COLORS.flight,
   [EXPENSE_TYPE.food]: EXPENSE_COLORS.food,
   [EXPENSE_TYPE.hotel]: EXPENSE_COLORS.hotel,
@@ -39,3 +47,9 @@ export const DATE_FORMAT = "dd-MM-yyyy";
 export const CDN_IMAGE_BASE_URL = process.env.NEXT_PUBLIC_IMAGE_CDN_URL;
 
 export const APP_NAME = "Travel Wallet";
+
+export const CHART_FILTER = {
+  category: "category",
+  country: "country",
+  payment: "payment",
+}

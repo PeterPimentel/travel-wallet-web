@@ -30,13 +30,41 @@ export const getTotalExpensesPeerDay = (expenses: Expense[]): DailyCost => {
 // The key is a ExpenseType
 // E.g "FOOD" | "TRANSPORT"
 export const getMappedCategoryExpenses = (expenses: Expense[]) => expenses.reduce(
-    (acc: Record<string, number>, curr: Expense) => {
-      const storedValue = acc[curr.type];
-      acc[curr.type] = storedValue ? storedValue + curr.value : curr.value;
-      return acc
-    },
-    {}
-  );
+  (acc: Record<string, number>, curr: Expense) => {
+    const storedValue = acc[curr.type];
+    acc[curr.type] = storedValue ? storedValue + curr.value : curr.value;
+    return acc
+  },
+  {}
+);
+
+// The key is the country name
+// E.g "Brasil" | "Spain"
+// unknow is used for expenses withou a location
+export const getMappedCountryExpenses = (expenses: Expense[]) => expenses.reduce(
+  (acc: Record<string, number>, curr: Expense) => {
+    if (curr.location && curr.location.countryName) {
+      const storedValue = acc[curr.location.countryName];
+      acc[curr.location.countryName] = storedValue ? storedValue + curr.value : curr.value;
+    } else {
+      const storedUnknowValue = acc["unknow"];
+      acc["unknow"] = storedUnknowValue ? storedUnknowValue + curr.value : curr.value;
+    }
+    return acc
+  },
+  {}
+);
+
+// The key is the payment method
+// E.g "CASH" | "CARD"
+export const getMappedPaymentMethodExpenses = (expenses: Expense[]) => expenses.reduce(
+  (acc: Record<string, number>, curr: Expense) => {
+    const storedValue = acc[curr.payment];
+    acc[curr.payment] = storedValue ? storedValue + curr.value : curr.value;
+    return acc
+  },
+  {}
+);
 
 export const getDailyExpensesAverage = (expenses: Expense[]): number => {
   const totalPeerDay = getTotalExpensesPeerDay(expenses);

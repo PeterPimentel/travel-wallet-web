@@ -17,6 +17,11 @@ interface ExpenseTypeRadioButtonProps {
 
 const expensesType = [
     {
+        type: EXPENSE_TYPE.transport,
+        id: "transport",
+        label: common.expense_type_transport,
+    },
+    {
         type: EXPENSE_TYPE.activity,
         id: "activity",
         label: common.expense_type_activity,
@@ -27,24 +32,24 @@ const expensesType = [
         label: common.expense_type_food,
     },
     {
-        type: EXPENSE_TYPE.hotel,
-        id: "hotel",
-        label: common.expense_type_hotel,
-    },
-    {
         type: EXPENSE_TYPE.shopping,
         id: "shopping",
         label: common.expense_type_shopping,
     },
     {
-        type: EXPENSE_TYPE.transport,
-        id: "transport",
-        label: common.expense_type_transport,
+        type: EXPENSE_TYPE.hotel,
+        id: "hotel",
+        label: common.expense_type_hotel,
     },
     {
         type: EXPENSE_TYPE.flight,
         id: "flight",
         label: common.expense_type_flight,
+    },
+    {
+        type: EXPENSE_TYPE.drink,
+        id: "drink",
+        label: common.expense_type_drink,
     },
     {
         type: EXPENSE_TYPE.other,
@@ -55,7 +60,6 @@ const expensesType = [
 
 export const ExpenseTypeRadioButton: FC<ExpenseTypeRadioButtonProps> = ({ value, onChange }) => {
     const { t } = useTranslation();
-
 
     return (
         <div className={styles.expenseTypeRadioButton}>

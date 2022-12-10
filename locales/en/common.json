@@ -25,6 +25,7 @@
     "email_in_use": "This email is already in use",
     "expense_create_success": "Expense added",
     "expense_type_activity": "Activities",
+    "expense_type_drink": "Drink",
     "expense_type_flight": "Flight",
     "expense_type_food": "Food",
     "expense_type_hotel": "Hotel",

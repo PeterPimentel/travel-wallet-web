@@ -35,3 +35,7 @@
 .other {
     background-color: var(--other-color);
 }
+
+.drink {
+    background-color: var(--drink-color);
+}

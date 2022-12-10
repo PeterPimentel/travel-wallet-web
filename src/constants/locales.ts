@@ -25,6 +25,7 @@ export const common = {
   email_in_use: "common:email_in_use",
   expense_create_success: "common:expense_create_success",
   expense_type_activity: "common:expense_type_activity",
+  expense_type_drink: "common:expense_type_drink",
   expense_type_flight: "common:expense_type_flight",
   expense_type_food: "common:expense_type_food",
   expense_type_hotel: "common:expense_type_hotel",
@@ -64,6 +65,10 @@ export const common = {
 export const overview = {
   daily_expenses: "overview:daily_expenses",
   expenses_by_category: "overview:expenses_by_category",
+  filter_by: "overview:filter_by",
+  filter_label_category: "overview:filter_label_category",
+  filter_label_payment: "overview:filter_label_payment",
+  filter_label_country: "overview:filter_label_country",
 };
 
 export const auth = {

@@ -1,18 +1,22 @@
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 import useTravels from "../../../../src/hooks/useTravels";
 import { getSelectedTravel } from "../../../../src/util";
 import { withSession } from "../../../../src/lib/withSession";
+import { overview } from "../../../../src/constants/locales";
 
+import { Text } from "../../../../src/components/atoms/Typography/Typography";
 import { CategoryPieChart } from "../../../../src/components/molecules/CategoryPieChart/CategoryPieChart";
-import TravelPageLayout from "../../../../src/components/organism/TravelPageLayout/TravelPageLayout";
 import { DayliExpensesBardChart } from "../../../../src/components/molecules/DayliExpenseBarChart/DayliExpenseBarChart";
 import { ExpensesCategoryList } from "../../../../src/components/molecules/ExpensesCategoryList/ExpensesCategoryList";
+import TravelPageLayout from "../../../../src/components/organism/TravelPageLayout/TravelPageLayout";
 
 import styles from "./style.module.css"
 
 const OverviewPage = () => {
     const router = useRouter();
+    const { t } = useTranslation();
 
     const { data } = useTravels()
     const { expenses } = getSelectedTravel(data, Number(router.query.id))
@@ -26,7 +30,12 @@ const OverviewPage = () => {
                 <CategoryPieChart expenses={expenses} />
             </div>
             <div className={styles.chartContainer}>
-                <ExpensesCategoryList expenses={expenses} />
+                <div className={styles.category}>
+                    <div className={styles.title}>
+                        <Text>{t(overview.expenses_by_category)}</Text>
+                    </div>
+                    <ExpensesCategoryList expenses={expenses} />
+                </div>
             </div>
         </div>
     )

@@ -11,7 +11,8 @@ type SelectProps = {
     placeholder: string;
     loading?: boolean;
     disabled?: boolean;
-    onSearch: (value: string) => void
+    showSearch?: boolean;
+    onSearch?: (value: string) => void
     onChange: (value: string) => void
 }
 
@@ -20,12 +21,13 @@ export const Select = ({
     options,
     loading = false,
     disabled = false,
+    showSearch = true,
     placeholder,
     onSearch,
     onChange
 }: SelectProps) => (
     <BaseSelect
-        showSearch
+        showSearch={showSearch}
         loading={loading}
         disabled={disabled}
         placeholder={placeholder}

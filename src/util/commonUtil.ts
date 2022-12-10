@@ -15,6 +15,8 @@ export const mapApiTypeToTranslationKey = (type: ExpenseType): string => {
       return common.expense_type_shopping;
     case EXPENSE_TYPE.activity:
       return common.expense_type_activity;
+    case EXPENSE_TYPE.drink:
+      return common.expense_type_drink;
     case EXPENSE_TYPE.flight:
       return common.expense_type_flight;
     default:

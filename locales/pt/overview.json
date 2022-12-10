@@ -1,4 +1,8 @@
 {
     "daily_expenses": "Despesas diária",
-    "expenses_by_category": "Despesas por categoria"
+    "expenses_by_category": "Despesas por categoria",
+    "filter_by": "Filtrar por:",
+    "filter_label_category": "Categoria",
+    "filter_label_payment": "Pagamento",
+    "filter_label_country": "País"
 }

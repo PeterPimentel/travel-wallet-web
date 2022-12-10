@@ -16,12 +16,13 @@ body {
 
 :root {
   --activity-color: #B9A394;
-  --flight-color: #3f51b5;
+  --flight-color: #0073c6;
   --food-color: #E15554;
   --hotel-color: #E8C547;
   --other-color: #E2B6CF;
   --shopping-color: #14CC60;
   --transport-color: #1098F7;
+  --drink-color: #3f51b5;
 
   --light-gray: #e2e2e2;
   --dark-gray: #777777;
@@ -34,7 +35,6 @@ body {
   --primary-color: #5377F0;
   --primary-color-hover: #728ff2;
   --primary-color-active: #096dd9;
-  --light-primary-color: #eef1fd;
 
   --bg-color: #f3f6fb;
 
