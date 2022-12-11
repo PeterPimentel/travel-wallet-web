@@ -6,7 +6,7 @@
 
     background-color: white;
     /* safe guard because of the leaflet map */
-    z-index: 400; 
+    z-index: 1500; 
 }
 
 .navList {
