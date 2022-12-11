@@ -3,7 +3,7 @@
 }
 
 .pageContent {
-    padding-top: calc(var(--travel-header-height) + var(--space-8));
-    padding-bottom: calc(var(--travel-footer-height) + var(--space-8));
+    padding-top: var(--travel-header-height);
+    padding-bottom: var(--travel-footer-height);
     background-color: var(--bg-color);
 }

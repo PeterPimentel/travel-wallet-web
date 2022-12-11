@@ -39,6 +39,7 @@ export const common = {
   input_expense_title_placeholder: "common:input_expense_title_placeholder",
   input_travel_name_placeholder: "common:input_travel_name_placeholder",
   logout: "common:logout",
+  map: "common:map",
   no: "common:no",
   not_found_text: "common:not_found_text",
   overview: "common:overview",
@@ -110,4 +111,11 @@ export const request = {
   reset_password_finished: "request:reset_password_finished",
   reset_password_finished_help: "request:reset_password_finished_help",
   sign_in: "request:sign_in",
+}
+
+export const maps = {
+  popup_from: "maps:popup_from",
+  popup_to: "maps:popup_to",
+  popup_days: "maps:popup_days",
+  popup_spent: "maps:popup_spent",
 }

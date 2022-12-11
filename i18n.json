@@ -20,6 +20,9 @@
         "/travel/[id]/overview": [
             "overview"
         ],
+        "/travel/[id]/map": [
+            "maps"
+        ],
         "/request": [
             "request"
         ]

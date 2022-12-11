@@ -16,7 +16,7 @@ export type ExpenseType = "FOOD" | "TRANSPORT" | "HOTEL" | "SHOPPING" | "ACTIVIT
 
 
 export interface ExpensesGroup {
-    [date: string]: Expense[];
+    [key: string]: Expense[];
 }
 
 export interface ExpenseTableData {
