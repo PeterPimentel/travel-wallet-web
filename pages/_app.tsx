@@ -9,6 +9,8 @@ import { store } from '../src/store/store';
 import { APP_NAME, BASE_COLORS } from '../src/constants';
 
 import '../styles/globals.css'
+import '../styles/leaflet.css';
+
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => JSX.Element

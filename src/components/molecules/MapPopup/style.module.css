@@ -1,0 +1,21 @@
+.list {
+    width: 100%;
+
+    padding: 0 var(--space-1);
+    margin: 0;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-1);
+    padding-bottom: var(--space-1);
+    border-bottom: 1px dashed var(--light-gray);
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}

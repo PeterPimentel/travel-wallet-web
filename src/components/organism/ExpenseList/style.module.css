@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 16px;
 
-    padding: 16px 0;
+    padding: var(--space-16) 0;
 }
 
 .expenseList {

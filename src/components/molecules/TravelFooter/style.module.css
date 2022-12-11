@@ -5,7 +5,8 @@
     height: var(--travel-footer-height);
 
     background-color: white;
-    z-index: 10;
+    /* safe guard because of the leaflet map */
+    z-index: 400; 
 }
 
 .navList {

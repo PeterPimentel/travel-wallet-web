@@ -1,0 +1,6 @@
+/* This calc comes from the layout page it is based
+on the footer height and header*/
+.page {
+    height: calc(100vh - var(--travel-footer-height) - var(--travel-header-height));
+    width: 100vw;
+}

@@ -1,11 +1,12 @@
 export const BASE_ROUTES = {
+  map: "map",
   newExpense: "expense/new",
   overview: "overview",
   profile: "profile",
+  request: "request",
   signin: "signin",
   signup: "signup",
   travel: "travel",
-  request: "request",
 };
 
 export const getLandingURL = (): string => "/"
@@ -25,3 +26,5 @@ export const getProfileURL = (): string => `/${BASE_ROUTES.profile}`;
 export const getNewExpenseURL = (): string => `/${BASE_ROUTES.newExpense}`;
 
 export const getOverviewURL = (): string => `/${BASE_ROUTES.overview}`;
+
+export const getMapURL = (): string => `/${BASE_ROUTES.map}`;

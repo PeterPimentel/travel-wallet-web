@@ -1,5 +1,7 @@
 import { DailyCost, Expense, ExpensesGroup } from "../types/ExpenseType";
 import { Travel } from "../types/TravelType";
+import { sortByDate } from "./commonUtil";
+import { formatDate, isValidDate } from "./dateHelper";
 
 export const groupExpenses = (expenses: Expense[]): ExpensesGroup => {
   return expenses.reduce((acc: ExpensesGroup, curr: Expense) => {
@@ -54,6 +56,56 @@ export const getMappedCountryExpenses = (expenses: Expense[]) => expenses.reduce
   },
   {}
 );
+
+const groupByCity = (expenses: Expense[]) => expenses.reduce(
+  (acc: ExpensesGroup, curr: Expense) => {
+    if (curr.location && curr.location.cityName && curr.location.label) {
+      const storedValue = acc[curr.location.label];
+      acc[curr.location.label] = storedValue ? acc[curr.location.label].concat(curr) : [curr]
+    }
+    return acc
+  },
+  {}
+);
+
+type MapData = {
+  label: string;
+  value: number;
+  startDate: string;
+  endDate: string;
+  days: number;
+  lat: number;
+  long: number;
+}
+// The key is the city label
+// E.g "Salvador, Bahia, Brasil" | "Porto, Portugal"
+// To avoid store different cities in the same group
+// The expenses without place will not be listed
+export const getMapData = (expenses: Expense[]): MapData[] => {
+  const group = groupByCity(expenses);
+
+  return Object.keys(group).reduce((acc, key) => {
+    const dates = group[key].map(d => d.date)
+    const sortedDates = sortByDate(dates, "ASC")
+    const uniqueDates = dates.filter((v, i, a) => a.indexOf(v) === i)
+    const total = group[key].reduce((value, curr) => curr.value + value, 0)
+
+    const startDate = isValidDate(new Date(sortedDates[0])) ? formatDate(new Date(sortedDates[0])) : '';
+    const endDate = isValidDate(new Date(sortedDates[sortedDates.length - 1])) ? formatDate(new Date(sortedDates[sortedDates.length - 1])) : '';
+    const latitude = group[key][0]?.location.cityLat || 0
+    const longitude = group[key][0]?.location.cityLong || 0
+
+    return acc.concat({
+      label: key,
+      value: total,
+      startDate: startDate,
+      endDate: endDate,
+      days: uniqueDates.length,
+      lat: latitude,
+      long: longitude,
+    })
+  }, [])
+}
 
 // The key is the payment method
 // E.g "CASH" | "CARD"

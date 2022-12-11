@@ -9,7 +9,6 @@ import { Text } from "../../atoms/Typography/Typography";
 
 import styles from "./style.module.css"
 
-
 interface ExpensesCategoryListProps {
     expenses: Expense[];
 }
