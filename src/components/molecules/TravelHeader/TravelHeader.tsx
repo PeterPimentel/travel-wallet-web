@@ -1,11 +1,11 @@
 import { Statistic } from "antd"
 import { useMemo } from "react";
 import useTranslation from 'next-translate/useTranslation'
-import { FaArrowLeft, FaEdit } from "react-icons/fa";
+import { FaArrowLeft, FaEdit, FaUserFriends } from "react-icons/fa";
 import { useRouter } from "next/router";
 
 import { Expense } from "../../../types/ExpenseType";
-import { formatMoney, getDailyExpensesAverage, getTotalExpenses } from "../../../util";
+import { formatMoney, getDailyExpensesAverage, getTotalExpenses, getTravelEditURL, getTravelShareURL, getTravelsURL } from "../../../util";
 import { common } from "../../../constants/locales";
 
 import { CommonLink } from "../../atoms/CommonLink/CommonLink";
@@ -19,10 +19,11 @@ import styles from "./style.module.css";
 interface TravelHeaderProps {
     budget: number;
     name: string;
+    shared: boolean;
     expenses: Expense[];
 }
 
-export const TravelHeader = ({ budget, name, expenses }: TravelHeaderProps) => {
+export const TravelHeader = ({ budget, name, shared, expenses }: TravelHeaderProps) => {
     const { t } = useTranslation();
     const router = useRouter();
 
@@ -36,14 +37,17 @@ export const TravelHeader = ({ budget, name, expenses }: TravelHeaderProps) => {
             <div className={styles.navigationContainer}>
                 <div className={styles.navigation}>
                     <FaArrowLeft color="white" />
-                    <CommonLink color="white" to="/travel">{t(common.travels_link)}</CommonLink>
+                    <CommonLink color="white" to={getTravelsURL()}>{t(common.travels_link)}</CommonLink>
                 </div>
                 <AppLogo variant="white" />
-                <div className={styles.actions}>
-                    <CommonLink to={`/travel/edit/${router.query.id}`}>
-                        <FaEdit color="white" style={{ width: '20px', height: '20px' }} />
+                {shared === false ? <div className={styles.actions}>
+                    <CommonLink to={getTravelShareURL(router.query.id as string)}>
+                        <FaUserFriends className={styles.actionIcon} />
                     </CommonLink>
-                </div>
+                    <CommonLink to={getTravelEditURL(router.query.id as string)}>
+                        <FaEdit className={styles.actionIcon} />
+                    </CommonLink>
+                </div> : null}
             </div>
             {!name ? <div className={styles.skeleton}><SkeletonText /> </div> : null}
             {name ? <H5>{name}</H5> : null}

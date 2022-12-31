@@ -1,0 +1,11 @@
+{
+    "add_friend_confirmation_message": "Share travel with: {{email}}",
+    "friends": "Friends",
+    "input_email_placeholder": "Email",
+    "remove_friend_confirmation_message": "Are you sure to stop share this travel with {{email}}?",
+    "remove_friend_success": "Friend removed",
+    "share_travel_description": "Share your travel with your friends, they will be able to add and edit expenses",
+    "share_travel": "Share Travel",
+    "travel_shared_success": "Travel shared with success",
+    "tw_travel_already_shared": "This travel has already been shared with this friend"
+}

@@ -3,6 +3,7 @@ import { FC, ReactNode } from "react";
 import { ExpenseRequest } from "../../../types/ApiType";
 
 import { H3 } from "../../atoms/Typography/Typography";
+import { PageTitle } from "../../molecules/PageTitle/PageTitle";
 import { ExpenseForm } from "../../organism/ExpenseForm/ExpenseForm";
 
 import styles from "./style.module.css"
@@ -19,9 +20,7 @@ export const EditExpenseTemplate: FC<EditExpenseTemplateProps> = ({ headerText, 
 
     return (
         <div className={styles.content}>
-            <div className={styles.title}>
-                <H3>{headerText}</H3>
-            </div>
+            <PageTitle title={headerText} />
             <ExpenseForm
                 initalAmount={expense?.value}
                 initialDate={expense?.date}

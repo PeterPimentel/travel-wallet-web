@@ -30,7 +30,7 @@ export const TravelPageLayout = ({ children }: TravelPageLayoutProps) => {
     }
 
     return <div className={styles.page}>
-        <TravelHeader name={travel.name} expenses={expenses} budget={travel.budget} />
+        <TravelHeader name={travel.name} expenses={expenses} budget={travel.budget} shared={travel.shared} />
         <div className={styles.pageContent}>
             {children}
         </div>

@@ -7,7 +7,7 @@ const useTravels = () => {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const fetchTravels = useStoreActions<StoreActions>(
+  const getTravelsRequest = useStoreActions<StoreActions>(
     (actions) => actions.getTravelsRequest
   );
   const travels: Travel[] = useStoreState<StoreEntities>(
@@ -15,7 +15,7 @@ const useTravels = () => {
   );
 
   useEffect(() => {
-    fetchTravels()
+    getTravelsRequest()
       .catch((error) => {
         setError(error.message);
       })
@@ -24,7 +24,7 @@ const useTravels = () => {
       });
 
     setLoading(true);
-  }, [fetchTravels]);
+  }, [getTravelsRequest]);
 
   return {
     data: travels,

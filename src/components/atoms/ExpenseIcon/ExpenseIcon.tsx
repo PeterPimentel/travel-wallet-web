@@ -4,7 +4,7 @@ import {
     FaBus,
     FaShapes,
     FaHamburger,
-    FaRunning,
+    FaTheaterMasks,
     FaPlaneDeparture,
     FaWineGlassAlt
 } from "react-icons/fa";
@@ -33,7 +33,7 @@ export const ExpenseIcon = ({ type }: ExpenseIconProps) => {
             return <div className={`${styles.icon} ${styles.shopping}`}>< FaShoppingBag style={{ color: "white" }} /></div>
 
         case EXPENSE_TYPE.activity:
-            return <div className={`${styles.icon} ${styles.activity}`}>< FaRunning style={{ color: "white" }} /></div>
+            return <div className={`${styles.icon} ${styles.activity}`}>< FaTheaterMasks style={{ color: "white" }} /></div>
 
         case EXPENSE_TYPE.flight:
             return <div className={`${styles.icon} ${styles.flight}`}>< FaPlaneDeparture style={{ color: "white" }} /></div>

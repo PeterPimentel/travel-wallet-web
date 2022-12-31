@@ -5,16 +5,16 @@ import { common } from '../../../constants/locales';
 
 type PopConfirmProps = {
     children?: React.ReactNode;
-    resource: string;
+    text: string;
     onConfirm: () => void
 }
 
-export const PopConfirm = ({ children, resource, onConfirm }: PopConfirmProps) => {
+export const PopConfirm = ({ children, text, onConfirm }: PopConfirmProps) => {
     const { t } = useTranslation();
 
     return (
         <BasePopconfirm
-            title={t(common.confirmation_message, { resource_type: resource })}
+            title={text}
             onConfirm={onConfirm}
             okText={t(common.yes)}
             cancelText={t(common.no)}

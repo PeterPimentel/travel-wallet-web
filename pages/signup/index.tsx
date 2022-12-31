@@ -18,6 +18,7 @@ const SignupPage = () => {
 
     const handleSubmit = useCallback(async (authData: AuthRequest) => {
         setButtonLoading(true);
+        setApiError('')
         signup(authData).then(() => {
             notification(t(auth.activation_email_sent), "success")
         }).catch((error) => {

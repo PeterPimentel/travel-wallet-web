@@ -3,12 +3,9 @@ import { FC, ReactNode } from "react";
 import { TravelRequest } from "../../../types/ApiType";
 import { Travel } from "../../../types/TravelType";
 
-import { H3 } from "../../atoms/Typography/Typography";
-import { BasicHeader } from "../../molecules/BasicHeader/BasicHeader";
+import { PageTitle } from "../../molecules/PageTitle/PageTitle";
 import { TravelForm } from "../../organism/TraveForm/TravelForm";
-
-import styles from "./style.module.css"
-
+import { CommonPageTemplate } from "../CommonPageTemplate/CommonPageTemplate";
 
 interface TravelEditTemplateProps {
     headerLink: string;
@@ -21,14 +18,9 @@ interface TravelEditTemplateProps {
 
 export const TravelEditTemplate: FC<TravelEditTemplateProps> = ({ headerLink, headerLinkText, pageTitle, travel, footer, onSubmit }) => {
     return (
-        <div className={styles.page}>
-            <div className={styles.header}>
-                <BasicHeader link={headerLink} linkText={headerLinkText} />
-            </div>
-            <div className={styles.content}>
-                <div className={styles.title}>
-                    <H3>{pageTitle}</H3>
-                </div>
+        <CommonPageTemplate link={headerLink} linkText={headerLinkText}>
+            <div>
+                <PageTitle title={pageTitle} />
                 <TravelForm
                     initialName={travel?.name}
                     initialCover={travel?.cover}
@@ -37,6 +29,6 @@ export const TravelEditTemplate: FC<TravelEditTemplateProps> = ({ headerLink, he
                 />
                 {footer}
             </div>
-        </div>
+        </CommonPageTemplate>
     )
 }

@@ -11,12 +11,14 @@ import useTravels from "../../../src/hooks/useTravels";
 import { getSelectedTravel, getTravelsURL, getTravelURL } from "../../../src/util";
 import { StoreActions } from "../../../src/types/StoreType";
 import { common } from "../../../src/constants/locales";
+import { getErrorTranslateKey } from "../../../src/util/apiLocaleUtil";
 
 import { TravelEditTemplate } from "../../../src/components/templates/TravelEditTemplate/TravelEditTemplate";
 import { notification } from "../../../src/components/atoms/Notification/Notification";
 import { DangerZone } from "../../../src/components/molecules/DangerZone/DangerZone";
 import { PageLoader } from "../../../src/components/molecules/PageLoader/PageLoader";
 import { NotFoundTemplate } from "../../../src/components/templates/NotFoundTemplate/NotFoundTemplate";
+import { AccessDeniedTemplate } from "../../../src/components/templates/AccessDeniedTemplate/AccessDeniedTemplate";
 
 const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const { t } = useTranslation();
@@ -39,7 +41,7 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
             notification(t(common.updated_travel_success), "success")
             router.push(getTravelURL(travelId as string))
         }).catch((err) => {
-            notification(err.message, "error")
+            notification(t(getErrorTranslateKey(err)), "error")
         })
     }, [router, t, travelId, updateTravel])
 
@@ -48,7 +50,7 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
             notification(t(common.delete_travel_success), "success")
             router.push(getTravelsURL())
         }).catch((err) => {
-            notification(err.message, "error")
+            notification(t(getErrorTranslateKey(err)), "error")
         })
     }, [deleteTravel, router, t, travelId])
 
@@ -60,6 +62,10 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
         return <NotFoundTemplate />
     }
 
+    if (data.shared) {
+        return <AccessDeniedTemplate />
+    }
+
     return (
         <TravelEditTemplate
             headerLink={getTravelURL(router.query.id as string)}
@@ -68,7 +74,8 @@ const EditTravelPage: NextPageWithLayout = ({ session }: InferGetServerSideProps
             travel={{
                 name: data?.name,
                 cover: data?.cover,
-                budget: data.budget
+                budget: data.budget,
+                shared: data.shared,
             }}
             footer={<DangerZone resource={t(common.travel)} buttonText={t(common.delete_travel)} onClick={handleRemove} />}
             onSubmit={handleSubmit}
