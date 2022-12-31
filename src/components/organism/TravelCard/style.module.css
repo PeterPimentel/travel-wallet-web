@@ -1,4 +1,6 @@
 .card {
+    position: relative;
+
     padding: var(--space-8);
     background-color: var(--primary-color);
 
@@ -25,4 +27,15 @@
 
 div.header>h4 {
     color: white;
+}
+
+.sharedIcon {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+
+    width: 24px;
+    height: 24px;
+    
+    color: #ffffff;
 }

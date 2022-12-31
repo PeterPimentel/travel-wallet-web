@@ -1,0 +1,23 @@
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    gap:var(--space-8);
+    margin: var(--space-8) 0;
+}
+
+.inputContainer {
+    width: 100%;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+    cursor: pointer;
+}

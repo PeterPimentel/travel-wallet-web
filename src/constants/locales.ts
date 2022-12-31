@@ -1,4 +1,6 @@
 export const common = {
+  access_denied: "common:access_denied",
+  access_denied_description: "common:access_denied_description",
   account: "common:account",
   activation_email_retry: "common:activation_email_retry",
   activation_email_sent: "common:activation_email_sent",
@@ -38,6 +40,7 @@ export const common = {
     "common:input_expense_description_placeholder",
   input_expense_title_placeholder: "common:input_expense_title_placeholder",
   input_travel_name_placeholder: "common:input_travel_name_placeholder",
+  invalid_email: "common:invalid_email",
   logout: "common:logout",
   map: "common:map",
   no: "common:no",
@@ -118,4 +121,15 @@ export const maps = {
   popup_to: "maps:popup_to",
   popup_days: "maps:popup_days",
   popup_spent: "maps:popup_spent",
+}
+
+export const share = {
+  input_email_placeholder: "share:input_email_placeholder",
+  friends: "share:friends",
+  add_friend_confirmation_message: "share:add_friend_confirmation_message",
+  remove_friend_confirmation_message: "share:remove_friend_confirmation_message",
+  remove_friend_success: "share:remove_friend_success",
+  share_travel: "share:share_travel",
+  share_travel_description: "share:share_travel_description",
+  travel_shared_success: "share:travel_shared_success",
 }

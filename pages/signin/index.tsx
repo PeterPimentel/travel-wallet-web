@@ -24,6 +24,7 @@ const SiginPage = () => {
 
     const handleSubmit = useCallback(async ({ email, password }: AuthRequest) => {
         setButtonLoading(true);
+        setApiError('')
         signin(email, password).then((res) => {
             saveToken(res.token)
             router.push(getTravelsURL())

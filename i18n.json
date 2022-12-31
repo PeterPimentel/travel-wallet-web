@@ -23,6 +23,9 @@
         "/travel/[id]/map": [
             "maps"
         ],
+        "/travel/share/[id]": [
+            "share"
+        ],
         "/request": [
             "request"
         ]

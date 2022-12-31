@@ -56,7 +56,7 @@ const TravelMap = ({ expenses }: TravelMapsProps) => {
                     </MapMarker>
                 ))
             }
-            <FlyTo lat={groupedExpenses[0].lat} long={groupedExpenses[0].long} />
+            <FlyTo lat={groupedExpenses[0]?.lat || START_LAT} long={groupedExpenses[0]?.long || START_LONG} />
         </MapContainer>
     );
 }

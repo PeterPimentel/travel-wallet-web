@@ -21,6 +21,10 @@ export const getTravelsURL = (): string => `/${BASE_ROUTES.travel}`;
 
 export const getTravelURL = (id: string | number): string => `/${BASE_ROUTES.travel}/${id}`;
 
+export const getTravelEditURL = (id: string | number): string => `/${BASE_ROUTES.travel}/edit/${id}`;
+
+export const getTravelShareURL = (id: string | number): string => `/${BASE_ROUTES.travel}/share/${id}`;
+
 export const getProfileURL = (): string => `/${BASE_ROUTES.profile}`;
 
 export const getNewExpenseURL = (): string => `/${BASE_ROUTES.newExpense}`;

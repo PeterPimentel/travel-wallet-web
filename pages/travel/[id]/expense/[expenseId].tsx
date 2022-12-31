@@ -10,6 +10,7 @@ import useTravels from '../../../../src/hooks/useTravels';
 import { getSelectedTravel, getTravelURL } from '../../../../src/util';
 import { StoreActions } from '../../../../src/types/StoreType';
 import { common } from '../../../../src/constants/locales';
+import { getErrorTranslateKey } from '../../../../src/util/apiLocaleUtil';
 
 import { EditExpenseTemplate } from '../../../../src/components/templates/ExpenseEditTemplate/EditExpenseTemplate';
 import TravelPageLayout from '../../../../src/components/organism/TravelPageLayout/TravelPageLayout';
@@ -42,7 +43,7 @@ export const AddTravelPage = () => {
             notification(t(common.update_expense_success), "success")
             router.push(getTravelURL(travelId as string))
         }).catch((err) => {
-            notification(err.message, "error")
+            notification(t(getErrorTranslateKey(err)), "error")
         })
     }, [expenseId, router, t, travelId, updateExpense])
 
@@ -51,7 +52,7 @@ export const AddTravelPage = () => {
             notification(t(common.delete_expense_success), "success")
             router.push(getTravelURL(travelId as string))
         }).catch((err) => {
-            notification(err.message, "error")
+            notification(t(getErrorTranslateKey(err)), "error")
         })
     }, [deleteExpense, expenseId, router, t, travelId])
 

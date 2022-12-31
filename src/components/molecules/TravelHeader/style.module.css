@@ -30,6 +30,14 @@
 .actions {
     position: absolute;
     right: 0;
+    display: flex;
+    gap: var(--space-12);
+}
+
+.actionIcon {
+    color: #ffffff;
+    width: 20px;
+    height: 20px;
 }
 
 header.header>h5 {

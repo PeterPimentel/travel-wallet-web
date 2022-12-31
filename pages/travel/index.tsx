@@ -33,7 +33,7 @@ const TravelsPage = (props) => {
                 {(data || []).map(travel => (
                     <div key={travel.id} className={styles.travelCard}>
                         <CommonLink to={getTravelURL(travel.id)}>
-                            <TravelCard title={travel.name} cover={travel.cover} expenses={travel.expenses} />
+                            <TravelCard title={travel.name} cover={travel.cover} shared={travel.shared} expenses={travel.expenses} />
                         </CommonLink>
                     </div>
                 ))}

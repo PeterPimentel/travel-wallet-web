@@ -1,15 +1,14 @@
-import { FC } from "react";
 import useTranslation from 'next-translate/useTranslation'
+import { FaTrashAlt } from "react-icons/fa";
 
 import { common } from "../../../constants/locales";
 
 import { Button } from "../../atoms/Button/Button";
 import { Divider } from "../../atoms/Divider/Divider";
 import { Text } from "../../atoms/Typography/Typography";
+import { PopConfirm } from "../../atoms/PopConfirm/PopConfirm";
 
 import styles from "./style.module.css"
-import { PopConfirm } from "../../atoms/PopConfirm/PopConfirm";
-import { FaFire } from "react-icons/fa";
 
 interface DangerZoneProps {
     resource: string;
@@ -17,15 +16,15 @@ interface DangerZoneProps {
     onClick: () => void;
 }
 
-export const DangerZone: FC<DangerZoneProps> = ({ buttonText, resource, onClick }) => {
+export const DangerZone = ({ buttonText, resource, onClick }: DangerZoneProps) => {
     const { t } = useTranslation();
 
     return (
         <div className={styles.container}>
             <Divider><Text type="danger">{t(common.danger_zone)}</Text></Divider>
             <div className={styles.action}>
-                <PopConfirm resource={resource} onConfirm={onClick}>
-                    <Button icon={<FaFire />} danger>{buttonText}</Button>
+                <PopConfirm text={t(common.confirmation_message, { resource_type: resource })} onConfirm={onClick}>
+                    <Button icon={<FaTrashAlt />} danger>{buttonText}</Button>
                 </PopConfirm>
             </div>
         </div>

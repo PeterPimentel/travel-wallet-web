@@ -24,6 +24,7 @@ export const updateTravelActionHelper = (
     if (travel.id === payload.id) {
       return {
         ...payload,
+        shared: false,
         expenses: travel.expenses,
       };
     }

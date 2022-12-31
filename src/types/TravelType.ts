@@ -6,4 +6,5 @@ export interface Travel {
   cover: string;
   expenses: Expense[];
   budget?: number;
+  shared: boolean;
 }
