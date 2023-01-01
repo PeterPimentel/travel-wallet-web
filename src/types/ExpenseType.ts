@@ -31,3 +31,8 @@ export interface DailyCost {
 }
 
 export type PaymentType = "CARD" | "CASH";
+
+export type FavoriteLocation = {
+    days: number;
+    name: string;
+}

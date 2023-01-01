@@ -28,6 +28,9 @@
         ],
         "/request": [
             "request"
+        ],
+        "/overview": [
+            "statistics"
         ]
     }
 }

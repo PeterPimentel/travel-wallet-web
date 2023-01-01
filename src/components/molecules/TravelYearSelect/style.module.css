@@ -1,0 +1,9 @@
+.select {
+    display: flex;
+    align-items: center;
+}
+
+.label {
+    width: 80px;
+    flex-wrap: nowrap;
+}

@@ -1,4 +1,4 @@
-import { User } from "./CommonType";
+import { Flag, User } from "./CommonType";
 import { Expense } from "./ExpenseType";
 import { Travel } from "./TravelType";
 
@@ -25,4 +25,6 @@ export type APIError = {
 export type AuthApiResponse = {
     user: User,
     token: string,
-} 
+}
+
+export type FlagsApiResponse = Flag[];

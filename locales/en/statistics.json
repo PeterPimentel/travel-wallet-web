@@ -1,0 +1,10 @@
+{
+    "cities": "Cities",
+    "countries": "Countries",
+    "filter_period_label": "During:",
+    "filter_period_all": "All period",
+    "flights": "Flights",
+    "most_loved_city_label": "We know that you love all travels but {{city}} really made you settled down",
+    "page_description": "You have been in:",
+    "ranking_country_city_visited_label": "Most visited"
+}

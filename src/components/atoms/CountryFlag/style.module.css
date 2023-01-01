@@ -1,0 +1,47 @@
+.small {
+    width: 48px;
+    height: auto;
+}
+
+.regular {
+    width: 64px;
+    height: auto;
+}
+
+.large {
+    width: 80px;
+    height: auto;
+}
+
+.extraLarge {
+    width: 120px;
+    height: auto;
+}
+
+.container {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid var(--dark-gray);
+}
+
+.container.small {
+    width: 30px;
+    height: 30px;
+}
+
+.container.regular {
+    width: 42px;
+    height: 42px;
+}
+
+.container.large {
+    width: 53px;
+    height: 53px;
+}
+
+.container.extraLarge {
+    width: 75px;
+    height: 75px;
+}

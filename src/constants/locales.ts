@@ -133,3 +133,14 @@ export const share = {
   share_travel_description: "share:share_travel_description",
   travel_shared_success: "share:travel_shared_success",
 }
+
+export const statistics = {
+  cities: "statistics:cities",
+  countries: "statistics:countries",
+  filter_period_label: "statistics:filter_period_label",
+  filter_period_all: "statistics:filter_period_all",
+  flights: "statistics:flights",
+  most_loved_city_label: "statistics:most_loved_city_label",
+  page_description: "statistics:page_description",
+  ranking_country_city_visited_label: "statistics:ranking_country_city_visited_label",
+}

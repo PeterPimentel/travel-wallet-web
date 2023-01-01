@@ -1,0 +1,55 @@
+.container {
+    position: relative;
+    width: 230px;
+    height: 240px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.second {
+    position: absolute;
+    left: 0;
+    top: 100px;
+}
+
+.third {
+    position: absolute;
+    right: 0;
+    top: 100px;
+}
+.labels{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.value > span{
+    font-size: 18px;
+}
+
+.crown {
+    color: #d18400;
+    width: 24px;
+    height: 24px;
+}
+
+.first .position {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--space-4);
+}
+
+.shadow {
+    border-radius: 50%;
+    -webkit-box-shadow: 2px 0px 24px 0px #d18400;
+    -moz-box-shadow: 2px 0px 24px 0px #d18400;
+    box-shadow: 2px 0px 24px 0px #d18400;
+}

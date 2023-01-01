@@ -15,9 +15,10 @@ type CommonPageTemplate = {
     title?: string;
     link: string;
     linkText?: string;
+    showAppName?: boolean;
 }
 
-export const CommonPageTemplate = ({ children, title, link, linkText }: CommonPageTemplate) => {
+export const CommonPageTemplate = ({ children, title, link, linkText, showAppName }: CommonPageTemplate) => {
     const { t } = useTranslation();
 
     return (
@@ -28,7 +29,7 @@ export const CommonPageTemplate = ({ children, title, link, linkText }: CommonPa
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className={styles.header}>
-                <BasicHeader link={link} linkText={linkText ? linkText : t(common.back)} />
+                <BasicHeader link={link} linkText={linkText ? linkText : t(common.back)} showAppName={showAppName} />
             </div>
             <div className={styles.content}>
                 {children}

@@ -94,3 +94,5 @@ export const sortByDate = (dates: string[], mode: SortMode = "ASC"): string[] =>
 
   return sortedDate
 }
+
+export const getUnique = (data: string[]) => data.filter((v, i, a) => a.indexOf(v) === i)

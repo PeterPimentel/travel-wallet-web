@@ -1,0 +1,31 @@
+.center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.avatar {
+    margin: var(--space-8) 0;
+}
+
+.filter {
+    width: 50%;
+    min-width: 260px;
+}
+
+.pageDescription {
+    margin: var(--space-4) 0;
+}
+
+.podium {
+    background-color: white;
+    border-radius: 16px;
+    padding: var(--space-8);
+    margin : var(--space-8) 0;
+}
+
+.podiumTitle > H5{
+    margin: 0;
+    color: var(--dark-gray)
+}

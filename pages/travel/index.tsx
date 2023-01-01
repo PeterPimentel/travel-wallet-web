@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation'
 import { withSessionHOC } from "../../src/lib/withSessionHOC";
 import { common } from "../../src/constants/locales";
 import useTravels from "../../src/hooks/useTravels";
-import { getTravelURL } from '../../src/util';
+import { getOverviewURL, getTravelURL } from '../../src/util';
 
 import { CommonLink } from "../../src/components/atoms/CommonLink/CommonLink";
 import { Loading } from "../../src/components/atoms/Loading/Loading";
@@ -11,6 +11,7 @@ import { H5, Text } from "../../src/components/atoms/Typography/Typography";
 import { TravelListHeader } from "../../src/components/molecules/TravelListHeader/TravelListHeader";
 import { AddTravelButton } from "../../src/components/molecules/AddTravelButton/AddTravelButton";
 import { TravelCard } from "../../src/components/organism/TravelCard/TravelCard";
+import { OverviewButton } from '../../src/components/molecules/OverviewButton/OverviewButton';
 
 import styles from "./style.module.css"
 
@@ -25,9 +26,14 @@ const TravelsPage = (props) => {
                 <H5>{t(common.welcome_message)}</H5>
                 <Text>{props.data?.username}</Text>
             </div>
-            <CommonLink to={getTravelURL('new')}>
-                <AddTravelButton />
-            </CommonLink>
+            <nav className={styles.navigation}>
+                <CommonLink to={getTravelURL('new')}>
+                    <AddTravelButton />
+                </CommonLink>
+                <CommonLink to={getOverviewURL()}>
+                    <OverviewButton />
+                </CommonLink>
+            </nav>
             <div className={styles.travels}>
                 {isLoading ? <Loading loading={isLoading} size="large" /> : null}
                 {(data || []).map(travel => (

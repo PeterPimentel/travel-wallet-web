@@ -53,3 +53,5 @@ export const CHART_FILTER = {
   country: "country",
   payment: "payment",
 }
+
+export const COUNTRY_FLAG_API_URL = 'https://countryflagsapi.com/png/'

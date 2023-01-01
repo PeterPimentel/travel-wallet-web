@@ -17,6 +17,12 @@
     text-transform: capitalize;
 }
 
+.navigation {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-8);
+}
+
 .travels {
     display: flex;
     flex-direction: column;

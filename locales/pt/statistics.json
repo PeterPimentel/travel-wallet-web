@@ -1,0 +1,10 @@
+{
+    "cities": "Cidades",
+    "countries": "Países",
+    "filter_period_label": "Durante:",
+    "filter_period_all": "Todo o período",
+    "flights": "Vôos",
+    "most_loved_city_label": "Sabemos que você ama todas as viagens mais {{city}} realmente fez você querer se mudar",
+    "page_description": "Você esteve em:",
+    "ranking_country_city_visited_label": "Mais visitou"
+}

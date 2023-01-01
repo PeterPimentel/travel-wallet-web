@@ -1,9 +1,7 @@
-import { FaUserCircle } from "react-icons/fa"
-
-import { BASE_COLORS } from "../../../constants"
 import { getProfileURL } from "../../../util"
 
 import { AppLogo } from "../../atoms/AppLogo/AppLogo"
+import { Avatar } from "../../atoms/Avatar/Avatar"
 import { Badge } from "../../atoms/Badge/Badge"
 import { CommonLink } from "../../atoms/CommonLink/CommonLink"
 
@@ -21,7 +19,7 @@ export const TravelListHeader = ({ hasActions = false }: TravelListHeaderProps) 
                 <div className={styles.headerContentAction}>
                     <Badge dot={hasActions}>
                         <CommonLink to={getProfileURL()}>
-                            <FaUserCircle style={{ color: BASE_COLORS.primary, width: "24px", height: "24px" }} />
+                            <Avatar size="small" />
                         </CommonLink>
                     </Badge>
                 </div>

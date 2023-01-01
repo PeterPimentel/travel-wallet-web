@@ -28,3 +28,17 @@ export type SelectOption = {
 }
 
 export type SortMode = "ASC" | "DESC";
+
+export type Flag = {
+  code: string;
+  flag: string;
+  country: string;
+}
+
+export type TrackerType = "CITY" | "COUNTRY" | "FLIGHT"
+
+export type Tracker = {
+  description: string;
+  value: number | string;
+  type: TrackerType;
+}
